@@ -1,3 +1,6 @@
+### Written by Oakular for use on my Arch Linux machine
+### Some credit goes to inject3d (https://github.com/inject3d/dotfiles)
+
 # startup message
 cowsay -f tux Welcome Callum
 
@@ -37,20 +40,14 @@ export KEYTIMEOUT=1
 
 # ----- END OF SETTING UP VI MODE -----
 
-# aliases
-alias ls='ls --color=auto'
-alias classify='classify -d 30'
-
-# source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
-
 # History
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
 
-# completion bullshit
-zstyle :compinstall filename '/home/artyom/.zshrc'
+# tab completion
+zstyle :compinstall filename '/home/oakular/.zshrc'
 zstyle ':completion:*' menu select
 setopt completealiases
 
@@ -61,7 +58,7 @@ promptinit
 # prompt
 prompt elite
 
-# Syntax highlighting
+# syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
@@ -69,35 +66,38 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 # Personnal Aliases
 #-------------------
 
-alias redshift='redshift -l 35.22:-80.84'
-alias nightmode='redshift -r -O 3600 -b .5'
+alias lock="~/.lock.sh"
+
+#alias redshift='redshift -l 35.22:-80.84'
+#alias nightmode='redshift -r -O 3600 -b .5'
 
 alias testpl='echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"'
 
 alias rm='rm -iv'
 alias cp='cp -iv'
 alias mv='mv -iv'
-# aliases to  make use of pacman less tedious
+
+# aliases to  make use of pacman less verbose
 alias pac='sudo pacmatic -S --color always'
-alias pacsync='sudo pacmatic -Syy --color always'
-alias pacdate='sudo pacmatic -Syu --color always'
-alias pacu='sudo pacmatic -Rns --color always'
+alias pacsy='sudo pacmatic -Syy --color always'
+alias pacu='sudo pacmatic -Syu --color always'
+alias pacr='sudo pacmatic -Rns --color always'
 alias pacss='pacmatic -Ss --color always'
 
 # aliases for VPN connection
-alias vpn-con="nmcli con up id 'UK London'"
-alias vpn-dcon="nmcli con down id 'UK London'"
+alias vpn-con="nmcli con up id"
+alias vpn-dcon="nmcli con down id"
 
-# fixing gpmdp
+# fixing gpmdp so that is loads past login
 alias gpmdp="gpmdp --disable-gpu"
 
 # steam runtime fix
 # alias steam="STEAM_RUNTIME=1 steam"
 
-# -> Prevents accidentally clobbering files.
+# prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
 
-# Pretty-print of some PATH variables:
+# pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 

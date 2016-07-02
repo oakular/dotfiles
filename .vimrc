@@ -1,5 +1,5 @@
-"Configuration file for Vi Improved, save as ~/.vimrc to use.
-" Written on 2014-07-16 by Miko Bartnicki <mikobartnicki@gmail.com>.
+" vimrc file for my vim config
+" written with inspiration from Miko Bartnicki <mikobartnicki@gmail.com>
 
 " use Vim mode instead of pure Vi, it must be the first instruction
 set nocompatible
@@ -10,67 +10,70 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " display settingsn
-set encoding=utf-8 " encoding used for displaying file
-set ruler " show the cursor position all the time
-set showmatch " highlight matching braces
-set showmode " show insert/replace/visual mode
-set number
-set relativenumber
+set encoding=utf-8 				" encoding used for displaying file
+set ruler 						" show the cursor position all the time
+set showmatch 					" highlight matching braces
+set showmode 					" show insert/replace/visual mode
+
+set number 						" show line numbers
+set relativenumber				" combine line numbers with absolute numbers
 
 " write settings
-set confirm " confirm :q in case of unsaved changes
-set fileencoding=utf-8 " encoding used when saving file
-set nobackup " do not keep the backup~ file
+set confirm 					" confirm :q in for unsaved changes
+set fileencoding=utf-8 			" encoding used when saving file
+set nobackup 					" do not keep backup files
 
 " edit settings
-set backspace=indent,eol,start " backspacing over everything in insert mode
-set noexpandtab " no spaces!
-set nojoinspaces " no extra space after '.' when joining lines
-set shiftwidth=4 " set indentation depth to 8 columns
-set tabstop=4 " set tabulator length to 8 columns
-set textwidth=72 " wrap lines automatically at 72nd column
+set backspace=indent,eol,start 	" backspacing over everything in insert mode
+set noexpandtab 				" keeps tabs as tabs; use expandtab for spaces
+set nojoinspaces 				" no extra space after '.' when joining lines
+set shiftwidth=4 				" set indentation depth to 4 columns
+set tabstop=4 					" set tabulator length to 4 columns
+set textwidth=72 				" wrap lines automatically at 72nd column
 
 "Search settings
-set hlsearch " highlight search results
-set ignorecase " do case insensitive search...
-set incsearch " do incremental search
-set smartcase " ...unless capital letters are used
+set hlsearch 					" highlight search results
+set ignorecase 					" search case insensitively
+set incsearch 					" sets vim to search as you type
+set smartcase 					" ...unless capital letters are used
 
 " file type specific settings
-filetype on " enable file type detection
-filetype plugin on " load the plugins for specific file types
-filetype indent on " automatically indent code
+filetype indent on 				" enable filetype detection and automatically indents code based on
+								" indent files at ~/.vim/indent/
+filetype plugin on 				" load the plugins for specific file types
 
 " syntax highlighting
-colorscheme base16-londontube " set color scheme, must be installed first
-let base16colorspace=256  " Access colors present in 256 colorspace
-set background=dark " dark background for console
-syntax enable " enable syntax highlighting
+colorscheme base16-londontube 	" set color scheme, must be installed first
+let base16colorspace=256  		" access colors present in 256 colorspace
+set background=dark 			" dark background for console
+syntax enable 					" enable syntax highlighting
 
-	" java specific config
-	set ai
-	set sm
-	let java_highlight_all=1
+" display settings
+set autoindent 					" sets auto indenting
+set showmatch					" sets matching of certain chars {}()[] etc
 
-	let java_highlight_functions="style"
+" java specific config
+let java_highlight_all=1
+let java_highlight_functions="style"
+let java_allow_cpp_keywords=1
 
-	let java_allow_cpp_keywords=1
+" java compiler config
+" sets make to javac for java files
+autocmd Filetype java set makeprg=javac\ %
+" formats error messages to show in vim
+set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+" adds keys for cycling through errors
+map <F9> :make<Return>:copen<Return>
+map <F10> :cprevious<Return>
+map <F11> :cnext<Return>
 
 "vim-airline config
-set laststatus=2
-set ttimeoutlen=10
-let g:airline_powerline_fonts=1
+set laststatus=2 				" increases the size of the command line
+set ttimeoutlen=10				" prevents lag at mode change with airline
+let g:airline_powerline_fonts=1 " allows airline to use powerline fonts
 
 " characters for displaying non-printable characters
 set listchars=eol:$,tab:>-,trail:.,nbsp:_,extends:+,precedes:+
-
-" tuning for gVim only
-if has('gui_running')
-	set background=light " light background for GUI
-	set columns=84 lines=48 " GUI window geometry
-	set guifont=Monospace\ 12 " font for GUI window
-        set number " show line numbers
-	endif
 
 " automatic commands
 if has('autocmd')
@@ -100,7 +103,11 @@ if has('autocmd')
         autocmd BufWritePre * :%s/\s\+$//ge
 endif
 
-" general key mappings
+" key remappings
+
+" maps j and k to move onto soft-wrapped lines automatically
+nnoremap j gj
+nnoremap k gk
 
 " center view on the search result
 noremap n nzz
@@ -114,20 +121,29 @@ inoremap <F4> <Esc>mqggVG=`qzza
 vnoremap <F5> :sort i<CR>
 nnoremap <F5> Vip:sort i<CR>
 
-" press F8 to turn the search results highlight off
-noremap <F8> :nohl<CR>
-inoremap <F8> <Esc>:nohl<CR>a
+" hit space to turn the search results highlight off
+nnoremap <leader><space> :nohlsearch<CR>
+"inoremap <F8> <Esc>:nohl<CR>a
 
 " press F12 to toggle showing the non-printable charactes
 noremap <F12> :set list!<CR>
 inoremap <F12> <Esc>:set list!<CR>a
 
-" java compiler
-autocmd Filetype java set makeprg=javac\ %
-set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-map <F9> :make<Return>:copen<Return>
-map <F10> :cprevious<Return>
-map <F11> :cnext<Return>
+" auto insert curly brackets
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+" auto insert quote marks (commented out as proved annoying)
+"inoremap "      ""<Left>
+"inoremap "<CR>  "<CR>"<Esc>O
+"inoremap ""     ""
+
+" auto insert closing bracket
+inoremap (      ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap ()     ()
 
 " Vim Plugins (Vundle)
 Plugin 'godlygeek/tabular'

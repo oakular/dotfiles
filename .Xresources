@@ -1,18 +1,24 @@
-URxvt.font: 				xft:Source\Code\Pro\:pixelsize=16
-URxvt.boldFont:            	xft:Source\Code\Pro\:pixelsize=16:bold
-URxvt.italicFont:          	xft:Source\Code\Pro\:pixelsize=16:italic
-URxvt.boldItalicFont:      	xft:Source\Code\Pro\:pixelsize=16:bold:italic
+## ---------- FONT SETUP ---------- #
+URxvt.font: 				xft:Sauce\Code\Powerline:regular:pixelsize=18:antialias=true:hinting=true,\
+							xft:DejaVu\Sans\Mono:pixelsize=18:antialias=true:hinting=true,\
+URxvt.boldFont:            	xft:Sauce\Code\Powerline:regular:pixelsize=18:bold:antialias=true:hinting=true,\
+URxvt.italicFont:          	xft:Sauce\Code\Powerline:regular:pixelsize=18:italic:antialias=true:hinting=true,\
+URxvt.boldItalicFont:      	xft:Sauce\Code\Powerline:regular:pixelsize=18:bold:italic:antialias=true:hinting=true
 URxvt.letterSpace:         -1
 
+## ---------- PADDING IN TERMINAL WINDOW ---------- #
 URxvt.internalBorder:      10
 URxvt.externalBorder:      10
 
+## removes vertical scroll bar
 URxvt.scrollBar:           false
 
 URxvt*fading:              30
 
-URxvt.perl-ext-common:     matcher,resize-font,foo,tabbed
+## extensions for font resizing and tabs
+URxvt.perl-ext-common:     matcher,resize-font,tabbed
 
+## ---------- COLOURS ---------- #
 #define base00 #231f20
 #define base01 #1c3f95
 #define base02 #5a5758
@@ -29,10 +35,13 @@ URxvt.perl-ext-common:     matcher,resize-font,foo,tabbed
 #define base0D #009ddc
 #define base0E #98005d
 #define base0F #b06110
-##
+
+## sets cursor colour and background to white
+## keeps background black-ish
 *.foreground:   base05
 *.background:   base00
 *.cursorColor:  base05
+
 ##
 *.color0:       base00
 *.color1:       base08
@@ -42,6 +51,7 @@ URxvt.perl-ext-common:     matcher,resize-font,foo,tabbed
 *.color5:       base0E
 *.color6:       base0C
 *.color7:       base05
+
 ##
 *.color8:       base03
 *.color9:       base08
@@ -51,9 +61,9 @@ URxvt.perl-ext-common:     matcher,resize-font,foo,tabbed
 *.color13:      base0E
 *.color14:      base0C
 *.color15:      base07
-#
-## Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
-## use 'shell' template to set these if necessary
+##
+
+## colours beyond 16 need 256 colour capable terminal emulator
 *.color16:      base09
 *.color17:      base0F
 *.color18:      base01
@@ -61,9 +71,9 @@ URxvt.perl-ext-common:     matcher,resize-font,foo,tabbed
 *.color20:      base04
 *.color21:      base06:
 
-## vim: filetype=yaml
-## rofi template
 ## Base16 London Tube Dark, by Jan T. Sott
+
+## ---------- ROFI CONFIG ---------- #
 
 rofi.color-enabled: true
 ## State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
