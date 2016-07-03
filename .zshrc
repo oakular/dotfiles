@@ -5,12 +5,13 @@
 cowsay -f tux Welcome Callum
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-shell/base16-londontube.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-shell/base16-bespin.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # exports
 export PANEL_FIFO=/tmp/panel-fifo
 export PATH=$PATH:/home/callumw/Documents/panel
+export EDITOR="vim"
 export VISUAL="vim"
 export STEAM_RUNTIME=0
 
@@ -40,23 +41,32 @@ export KEYTIMEOUT=1
 
 # ----- END OF SETTING UP VI MODE -----
 
+setopt auto_cd 								# removes need to type 'cd'
+setopt correct 								# enables spellchecking
+
 # History
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt HIST_IGNORE_DUPS
+HISTSIZE=1000								# limits histfile size
+SAVEHIST=1000								# limits histfile size
+setopt HIST_IGNORE_DUPS						# forces history to ignore duplicates
 
-# tab completion
-zstyle :compinstall filename '/home/oakular/.zshrc'
-zstyle ':completion:*' menu select
-setopt completealiases
+# -----------------------------------
+# PROMPT, COMMAND COMPLETION & COLORS
+# -----------------------------------
 
-autoload -Uz compinit promptinit
+autoload -Uz colors && colors				# enables colors in zsh
+
+autoload -Uz compinit 						# enables command completion
 compinit
+
+zstyle :compinstall filename '/home/oakular/.zshrc'
+zstyle ':completion:*' menu select 			# enables the command completion
+setopt completealiases						# allows for completion of aliases
+
+autoload -Uz promptinit 					# enables prompt themes
 promptinit
 
-# prompt
-prompt elite
+prompt elite								# prompt
 
 # syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
