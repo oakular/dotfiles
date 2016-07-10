@@ -5,7 +5,7 @@
 cowsay -f tux Welcome Callum
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-shell/base16-bespin.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-shell/base16-flat.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # exports
@@ -58,14 +58,14 @@ setopt HIST_IGNORE_DUPS						# forces history to ignore duplicates
 # POWERLEVEL9K CONFIGURATION
 # -----------------------------------
 POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=false			# displays prompt on newline
 
 # dir segment colors
-POWERLEVEL9K_DIR_HOME_BACKGROUND='blue'
+POWERLEVEL9K_DIR_HOME_BACKGROUND='yellow'
 POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='blue'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='yellow'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='blue'
 
@@ -87,10 +87,10 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 #POWERLEVEL9K_STATUS_ERROR_BACKGROUND='red'			# true
 
 # vi mode colors
-POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='green'
-POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='black'
-POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='red'
-POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='black'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='green'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='blue'
 
 # PROMPT, COMMAND COMPLETION & COLORS
 # -----------------------------------
@@ -127,11 +127,11 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 
 # aliases to  make use of pacman less verbose
-alias pac='sudo pacmatic -S --color always'
-alias pacsy='sudo pacmatic -Syy --color always'
-alias pacu='sudo pacmatic -Syu --color always'
-alias pacr='sudo pacmatic -Rns --color always'
-alias pacss='pacmatic -Ss --color always'
+alias pac='sudo pacmatic -S'
+alias pacsy='sudo pacmatic -Syy'
+alias pacu='sudo pacmatic -Syu'
+alias pacr='sudo pacmatic -Rns'
+alias pacss='pacmatic -Ss'
 
 # aliases for VPN connection
 alias vpn-con="nmcli con up id"

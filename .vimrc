@@ -8,7 +8,50 @@ set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+
+" ---------------------------------------------------
+"  VIM plugins installed through AUR
+" ---------------------------------------------------
+	" powerline
+	" vim-commentary
+	" vim-cpp-enhanced-highlight
+	" vim-fugitive
+	" vim-gitgutter
+	" vim-gundo
+	" vim-latexsuite
+	" vim-youcompleteme
+	" vim-nerdtree
+
+" ---------------------------------------------------
+" Vundle Plugins (where there were no AUR packages)
+" ---------------------------------------------------
+Plugin 'xuyuanp/nerdtree-git-plugin'
+
+" ---------------------------------------------------
+"  NERDTree Config
+" ---------------------------------------------------
+
+" start NERDTree on vim startup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" open NERDTree w/ C-n
+map <C-n> :NERDTreeToggle<CR>
+
+" adding NERDTree git integration
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+" ------------------ END OF NERDTREE CONFIG
 
 " setup for YCM completion in C family
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
@@ -47,7 +90,7 @@ filetype indent on 				" enable filetype detection and automatically indents cod
 filetype plugin on 				" load the plugins for specific file types
 
 " syntax highlighting
-colorscheme base16-londontube 	" set color scheme, must be installed first
+colorscheme base16-flat 	" set color scheme, must be installed first
 let base16colorspace=256  		" access colors present in 256 colorspace
 set background=dark 			" dark background for console
 syntax enable 					" enable syntax highlighting
@@ -121,9 +164,8 @@ noremap N Nzz
 noremap <F4> mqggVG=`qzz
 inoremap <F4> <Esc>mqggVG=`qzza
 
-" press F5 to sort selection or paragraph
-vnoremap <F5> :sort i<CR>
-nnoremap <F5> Vip:sort i<CR>
+" toggle Gundo undo tree viewer w/ F5
+nnoremap <F5> :GundoToggle<CR>
 
 " hit space to turn the search results highlight off
 nnoremap <leader><space> :nohlsearch<CR>
