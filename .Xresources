@@ -1,6 +1,7 @@
 ## ---------- FONT SETUP ---------- #
 URxvt.font: 				xft:Sauce\Code\Powerline:regular:pixelsize=18:antialias=true:hinting=true,\
 							xft:DejaVu\Sans\Mono:pixelsize=18:antialias=true:hinting=true,\
+							xft:Symbola:pixelsize=18:antialias=true:hinting=true,\
 URxvt.boldFont:            	xft:Sauce\Code\Powerline:regular:pixelsize=18:bold:antialias=true:hinting=true,\
 URxvt.italicFont:          	xft:Sauce\Code\Powerline:regular:pixelsize=18:italic:antialias=true:hinting=true,\
 URxvt.boldItalicFont:      	xft:Sauce\Code\Powerline:regular:pixelsize=18:bold:italic:antialias=true:hinting=true
@@ -19,30 +20,27 @@ URxvt*fading:              30
 URxvt.perl-ext-common:     matcher,resize-font,tabbed
 
 ## ---------- COLOURS ---------- #
-#define base00 #231f20
-#define base01 #1c3f95
-#define base02 #5a5758
-#define base03 #737171
-#define base04 #959ca1
-#define base05 #d9d8d8
-#define base06 #e7e7e8
-#define base07 #ffffff
-#define base08 #ee2e24
-#define base09 #f386a1
-#define base0A #ffd204
-#define base0B #00853e
-#define base0C #85cebc
-#define base0D #009ddc
-#define base0E #98005d
-#define base0F #b06110
+#define base00 #28211c
+#define base01 #36312e
+#define base02 #5e5d5c
+#define base03 #666666
+#define base04 #797977
+#define base05 #8a8986
+#define base06 #9d9b97
+#define base07 #baae9e
+#define base08 #cf6a4c
+#define base09 #cf7d34
+#define base0A #f9ee98
+#define base0B #54be0d
+#define base0C #afc4db
+#define base0D #5ea6ea
+#define base0E #9b859d
+#define base0F #937121
 
-## sets cursor colour and background to white
-## keeps background black-ish
 *.foreground:   base05
 *.background:   base00
 *.cursorColor:  base05
 
-##
 *.color0:       base00
 *.color1:       base08
 *.color2:       base0B
@@ -52,7 +50,6 @@ URxvt.perl-ext-common:     matcher,resize-font,tabbed
 *.color6:       base0C
 *.color7:       base05
 
-##
 *.color8:       base03
 *.color9:       base08
 *.color10:      base0B
@@ -61,17 +58,15 @@ URxvt.perl-ext-common:     matcher,resize-font,tabbed
 *.color13:      base0E
 *.color14:      base0C
 *.color15:      base07
-##
 
-## colours beyond 16 need 256 colour capable terminal emulator
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! ! use 'shell' template to set these if necessary
 *.color16:      base09
 *.color17:      base0F
 *.color18:      base01
 *.color19:      base02
 *.color20:      base04
-*.color21:      base06:
-
-## Base16 London Tube Dark, by Jan T. Sott
+*.color21: 		base06
 
 ## ---------- ROFI CONFIG ---------- #
 
