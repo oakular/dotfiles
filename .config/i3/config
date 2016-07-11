@@ -102,7 +102,7 @@ bindsym $mod+a focus parent
 # create workspace names
 set $workspace1 "Terminal"
 set $workspace2 "Web"
-set $workspace3 "Typesetting"
+set $workspace3 "Programming"
 set $workspace4 "Gaming"
 set $workspace5 "VirtualMachines"
 
@@ -193,7 +193,7 @@ client.focused          #009ddc      #009ddc   #ffffff      #ffd204     #458588
 client.unfocused        #737171      #737171   #ffffff     #b16286     #928374
 
 # processes to start on login
-exec feh --bg-scale ~/pics/lowPoly1.jpg
+exec feh --bg-scale ~/pics/winterWall.jpg
 # exec_always yabar
 exec unclutter
 exec compton -b -f --inactive-dim 0.2 --vsync opengl-swc

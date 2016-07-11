@@ -71,7 +71,7 @@ URxvt.perl-ext-common:     matcher,resize-font,tabbed
 
 rofi.color-enabled: true
 ## State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
-rofi.color-normal: #009ddc, #ffffff, #009ddc, #ffffff, #009ddc
+rofi.color-normal: #2C3E50, #ffffff, #009ddc, #ffffff, #009ddc
 rofi.color-urgent: #231f20, #ee2e24, #231f20, #ee2e24, #231f20
 rofi.color-active: #231f20, #009ddc, #231f20, #009ddc, #231f20
 rofi.color-window: #009ddc, #ffffff  #009ddc

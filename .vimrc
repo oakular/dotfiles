@@ -26,6 +26,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Vundle Plugins (where there were no AUR packages)
 " ---------------------------------------------------
 Plugin 'xuyuanp/nerdtree-git-plugin'
+Plugin 'chriskempson/base16-vim'
 
 " ---------------------------------------------------
 "  NERDTree Config
@@ -40,7 +41,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 " adding NERDTree git integration
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
+\ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
     \ "Renamed"   : "➜",
@@ -57,46 +58,46 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
 " display settingsn
-set encoding=utf-8 				" encoding used for displaying file
-set ruler 						" show the cursor position all the time
-set showmatch 					" highlight matching braces
-set showmode 					" show insert/replace/visual mode
+set encoding=utf-8				" encoding used for displaying file
+set ruler						" show the cursor position all the time
+set showmatch					" highlight matching braces
+set showmode					" show insert/replace/visual mode
 
-set number 						" show line numbers
+set number						" show line numbers
 set relativenumber				" combine line numbers with absolute numbers
 
 " write settings
-set confirm 					" confirm :q in for unsaved changes
-set fileencoding=utf-8 			" encoding used when saving file
-set nobackup 					" do not keep backup files
+set confirm						" confirm :q in for unsaved changes
+set fileencoding=utf-8			" encoding used when saving file
+set nobackup					" do not keep backup files
 
 " edit settings
-set backspace=indent,eol,start 	" backspacing over everything in insert mode
-set noexpandtab 				" keeps tabs as tabs; use expandtab for spaces
-set nojoinspaces 				" no extra space after '.' when joining lines
-set shiftwidth=4 				" set indentation depth to 4 columns
-set tabstop=4 					" set tabulator length to 4 columns
-set textwidth=72 				" wrap lines automatically at 72nd column
+set backspace=indent,eol,start	" backspacing over everything in insert mode
+set noexpandtab					" keeps tabs as tabs; use expandtab for spaces
+set nojoinspaces				" no extra space after '.' when joining lines
+set shiftwidth=4				" set indentation depth to 4 columns
+set tabstop=4					" set tabulator length to 4 columns
+set textwidth=72				" wrap lines automatically at 72nd column
 
 "Search settings
-set hlsearch 					" highlight search results
-set ignorecase 					" search case insensitively
-set incsearch 					" sets vim to search as you type
-set smartcase 					" ...unless capital letters are used
+set hlsearch					" highlight search results
+set ignorecase					" search case insensitively
+set incsearch					" sets vim to search as you type
+set smartcase					" ...unless capital letters are used
 
 " file type specific settings
-filetype indent on 				" enable filetype detection and automatically indents code based on
+filetype indent on				" enable filetype detection and automatically indents code based on
 								" indent files at ~/.vim/indent/
-filetype plugin on 				" load the plugins for specific file types
+filetype plugin on				" load the plugins for specific file types
 
 " syntax highlighting
-colorscheme base16-flat 	" set color scheme, must be installed first
-let base16colorspace=256  		" access colors present in 256 colorspace
-set background=dark 			" dark background for console
-syntax enable 					" enable syntax highlighting
+colorscheme base16-londontube	" set color scheme, must be installed first
+let base16colorspace=256		" access colors present in 256 colorspace
+set background=dark				" dark background for console
+syntax enable					" enable syntax highlighting
 
 " display settings
-set autoindent 					" sets auto indenting
+set autoindent					" sets auto indenting
 set showmatch					" sets matching of certain chars {}()[] etc
 
 " java specific config
@@ -115,7 +116,7 @@ map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
 
 "vim-airline config
-set laststatus=2 				" increases the size of the command line
+set laststatus=2				" increases the size of the command line
 set ttimeoutlen=10				" prevents lag at mode change with airline
 let g:airline_powerline_fonts=1 " allows airline to use powerline fonts
 
@@ -150,7 +151,15 @@ if has('autocmd')
         autocmd BufWritePre * :%s/\s\+$//ge
 endif
 
-" key remappings
+" ---------------------------------------------------
+" Key Remappings
+" ---------------------------------------------------
+
+" remapping leader to space
+let mapleader = "\<Space>"
+
+" maps leader+w to save file
+nnoremap <Leader>w :w<CR>
 
 " maps j and k to move onto soft-wrapped lines automatically
 nnoremap j gj
