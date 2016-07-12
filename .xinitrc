@@ -1,7 +1,8 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 setxkbmap uk
 setxkbmap -option caps:escape
-exec i3
+
+exec tdm --xstart
 
 Section "Device"
     Identifier "AMDGPU"
