@@ -33,11 +33,11 @@ bindkey '^r' history-incremental-search-backward
 #function zle-line-init zle-keymap-select
 #{
 #    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-#	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
 #    zle reset-prompt
 #}
 
-#zle -N zle-line-init						# enable above function
+#zle -N zle-line-init                       # enable above function
 #zle -N zle-keymap-select
 
 # reducing lag on keybind change
@@ -45,14 +45,14 @@ export KEYTIMEOUT=1
 
 # ----- END OF SETTING UP VI MODE -----
 
-setopt auto_cd 								# removes need to type 'cd'
-setopt correct 								# enables spellchecking
+setopt auto_cd                              # removes need to type 'cd'
+setopt correct                              # enables spellchecking
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=1000								# limits histfile size
-SAVEHIST=1000								# limits histfile size
-setopt HIST_IGNORE_DUPS						# forces history to ignore duplicates
+HISTSIZE=1000                               # limits histfile size
+SAVEHIST=1000                               # limits histfile size
+setopt HIST_IGNORE_DUPS                     # forces history to ignore duplicates
 
 # ----------------------------------
 # POWERLEVEL9K CONFIGURATION
@@ -60,7 +60,7 @@ setopt HIST_IGNORE_DUPS						# forces history to ignore duplicates
 POWERLEVEL9K_MODE='awesome-patched'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=false			# displays prompt on newline
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false            # displays prompt on newline
 
 # os_icon segment colors
 POWERLEVEL9K_OS_ICON_FOREGROUND='black'
@@ -87,8 +87,8 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='red'
 
 # status segment colors
 POWERLEVEL9K_STATUS_VERBOSE=false
-#POWERLEVEL9K_STATUS_ERROR_FOREGROUND='yellow' 		# only if verbose =
-#POWERLEVEL9K_STATUS_ERROR_BACKGROUND='red'			# true
+#POWERLEVEL9K_STATUS_ERROR_FOREGROUND='yellow'      # only if verbose =
+#POWERLEVEL9K_STATUS_ERROR_BACKGROUND='red'         # true
 
 # vi mode colors
 POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
@@ -99,16 +99,16 @@ POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='blue'
 # PROMPT, COMMAND COMPLETION & COLORS
 # -----------------------------------
 
-autoload -Uz colors && colors				# enables colors in zsh
+autoload -Uz colors && colors               # enables colors in zsh
 
-autoload -Uz compinit 						# enables command completion
+autoload -Uz compinit                       # enables command completion
 compinit
 
 zstyle :compinstall filename '/home/oakular/.zshrc'
-zstyle ':completion:*' menu select 			# enables the command completion
-setopt completealiases						# allows for completion of aliases
+zstyle ':completion:*' menu select          # enables the command completion
+setopt completealiases                      # allows for completion of aliases
 
-autoload -Uz promptinit 					# enables prompt themes
+autoload -Uz promptinit                     # enables prompt themes
 promptinit
 
 # syntax highlighting

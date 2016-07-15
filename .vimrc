@@ -73,7 +73,7 @@ set nobackup					" do not keep backup files
 
 " edit settings
 set backspace=indent,eol,start	" backspacing over everything in insert mode
-set noexpandtab					" keeps tabs as tabs; use expandtab for spaces
+set expandtab					" makes tabs spaces to keep consistency across devices
 set nojoinspaces				" no extra space after '.' when joining lines
 set shiftwidth=4				" set indentation depth to 4 columns
 set tabstop=4					" set tabulator length to 4 columns
