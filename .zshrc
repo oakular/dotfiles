@@ -1,8 +1,8 @@
 ### Written by Oakular for use on my Arch Linux machine
 ### Some credit goes to inject3d (https://github.com/inject3d/dotfiles)
 
-# startup message
-cowsay -f tux Welcome Callum
+# powersave enabled by default
+sudo pm-powersave true
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-shell/base16-flat.dark.sh"
