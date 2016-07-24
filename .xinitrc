@@ -5,11 +5,10 @@ setxkbmap -option caps:escape
 exec tdm --xstart
 
 Section "Device"
-    Identifier "AMDGPU"
-	Driver "amdgpu"
-	Option "DRI" "3"
-	Option "DRI3" "on"
-	Option "TearFree" "on"
+    Identifier  "Intel Graphics"
+	Driver                               "intel"
+    Option      "AccelMethod"            "uxa"
+	Option      "TearFree"               "true"
 EndSection
 
 settroot -cursor_name left_ptr
