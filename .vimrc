@@ -160,6 +160,7 @@ let mapleader = "\<Space>"
 
 " maps leader+w to save file
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
 
 " maps j and k to move onto soft-wrapped lines automatically
 nnoremap j gj
