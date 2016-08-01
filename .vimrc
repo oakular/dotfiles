@@ -12,7 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 " ---------------------------------------------------
 "  VIM plugins installed through AUR
 " ---------------------------------------------------
-	" powerline
+	" airline
 	" vim-commentary
 	" vim-cpp-enhanced-highlight
 	" vim-fugitive
@@ -21,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 	" vim-latexsuite
 	" vim-youcompleteme
 	" vim-nerdtree
+    " vim-delimitmate
 
 " ---------------------------------------------------
 " Vundle Plugins (where there were no AUR packages)
@@ -119,6 +120,9 @@ map <F11> :cnext<Return>
 set laststatus=2				" increases the size of the command line
 set ttimeoutlen=10				" prevents lag at mode change with airline
 let g:airline_powerline_fonts=1 " allows airline to use powerline fonts
+let g:airline#extensions#tabline#enabled = 1        "enables airline for tabs
+
+" tmuxline config
 
 " characters for displaying non-printable characters
 set listchars=eol:$,tab:>-,trail:.,nbsp:_,extends:+,precedes:+
@@ -186,10 +190,10 @@ noremap <F12> :set list!<CR>
 inoremap <F12> <Esc>:set list!<CR>a
 
 " auto insert curly brackets
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+" inoremap {      {}<Left>
+" inoremap {<CR>  {<CR>}<Esc>O
+" inoremap {{     {
+" inoremap {}     {}
 
 " auto insert quote marks (commented out as proved annoying)
 "inoremap "      ""<Left>
@@ -197,9 +201,9 @@ inoremap {}     {}
 "inoremap ""     ""
 
 " auto insert closing bracket
-inoremap (      ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap ()     ()
+" inoremap (      ()<Left>
+" inoremap (<CR>  (<CR>)<Esc>O
+" inoremap ()     ()
 
 " Vim Plugins (Vundle)
 Plugin 'godlygeek/tabular'
