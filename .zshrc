@@ -18,6 +18,9 @@ export STEAM_RUNTIME=0
 # allows for use of powerlevel9k themes
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 
+# adds auto-suggestion functionality
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # ----- SETTING UP VI MODE W/ VISUAL AIDS -----
 
 # vim mode
