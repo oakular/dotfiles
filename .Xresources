@@ -1,11 +1,10 @@
 ## ---------- FONT SETUP ---------- #
-URxvt.font: 				xft:Sauce\Code\Powerline:regular:pixelsize=18:antialias=true:hinting=true,\
-							xft:Font\Awesome:pixelsize=18:antialias=true:hinting=true,\
-							xft:Symbola:pixelsize=18:antialias=true:hinting=true,\
+URxvt.font: 				xft:DejaVu\Sans\Mono\for\Powerline:regular:pixelsize=18:antialias=true:hinting=true,\
+                            xft:NotoSans\Regular:pixelsize=18:antialias=true:hinting=true,\
 URxvt.boldFont:            	xft:Sauce\Code\Powerline:regular:pixelsize=18:bold:antialias=true:hinting=true,\
 URxvt.italicFont:          	xft:Sauce\Code\Powerline:regular:pixelsize=18:italic:antialias=true:hinting=true,\
 URxvt.boldItalicFont:      	xft:Sauce\Code\Powerline:regular:pixelsize=18:bold:italic:antialias=true:hinting=true
-URxvt.letterSpace:         -1
+##URxvt.letterSpace:         -1
 
 ## ---------- PADDING IN TERMINAL WINDOW ---------- #
 URxvt.internalBorder:      10
@@ -13,6 +12,12 @@ URxvt.externalBorder:      10
 
 ## removes vertical scroll bar
 URxvt.scrollBar:           false
+
+## enables cursor blinking
+URxvt.cursorBlink: 1
+
+## trying to fix glyph support
+URxvt.letterSpace: true
 
 URxvt*fading:              30
 
