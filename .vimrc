@@ -21,13 +21,15 @@ Plugin 'VundleVim/Vundle.vim'
 	" vim-latexsuite
 	" vim-youcompleteme
 	" vim-nerdtree
-    " vim-delimitmate
+    " vim-auto-pairs
 
 " ---------------------------------------------------
 " Vundle Plugins (where there were no AUR packages)
 " ---------------------------------------------------
 Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'chriskempson/base16-vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " ---------------------------------------------------
 "  NERDTree Config
@@ -204,7 +206,3 @@ inoremap <F12> <Esc>:set list!<CR>a
 " inoremap (      ()<Left>
 " inoremap (<CR>  (<CR>)<Esc>O
 " inoremap ()     ()
-
-" Vim Plugins (Vundle)
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
