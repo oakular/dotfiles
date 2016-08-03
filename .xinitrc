@@ -12,4 +12,4 @@ Section "Device"
 EndSection
 
 settroot -cursor_name left_ptr
-xset r rate 300 60
+xset r rate 100 25
