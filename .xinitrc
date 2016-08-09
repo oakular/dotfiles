@@ -2,8 +2,6 @@
 setxkbmap uk
 setxkbmap -option caps:escape
 
-exec tdm --xstart
-
 Section "Device"
     Identifier  "Intel Graphics"
 	Driver                               "intel"

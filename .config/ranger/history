@@ -1,5 +1,10 @@
 qw
 open_with wim
 open_with vim
-open_with 
 open_with zathura
+open_with 
+mkdir holdiday2016
+mkdir april-june2016
+delete
+mv Camera camera
+! mv Camera camera

@@ -100,11 +100,11 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 # create workspace names
-set $workspace1 "Terminal"
-set $workspace2 "Web"
-set $workspace3 "Programming"
-set $workspace4 "Gaming"
-set $workspace5 "VirtualMachines"
+set $workspace1 " Terminal"
+set $workspace2 " Web"
+set $workspace3 " Programming"
+set $workspace4 " Media"
+set $workspace5 " VirtualMachines"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -134,6 +134,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 assign [class= "chromium"] $workspace2
 assign [class= "Firefox"] $workspace2
 assign [class= "Steam"] $workspace4
+assign [class= "VirtualBox"] $workspace5
+assign [class= "Spotify"] $workspace4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -171,7 +173,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3blocks
         position top
         tray_output primary
 
@@ -196,4 +198,5 @@ client.unfocused        #737171      #737171   #ffffff     #b16286     #928374
 exec feh --bg-scale ~/pics/winterWall.jpg
 # exec_always yabar
 exec unclutter
-exec compton -b -f --inactive-dim 0.2 --vsync opengl-swc
+exec redshift -l geoclue2
+exec compton -b -f --backend glx --inactive-dim 0.2 --vsync opengl-swc
