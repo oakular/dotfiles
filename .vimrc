@@ -30,6 +30,7 @@ Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'chriskempson/base16-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-surround'
 
 " ---------------------------------------------------
 "  NERDTree Config
@@ -160,6 +161,12 @@ endif
 " ---------------------------------------------------
 " Key Remappings
 " ---------------------------------------------------
+
+" remap : to ; but keep : functionality
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " remapping leader to space
 let mapleader = "\<Space>"
