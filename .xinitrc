@@ -2,6 +2,8 @@
 setxkbmap uk
 setxkbmap -option caps:escape
 
+exec i3
+
 Section "Device"
     Identifier  "Intel Graphics"
 	Driver                               "intel"

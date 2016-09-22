@@ -9,6 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+exec_always ~/.per-workspace-layout.pl
+
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -136,6 +138,7 @@ assign [class= "Firefox"] $workspace2
 assign [class= "Steam"] $workspace4
 assign [class= "VirtualBox"] $workspace5
 assign [class= "Spotify"] $workspace4
+assign [class= "GoldenCheetah"] $workspace4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -177,7 +180,7 @@ bar {
         position top
         tray_output primary
 
-        font pango:SourceCodePro 11
+        font pango:Hack-Regular 12
 
         colors{
             background #34495E
