@@ -27,7 +27,8 @@ set record = +Sent
 set sort=threads
 set sort_browser=reverse-date
 set sort_aux=reverse-last-date-received
-# -*-muttrc-*-
+
+set beep_new
 
 # Palette for use with the Linux console.  Black background.
 
