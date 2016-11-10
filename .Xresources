@@ -19,7 +19,7 @@ URxvt.cursorBlink: 1
 ## trying to fix glyph support
 URxvt.letterSpace: true
 
-URxvt*fading:              30
+##URxvt*fading:              30
 
 ## extensions for font resizing and tabs
 URxvt.perl-ext-common:     matcher,resize-font,tabbed

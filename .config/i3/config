@@ -33,7 +33,7 @@ new_window normal
 for_window [class="^.*"] border pixel 0
 
 # setting gaps betw windows
-gaps inner 10
+gaps inner 5
 gaps outer 5
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -202,9 +202,8 @@ client.focused          #34495E     #2C3E50   #e0e0e0     #ffd204     #458588
 client.unfocused        #BDC3C7     #e0e0e0   #2C3E50     #b16286     #928374
 
 # processes to start on login
-exec feh --bg-scale ~/pics/lowPoly2.jpg
+exec feh --bg-scale ~/pics/lowPolyWall.jpg
 # exec_always yabar
 exec unclutter
 exec redshift -l geoclue2
-exec compton -b -f --backend glx  --vsync opengl-swc
-# --inactive-dim 0.2
+exec compton -bcf -i 0.9 --backend glx  --vsync opengl-swc --mark-wmwin-focused
