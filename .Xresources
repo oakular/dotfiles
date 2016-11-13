@@ -1,9 +1,9 @@
 ## ---------- FONT SETUP ---------- #
-URxvt.font: 				xft:Hack-Regular:regular:pixelsize=18:antialias=true:hinting=true,\
-                            xft:NotoSans\Regular:pixelsize=18:antialias=true:hinting=true,\
-URxvt.boldFont:            	xft:Sauce\Code\Powerline:regular:pixelsize=18:bold:antialias=true:hinting=true,\
-URxvt.italicFont:          	xft:Sauce\Code\Powerline:regular:pixelsize=18:italic:antialias=true:hinting=true,\
-URxvt.boldItalicFont:      	xft:Sauce\Code\Powerline:regular:pixelsize=18:bold:italic:antialias=true:hinting=true
+URxvt.font: 				xft:Hack-Regular:regular:pixelsize=16:antialias=true:hinting=true,\
+                            xft:NotoSans\Regular:pixelsize=16:antialias=true:hinting=true,\
+URxvt.boldFont:            	xft:Sauce\Code\Powerline:regular:pixelsize=16:bold:antialias=true:hinting=true,\
+URxvt.italicFont:          	xft:Sauce\Code\Powerline:regular:pixelsize=16:italic:antialias=true:hinting=true,\
+URxvt.boldItalicFont:      	xft:Sauce\Code\Powerline:regular:pixelsize=16:bold:italic:antialias=true:hinting=true
 ##URxvt.letterSpace:         -1
 
 ## ---------- PADDING IN TERMINAL WINDOW ---------- #

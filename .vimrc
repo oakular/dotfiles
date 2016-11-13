@@ -32,35 +32,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-surround'
 
-" ---------------------------------------------------
-"  NERDTree Config
-" ---------------------------------------------------
-
-" start NERDTree on vim startup
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" open NERDTree w/ C-n
-map <C-n> :NERDTreeToggle<CR>
-
-" adding NERDTree git integration
-let g:NERDTreeIndicatorMapCustom = {
-\ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
-
-" ------------------ END OF NERDTREE CONFIG
-
-" setup for YCM completion in C family
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-
 " display settingsn
 set encoding=utf-8              " encoding used for displaying file
 set ruler                       " show the cursor position all the time
