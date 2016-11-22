@@ -2,10 +2,7 @@
 ### Some credit goes to inject3d (https://github.com/inject3d/dotfiles)
 
 # run 256 colors
-
 export TERM="xterm-256color"
-# powersave enabled by default
-sudo pm-powersave true
 
 # Base16 Shell
 BASE16_SHELL="/home/oakular/.config/base16-shell/scripts/base16-flat.sh"
