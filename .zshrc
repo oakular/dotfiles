@@ -65,6 +65,9 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=false            # displays prompt on newline
 
+# shorten dir path length
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+
 # os_icon segment colors
 POWERLEVEL9K_OS_ICON_FOREGROUND='black'
 POWERLEVEL9K_OS_ICON_BACKGROUND='008'

@@ -24,6 +24,9 @@ URxvt.letterSpace: true
 ## extensions for font resizing and tabs
 URxvt.perl-ext-common:     matcher,resize-font,tabbed
 
+## cursor size
+Xcursor.size: 24
+
 ## ---------- COLOURS ---------- #
 #define base00 #2C3E50
 #define base01 #34495E
