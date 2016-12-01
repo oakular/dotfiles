@@ -79,7 +79,7 @@ set background=dark             " dark background for console
 syntax enable                   " enable syntax highlighting
 
 " display settings
-set autoindent                  " sets auto indenting
+set cindent                  " sets auto indenting
 set showmatch                   " sets matching of certain chars {}()[] etc
 
 " java specific config

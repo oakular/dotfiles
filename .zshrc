@@ -1,5 +1,7 @@
 ### Written by Oakular for use on my Arch Linux machine
 ### Some credit goes to inject3d (https://github.com/inject3d/dotfiles)
+#
+source ~/.zprofile
 
 # run 256 colors
 export TERM="xterm-256color"
