@@ -7,8 +7,8 @@ URxvt.boldItalicFont:      	xft:Sauce\Code\Powerline:regular:pixelsize=16:bold:i
 ##URxvt.letterSpace:         -1
 
 ## ---------- PADDING IN TERMINAL WINDOW ---------- #
-URxvt.internalBorder:      10
-URxvt.externalBorder:      10
+URxvt.internalBorder:      5
+URxvt.externalBorder:      5
 
 ## removes vertical scroll bar
 URxvt.scrollBar:           false
@@ -25,29 +25,29 @@ URxvt.letterSpace: true
 URxvt.perl-ext-common:     matcher,resize-font,tabbed
 
 ## cursor size
-Xcursor.size: 24
+Xcursor.size: 32
 
 ## ---------- COLOURS ---------- #
-#define base00 #2C3E50
-#define base01 #34495E
-#define base02 #7F8C8D
-#define base03 #95A5A6
-#define base04 #BDC3C7
-#define base05 #e0e0e0
-#define base06 #f5f5f5
-#define base07 #ECF0F1
-#define base08 #E74C3C
-#define base09 #E67E22
-#define base0A #F1C40F
-#define base0B #2ECC71
-#define base0C #1ABC9C
-#define base0D #3498DB
-#define base0E #9B59B6
-#define base0F #be643c
+#define base00 #2B303B
+#define base01 #BF616A
+#define base02 #A3BE8C
+#define base03 #EBCB8B
+#define base04 #8FA1B3
+#define base05 #B48EAD
+#define base06 #96B5B4
+#define base07 #C0C5CE
+#define base08 #65737E
+#define base09 #BF616A
+#define base0A #A3BE8C
+#define base0B #EBCB8B
+#define base0C #8FA1B3
+#define base0D #B48EAD
+#define base0E #96B5B4
+#define base0F #EFF1F5
 
-*.foreground:   base05
+*.foreground:   base07
 *.background:   base00
-*.cursorColor:  base05
+*.cursorColor:  base07
 
 *.color0:       base00
 *.color1:       base08
@@ -74,7 +74,7 @@ Xcursor.size: 24
 *.color18:      base01
 *.color19:      base02
 *.color20:      base04
-*.color21: base06)
+*.color21:      base06
 ## ---------- ROFI CONFIG ---------- #
 
 rofi.color-enabled: true

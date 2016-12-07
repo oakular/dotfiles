@@ -26,13 +26,15 @@ Plugin 'VundleVim/Vundle.vim'
 " ---------------------------------------------------
 " Vundle Plugins (where there were no AUR packages)
 " ---------------------------------------------------
-Plugin 'xuyuanp/nerdtree-git-plugin'
+Plugin 'bcicen/vim-vice'
 Plugin 'chriskempson/base16-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-surround'
 
-" display settingsn
+filetype plugin on              " load the plugins for specific file types
+
+" display settings
 set encoding=utf-8              " encoding used for displaying file
 set ruler                       " show the cursor position all the time
 set showmatch                   " highlight matching braces
@@ -70,11 +72,10 @@ command! MakeTags !ctags -R .
 " file type specific settings
 filetype indent on              " enable filetype detection and automatically indents code based on
                                 " indent files at ~/.vim/indent/
-filetype plugin on              " load the plugins for specific file types
 
 " syntax highlighting
 let base16colorspace=256        " access colors present in 256 colorspace
-colorscheme base16-flat         " set color scheme, must be installed first
+colorscheme chroma              " set color scheme, must be installed first
 set background=dark             " dark background for console
 syntax enable                   " enable syntax highlighting
 
@@ -102,6 +103,8 @@ set laststatus=2                " increases the size of the command line
 set ttimeoutlen=10              " prevents lag at mode change with airline
 let g:airline_powerline_fonts=1 " allows airline to use powerline fonts
 let g:airline#extensions#tabline#enabled = 1        "enables airline for tabs
+" airline theme
+let g:airline_theme='base16_grayscale'
 
 " tmuxline config
 

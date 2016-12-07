@@ -41,6 +41,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt
 
+# Start a floating terminal
+   bindsym $mod+Shift+Return exec --no-startup-id urxvt -geometry 60x24 -name "floating_urxvt" for_window [class="URxvt" instance="floating_urxvt$"] floating toggle
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -187,9 +190,9 @@ bar {
         font pango:Hack-Regular 12
 
         colors{
-            background #34495E
+            background #2B303B
             statusline #BDC3C7
-            focused_workspace #231f20 #ECF0F1 #231f20 #ffffff
+            focused_workspace #C0C5CE #ECF0F1 #231f20 #ffffff
             inactive_workspace #231f20  #7F8C8D #ffffff #ffffff
         }
 }

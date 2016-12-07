@@ -3,11 +3,14 @@
 #
 source ~/.zprofile
 
+# make cursor white for gnome-terminal compatablility with vim
+echo -e "\e]12;white\a"
+
 # run 256 colors
 export TERM="xterm-256color"
 
 # Base16 Shell
-BASE16_SHELL="/home/oakular/.config/base16-shell/scripts/base16-flat.sh"
+BASE16_SHELL="/home/oakular/.config/base16-shell/scripts/base16-atelier-lakeside.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # exports
@@ -16,9 +19,6 @@ export PATH=$PATH:/
 export EDITOR="vim"
 export VISUAL="vim"
 export STEAM_RUNTIME=0
-
-# allows for use of powerlevel9k themes
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 
 # adds auto-suggestion functionality
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -35,15 +35,15 @@ bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
 # function shows current vi mode (uncomment if not using powerlevel9k)
-#function zle-line-init zle-keymap-select
-#{
-#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-#   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-#    zle reset-prompt
-#}
+function zle-line-init zle-keymap-select
+{
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
 
-#zle -N zle-line-init                       # enable above function
-#zle -N zle-keymap-select
+zle -N zle-line-init                       # enable above function
+zle -N zle-keymap-select
 
 # reducing lag on keybind change
 export KEYTIMEOUT=1
@@ -59,51 +59,6 @@ HISTSIZE=1000                               # limits histfile size
 SAVEHIST=1000                               # limits histfile size
 setopt HIST_IGNORE_DUPS                     # forces history to ignore duplicates
 
-# ----------------------------------
-# POWERLEVEL9K CONFIGURATION
-# -----------------------------------
-POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vi_mode)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=false            # displays prompt on newline
-
-# shorten dir path length
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-
-# os_icon segment colors
-POWERLEVEL9K_OS_ICON_FOREGROUND='black'
-POWERLEVEL9K_OS_ICON_BACKGROUND='008'
-
-# dir segment colors
-POWERLEVEL9K_DIR_HOME_BACKGROUND='white'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='white'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='white'
-
-# vcs segment colors
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='red'
-
-# time segment colors
-#POWERLEVEL9K_TIME_FOREGROUND='black'
-#POWERLEVEL9K_TIME_BACKGROUND='red'
-
-# status segment colors
-POWERLEVEL9K_STATUS_VERBOSE=false
-#POWERLEVEL9K_STATUS_ERROR_FOREGROUND='yellow'      # only if verbose =
-#POWERLEVEL9K_STATUS_ERROR_BACKGROUND='red'         # true
-
-# vi mode colors
-POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
-POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='green'
-POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='white'
-POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='blue'
-
 # PROMPT, COMMAND COMPLETION & COLORS
 # -----------------------------------
 
@@ -118,6 +73,7 @@ setopt completealiases                      # allows for completion of aliases
 
 autoload -Uz promptinit                     # enables prompt themes
 promptinit
+prompt pure
 
 # syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -161,6 +117,9 @@ alias mkdir='mkdir -p'
 # pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+
+# start gnome with wayland
+alias gnome-sess-wayland='gnome-session --session gnome-wayland'
 
 #-------------------------------------------------------------
 # The 'ls' family (this assumes you use a recent GNU ls).
