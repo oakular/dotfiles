@@ -1,6 +1,8 @@
 set recolor true
-set recolor-darkcolor "#ffffff"
-set recolor-lightcolor "#34495E"
+set recolor-darkcolor "#ebf8ff"
+set recolor-lightcolor "#161b1d"
 
 set window-title-basename "true"
 set selection-clipboard "clipboard"
+
+set font "Hack Regular 11"

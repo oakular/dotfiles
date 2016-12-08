@@ -1,9 +1,9 @@
 ## ---------- FONT SETUP ---------- #
 URxvt.font: 				xft:Hack-Regular:regular:pixelsize=16:antialias=true:hinting=true,\
                             xft:NotoSans\Regular:pixelsize=16:antialias=true:hinting=true,\
-URxvt.boldFont:            	xft:Sauce\Code\Powerline:regular:pixelsize=16:bold:antialias=true:hinting=true,\
-URxvt.italicFont:          	xft:Sauce\Code\Powerline:regular:pixelsize=16:italic:antialias=true:hinting=true,\
-URxvt.boldItalicFont:      	xft:Sauce\Code\Powerline:regular:pixelsize=16:bold:italic:antialias=true:hinting=true
+URxvt.boldFont:            	xft:Hack-Regular:regular:pixelsize=16:bold:antialias=true:hinting=true,\
+URxvt.italicFont:          	xft:Hack-Regular:regular:pixelsize=16:italic:antialias=true:hinting=true,\
+URxvt.boldItalicFont:      	xft:Hack-Regular:regular:pixelsize=16:bold:italic:antialias=true:hinting=true
 ##URxvt.letterSpace:         -1
 
 ## ---------- PADDING IN TERMINAL WINDOW ---------- #
@@ -28,22 +28,22 @@ URxvt.perl-ext-common:     matcher,resize-font,tabbed
 Xcursor.size: 32
 
 ## ---------- COLOURS ---------- #
-#define base00 #2B303B
-#define base01 #BF616A
-#define base02 #A3BE8C
-#define base03 #EBCB8B
-#define base04 #8FA1B3
-#define base05 #B48EAD
-#define base06 #96B5B4
-#define base07 #C0C5CE
-#define base08 #65737E
-#define base09 #BF616A
-#define base0A #A3BE8C
-#define base0B #EBCB8B
-#define base0C #8FA1B3
-#define base0D #B48EAD
-#define base0E #96B5B4
-#define base0F #EFF1F5
+#define base00 #161b1d
+#define base01 #1f292e
+#define base02 #516d7b
+#define base03 #5a7b8c
+#define base04 #7195a8
+#define base05 #7ea2b4
+#define base06 #c1e4f6
+#define base07 #ebf8ff
+#define base08 #d22d72
+#define base09 #935c25
+#define base0A #8a8a0f
+#define base0B #568c3b
+#define base0C #2d8f6f
+#define base0D #257fad
+#define base0E #6b6bb8
+#define base0F #b72dd2
 
 *.foreground:   base07
 *.background:   base00
@@ -79,7 +79,7 @@ Xcursor.size: 32
 
 rofi.color-enabled: true
 ## State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
-rofi.color-normal: #2C3E50, #ffffff, #34495E, #ffffff, #2C3E50
+rofi.color-normal: #1f292e, #ebf8ff, #516d7b, #ffffff, #2C3E50
 rofi.color-urgent: #231f20, #ee2e24, #231f20, #ee2e24, #231f20
-rofi.color-active: #f5f5f5, #BDC3C7, #231f20, #009ddc, #231f20
-rofi.color-window: #2C3E50, #ffffff  #f5f5f5
+rofi.color-active: #ebf8ff, #ebf8ff, #231f20, #009ddc, #231f20
+rofi.color-window: #1f292e, #ffffff  #f5f5f5

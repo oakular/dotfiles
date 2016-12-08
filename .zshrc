@@ -71,6 +71,7 @@ zstyle :compinstall filename '/home/oakular/.zshrc'
 zstyle ':completion:*' menu select          # enables the command completion
 setopt completealiases                      # allows for completion of aliases
 
+# pure prompt config
 autoload -Uz promptinit                     # enables prompt themes
 promptinit
 prompt pure
