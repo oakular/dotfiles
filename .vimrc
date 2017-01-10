@@ -54,7 +54,7 @@ set expandtab                   " makes tabs spaces to keep consistency across d
 set nojoinspaces                " no extra space after '.' when joining lines
 set shiftwidth=4                " set indentation depth to 4 columns
 set tabstop=4                   " set tabulator length to 4 columns
-set textwidth=72                " wrap lines automatically at 72nd column
+set textwidth=80                " wrap lines automatically at 72nd column
 
 "Search settings
 " Fuzzy Search
