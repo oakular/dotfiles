@@ -86,6 +86,11 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 alias lock="~/.lock.sh"
 
+# stone of life
+alias lf="cat ~/personal/mission"
+alias val="cat ~/personal/values"
+alias tol="cat ~/personal/truths"
+
 #alias redshift='redshift -l 35.22:-80.84'
 #alias nightmode='redshift -r -O 3600 -b .5'
 
