@@ -6,9 +6,18 @@ URxvt.italicFont:          	xft:Hack-Regular:regular:pixelsize=16:italic:antiali
 URxvt.boldItalicFont:      	xft:Hack-Regular:regular:pixelsize=16:bold:italic:antialias=true:hinting=true
 ##URxvt.letterSpace:         -1
 
+## extensions for font resizing tabs and bell command
+URxvt.perl-ext-common:     matcher,resize-font,tabbedex,bell-command
+URxvt.bell-command:         notify-send "Terminal: Bell Sounded"
+
 ## ---------- PADDING IN TERMINAL WINDOW ---------- #
 URxvt.internalBorder:      5
 URxvt.externalBorder:      5
+
+## tab settings
+## remove the new tab button
+URxvt.tabbed.new-button:    false
+URxvt.tabbed.autohide:      true
 
 ## removes vertical scroll bar
 URxvt.scrollBar:           false
@@ -18,11 +27,6 @@ URxvt.cursorBlink: 1
 
 ## trying to fix glyph support
 URxvt.letterSpace: true
-
-##URxvt*fading:              30
-
-## extensions for font resizing and tabs
-URxvt.perl-ext-common:     matcher,resize-font,tabbed
 
 ## cursor size
 Xcursor.size: 32
