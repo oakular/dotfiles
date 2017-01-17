@@ -1,5 +1,5 @@
 ### Written by Oakular for use on my Arch Linux machine
-### Some credit goes to inject3d (https://github.com/inject3d/dotfiles)
+#n## Some credit goes to inject3d (https://github.com/inject3d/dotfiles)
 #
 source ~/.zprofile
 
@@ -102,10 +102,13 @@ alias mv='mv -iv'
 
 # aliases to  make use of pacman less verbose
 alias pac='sudo pacmatic -S'
-alias pacsy='sudo pacmatic -Syy'
+alias pacsy='sudo pacmatic -Syy && echo "\n----- PACKAGES TO UPDATE -----" && pacmatic -Qu && echo "\n----- AUR PACKAGES -----" && cower -u'
 alias pacu='sudo pacmatic -Syu'
 alias pacr='sudo pacmatic -Rns'
 alias pacss='pacmatic -Ss'
+
+# alias for pass so that all passwords are automatically copied to the clipboard
+alias passcp='pass show -c'
 
 # aliases for VPN connection
 alias vpn-con="nmcli con up id"
