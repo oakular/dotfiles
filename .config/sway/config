@@ -11,7 +11,7 @@
 
 exec_always ~/.per-workspace-layout.pl
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -207,8 +207,7 @@ client.focused          #C0C5CE     #d22d72   #e0e0e0     #ffd204     #d22d72
 client.unfocused        #BDC3C7     #7195a8   #2C3E50     #b16286     #7195a8
 
 # processes to start on login
-exec feh --bg-scale ~/pics/material.png
-# exec_always yabar
+output WLC-1 background ~/pics/material.png stretch
 exec unclutter
 exec redshift -l geoclue2
 exec compton -bcf --backend glx  --vsync opengl-swc --mark-wmwin-focused
