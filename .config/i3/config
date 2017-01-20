@@ -39,6 +39,10 @@ gaps outer 7
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# rotate screen
+bindsym $mod+Shift+< exec xrandr -o left
+bindsym $mod+> exec xrandr -o normal
+
 # start a terminal
 bindsym $mod+Return exec urxvt
 
@@ -109,12 +113,12 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 # create workspace names
-set $workspace1 " Terminal"
-set $workspace2 " Web"
-set $workspace3 " Programming"
-set $workspace4 " Media"
-set $workspace5 " VirtualMachines"
-set $workspace6 " Work"
+set $workspace1 ""
+set $workspace2 ""
+set $workspace3 ""
+set $workspace4 ""
+set $workspace5 ""
+set $workspace6 ""
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -212,3 +216,4 @@ exec feh --bg-scale ~/pics/material.png
 exec unclutter
 exec redshift -l geoclue2
 exec compton -bcf --backend glx  --vsync opengl-swc --mark-wmwin-focused
+exec dunst

@@ -30,16 +30,21 @@ font pango:Source\ Code\ Pro\ 12
 
 # setting windows to be borderless
 new_window normal
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 3
 
 # setting gaps betw windows
-gaps inner 5
-gaps outer 5
+gaps inner 7
+gaps outer 7
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt
+
+# Start a floating terminal
+for_window [class="URxvt" instance="floating_urxvt$"] floating toggle
+bindsym $mod+Shift+Return exec --no-startup-id urxvt -geometry 80x24 -name "floating_urxvt"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -104,12 +109,12 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 # create workspace names
-set $workspace1 " Terminal"
-set $workspace2 " Web"
-set $workspace3 " Programming"
-set $workspace4 " Media"
-set $workspace5 " VirtualMachines"
-set $workspace6 " Work"
+set $workspace1 ""
+set $workspace2 ""
+set $workspace3 ""
+set $workspace4 ""
+set $workspace5 ""
+set $workspace6 ""
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -149,7 +154,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -159,10 +164,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -187,10 +192,10 @@ bar {
         font pango:Hack-Regular 12
 
         colors{
-            background #34495E
-            statusline #BDC3C7
-            focused_workspace #231f20 #ECF0F1 #231f20 #ffffff
-            inactive_workspace #231f20  #7F8C8D #ffffff #ffffff
+            background #1f292e
+            statusline #ebf8ff
+            focused_workspace #ebf8ff #ebf8ff #231f20 #ffffff
+            inactive_workspace #231f20  #7195a8 #ffffff #ffffff
         }
 }
 
@@ -198,12 +203,14 @@ bar {
 # border normal|pixel [20]
 
 # class                 border      backgr.   text        indicator   child_border
-client.focused          #34495E     #2C3E50   #e0e0e0     #ffd204     #458588
-client.unfocused        #BDC3C7     #e0e0e0   #2C3E50     #b16286     #928374
+client.focused          #C0C5CE     #d22d72   #e0e0e0     #ffd204     #d22d72
+client.unfocused        #BDC3C7     #7195a8   #2C3E50     #b16286     #7195a8
 
 # processes to start on login
-exec feh --bg-scale ~/pics/lowPolyWall.jpg
+exec feh --bg-scale ~/pics/material.png
 # exec_always yabar
 exec unclutter
 exec redshift -l geoclue2
-exec compton -bcf -i 0.9 --backend glx  --vsync opengl-swc --mark-wmwin-focused
+exec compton -bcf --backend glx  --vsync opengl-swc --mark-wmwin-focused
+exec dunst
+exec xrdb ~/.Xresources

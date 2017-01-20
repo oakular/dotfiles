@@ -10,7 +10,7 @@
     browser = /usr/bin/firefox -new-tab
     dmenu = /usr/bin/dmenu -p dunst:
     follow = none
-    #font = Terminus (TTF) 12
+    font = Hack (TTF) 12
     format = "<b>%s</b>\n%b"
     # geometry [{width}]x{height}][+/-{x}+/-{y}]
     geometry = "0-10+10"
@@ -59,7 +59,7 @@
     timeout = 0
 
 [irc]
-    appname = "weechat"
+    appname = "irssi"
     format  = "%s: %b"
     urgency = low
     background = "#83c83d"
