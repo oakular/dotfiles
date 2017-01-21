@@ -86,6 +86,12 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 alias lock="~/.lock.sh"
 
+alias firefox="GTK_THEME=Adwaita:dark firefox &"
+
+# rotate monitor
+alias rotatel="xrandr -o left"
+alias rotaten="xrandr -o normal"
+
 # stone of life
 alias lf="cat ~/personal/mission"
 alias val="cat ~/personal/values"
