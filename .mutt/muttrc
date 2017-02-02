@@ -1,14 +1,15 @@
-#source "gpg2 -dq $HOME/.pswds.gpg |"
-
 set my_name="Callum Warrilow"
 
 # use personal mail
 source ~/.mutt/personal
 # use student mail
-source ~/.mutt/student
+#source ~/.mutt/student
 
 # save sent emails to sent folder on server
 set record = +Sent
+
+# cause automatic adding of new messages to inbox when idle
+set timeout=30
 
 # order mail in descending order
 # show most recent mail in a thread on top
@@ -16,20 +17,29 @@ set sort=threads
 set sort_browser=reverse-date
 set sort_aux=reverse-last-date-received
 
+## Abook integration
+set query_command= "abook --mutt-query '%s'"
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor        <Tab> complete-query
+
 # alert on new mail
 set beep_new
 
-# Palette for use with the Linux console.  Black background.
+# show sidebar on startup
+set sidebar_visible = yes
+# toggle sidebar visibility
+bind index,pager B sidebar-toggle-visible
 
-color hdrdefault blue black
-color quoted blue black
+# Palette for use with the Linux console.  Black background.
+color hdrdefault brightred black
+color quoted green black
 color signature blue black
 color attachment red black
 color prompt brightmagenta black
 color message brightred black
 color error brightred black
 color indicator black red
-color status white blue
+color status black brightblack
 color tree white black
 color normal white black
 color markers red black
