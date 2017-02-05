@@ -5,9 +5,6 @@ source ~/.mutt/personal
 # use student mail
 #source ~/.mutt/student
 
-# save sent emails to sent folder on server
-set record = +Sent
-
 # cause automatic adding of new messages to inbox when idle
 set timeout=30
 
@@ -16,6 +13,9 @@ set timeout=30
 set sort=threads
 set sort_browser=reverse-date
 set sort_aux=reverse-last-date-received
+
+# use own temp folder
+set tmpdir="~/.tmp"
 
 ## Abook integration
 set query_command= "abook --mutt-query '%s'"
@@ -29,6 +29,12 @@ set beep_new
 set sidebar_visible = yes
 # toggle sidebar visibility
 bind index,pager B sidebar-toggle-visible
+
+# Ctrl-n, Ctrl-p to select next, previous folder.
+# Ctrl-o to open selected folder.
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
 
 # Palette for use with the Linux console.  Black background.
 color hdrdefault brightred black
