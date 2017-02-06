@@ -79,11 +79,12 @@ Xcursor.size: 32
 *.color19:      base02
 *.color20:      base04
 *.color21:      base06
+
 ## ---------- ROFI CONFIG ---------- #
 
 rofi.color-enabled: true
 ## State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
-rofi.color-normal: #1f292e, #ebf8ff, #516d7b, #ffffff, #2C3E50
+rofi.color-normal: #1f292e, #ebf8ff, #161b1d, #ffffff, #2C3E50
 rofi.color-urgent: #231f20, #ee2e24, #231f20, #ee2e24, #231f20
 rofi.color-active: #ebf8ff, #ebf8ff, #231f20, #009ddc, #231f20
-rofi.color-window: #1f292e, #ffffff  #f5f5f5
+rofi.color-window: #1f292e, #d22d72, #f5f5f5, #C0C5CE, #C0C5CE
