@@ -22,6 +22,8 @@ Plugin 'VundleVim/Vundle.vim'
     " vim-youcompleteme
     " vim-nerdtree
     " vim-auto-pairs
+    " vim-syntastic
+    " vim-tagbar
 
 " ---------------------------------------------------
 " Vundle Plugins (where there were no AUR packages)
@@ -31,6 +33,9 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-surround'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
 filetype plugin on              " load the plugins for specific file types
 
@@ -39,6 +44,9 @@ set encoding=utf-8              " encoding used for displaying file
 set ruler                       " show the cursor position all the time
 set showmatch                   " highlight matching braces
 set showmode                    " show insert/replace/visual mode
+
+" enable the mouse
+set mouse=a
 
 set number                      " show line numbers
 set relativenumber              " combine line numbers with absolute numbers
@@ -69,14 +77,20 @@ set smartcase                   " ...unless capital letters are used
 " Use Tags
 command! MakeTags !ctags -R .
 
+" mutt char width
+au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
+
 " file type specific settings
 filetype indent on              " enable filetype detection and automatically indents code based on
                                 " indent files at ~/.vim/indent/
 
 " syntax highlighting
 let base16colorspace=256        " access colors present in 256 colorspace
-colorscheme chroma              " set color scheme, must be installed first
+set t_Co=256
+colorscheme base16-atelier-lakeside
 set background=dark             " dark background for console
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
 syntax enable                   " enable syntax highlighting
 
 " display settings
