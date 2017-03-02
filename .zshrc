@@ -20,9 +20,6 @@ export EDITOR="vim"
 export VISUAL="vim"
 export STEAM_RUNTIME=0
 
-# adds auto-suggestion functionality
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # ----- SETTING UP VI MODE W/ VISUAL AIDS -----
 
 # vim mode
@@ -49,6 +46,9 @@ zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
 # ----- END OF SETTING UP VI MODE -----
+
+# enable reverse tab completion
+bindkey '^[[Z' reverse-menu-complete
 
 setopt auto_cd                              # removes need to type 'cd'
 setopt correct                              # enables spellchecking
@@ -87,6 +87,9 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 alias lock="~/.lock.sh"
 
 alias firefox="GTK_THEME=Adwaita:dark firefox &"
+
+# launch gdb in quiet mode
+alias gdb="gdb -q"
 
 # rotate monitor
 alias rotatel="xrandr -o left"
