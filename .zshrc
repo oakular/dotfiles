@@ -84,7 +84,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 # Personnal Aliases
 #-------------------
 
-alias lock="~/.lock.sh"
+# use vim for view mode
+alias view="vim -R"
 
 alias firefox="GTK_THEME=Adwaita:dark firefox &"
 
@@ -143,7 +144,7 @@ alias gnome-sess-wayland='gnome-session --session gnome-wayland'
 # The 'ls' family (this assumes you use a recent GNU ls).
 #-------------------------------------------------------------
 
-alias ls='ls -oh --color'
+alias ls='ls -oh --color --group-directories-first'
 
 #-------------------------------------------------------------
 # dirs config
