@@ -77,6 +77,9 @@ set smartcase                   " ...unless capital letters are used
 " Use Tags
 command! MakeTags !ctags -R .
 
+" Tagbar Toggle Key
+nnoremap <F8>: TagbarToggle<CR>
+
 " mutt char width
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
 
@@ -152,6 +155,13 @@ if has('autocmd')
         " delete any trailing whitespaces
         autocmd BufWritePre * :%s/\s\+$//ge
 endif
+
+" ---------------------------------------------------
+" VIM GUNDO CONFIG
+" ---------------------------------------------------
+
+let g:gundo_width = 40
+let g:gundo_preview_height = 25
 
 " ---------------------------------------------------
 " Key Remappings
