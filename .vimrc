@@ -24,6 +24,7 @@ Plugin 'VundleVim/Vundle.vim'
     " vim-auto-pairs
     " vim-syntastic
     " vim-tagbar
+    " vim-surround
 
 " ---------------------------------------------------
 " Vundle Plugins (where there were no AUR packages)
@@ -32,10 +33,10 @@ Plugin 'bcicen/vim-vice'
 Plugin 'chriskempson/base16-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-surround'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'maralla/completor.vim'
 
 filetype plugin on              " load the plugins for specific file types
 
@@ -76,6 +77,21 @@ set smartcase                   " ...unless capital letters are used
 
 " Use Tags
 command! MakeTags !ctags -R .
+
+" ---------------------------------------------
+"  NETRW CONFIG
+" ---------------------------------------------
+
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+
+" ---------------------------------------------
+"  COMPLETOR CONFIG
+" ---------------------------------------------
+
+let g:completor_python_binary = '/usr/lib/python3.6/site-packages/jedi/'
 
 " Tagbar Toggle Key
 nnoremap <F8>: TagbarToggle<CR>
