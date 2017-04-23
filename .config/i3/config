@@ -44,7 +44,7 @@ bindsym $mod+Shift+< exec xrandr -o left
 bindsym $mod+> exec xrandr -o normal
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite
 
 # Start a floating terminal
 for_window [class="URxvt" instance="floating_urxvt$"] floating toggle
