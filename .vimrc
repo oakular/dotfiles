@@ -4,11 +4,6 @@
 " use Vim mode instead of pure Vi, it must be the first instruction
 set nocompatible
 
-" setting up Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
 " ---------------------------------------------------
 "  VIM plugins installed through AUR
 " ---------------------------------------------------
@@ -29,6 +24,12 @@ Plugin 'VundleVim/Vundle.vim'
 " ---------------------------------------------------
 " Vundle Plugins (where there were no AUR packages)
 " ---------------------------------------------------
+
+" setting up Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'bcicen/vim-vice'
 Plugin 'chriskempson/base16-vim'
 Plugin 'godlygeek/tabular'
@@ -37,8 +38,11 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'maralla/completor.vim'
+Plugin 'benmills/vimux'
 
-filetype plugin on              " load the plugins for specific file types
+call vundle#end()
+
+filetype plugin indent on              " load the plugins for specific file types
 
 " display settings
 set encoding=utf-8              " encoding used for displaying file
