@@ -18,7 +18,6 @@ set nocompatible
     " vim-nerdtree
     " vim-auto-pairs
     " vim-syntastic
-    " vim-tagbar
     " vim-surround
 
 " ---------------------------------------------------
@@ -37,8 +36,9 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'maralla/completor.vim'
+"Plugin 'maralla/completor.vim' Not working atm
 Plugin 'benmills/vimux'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 
@@ -98,10 +98,17 @@ let g:netrw_liststyle=3
 "let g:completor_python_binary = '/usr/lib/python3.6/site-packages/jedi/'
 
 " Tagbar Toggle Key
-nmap <F8>: Tagbar<CR>
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " mutt char width
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
+
+" ---------------------------------------------
+" VIMUX CONFIG
+" ---------------------------------------------
+
+" Prompt for a command to run
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
 
 " syntax highlighting
 let base16colorspace=256        " access colors present in 256 colorspace
