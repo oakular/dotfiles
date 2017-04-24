@@ -1,5 +1,6 @@
 " vimrc file for my vim config
 " written with inspiration from Miko Bartnicki <mikobartnicki@gmail.com>
+" and this article: https://blog.bugsnag.com/tmux-and-vim/
 
 " use Vim mode instead of pure Vi, it must be the first instruction
 set nocompatible
@@ -42,6 +43,10 @@ Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 
+" ---------------------------------------------
+" END VUNDLE CONFIG
+" ---------------------------------------------
+
 filetype plugin indent on              " load the plugins for specific file types
 
 " display settings
@@ -83,6 +88,15 @@ set smartcase                   " ...unless capital letters are used
 command! MakeTags !ctags -R .
 
 " ---------------------------------------------
+"  SIMPLE SPLIT NAVIGATION
+" ---------------------------------------------
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" ---------------------------------------------
 "  NETRW CONFIG
 " ---------------------------------------------
 
@@ -108,7 +122,17 @@ au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
 " ---------------------------------------------
 
 " Prompt for a command to run
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vp :VimuxPromptCommand<CR>
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
+" Zoom the tmux runner pane
+map <Leader>vz :VimuxZoomRunner<CR>
+
+" ---------------------------------------------
+" END VIMUX CONFIG
+" ---------------------------------------------
 
 " syntax highlighting
 let base16colorspace=256        " access colors present in 256 colorspace
