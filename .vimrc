@@ -95,17 +95,13 @@ let g:netrw_liststyle=3
 "  COMPLETOR CONFIG
 " ---------------------------------------------
 
-let g:completor_python_binary = '/usr/lib/python3.6/site-packages/jedi/'
+"let g:completor_python_binary = '/usr/lib/python3.6/site-packages/jedi/'
 
 " Tagbar Toggle Key
-nnoremap <F8>: TagbarToggle<CR>
+nmap <F8>: Tagbar<CR>
 
 " mutt char width
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
-
-" file type specific settings
-filetype indent on              " enable filetype detection and automatically indents code based on
-                                " indent files at ~/.vim/indent/
 
 " syntax highlighting
 let base16colorspace=256        " access colors present in 256 colorspace
