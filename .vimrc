@@ -65,6 +65,7 @@ set relativenumber              " combine line numbers with absolute numbers
 set confirm                     " confirm :q in for unsaved changes
 set fileencoding=utf-8          " encoding used when saving file
 set nobackup                    " do not keep backup files
+set hidden                      " no need to save when switching buffers
 
 " edit settings
 set backspace=indent,eol,start  " backspacing over everything in insert mode
@@ -72,7 +73,7 @@ set expandtab                   " makes tabs spaces to keep consistency across d
 set nojoinspaces                " no extra space after '.' when joining lines
 set shiftwidth=4                " set indentation depth to 4 columns
 set tabstop=4                   " set tabulator length to 4 columns
-set textwidth=80                " wrap lines automatically at 72nd column
+set textwidth=80                " wrap lines automatically at 80th column:set
 
 "Search settings
 " Fuzzy Search
@@ -91,10 +92,15 @@ command! MakeTags !ctags -R .
 "  SIMPLE SPLIT NAVIGATION
 " ---------------------------------------------
 
+" navigating splits is now simple ctrl+j, ctrl+k
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" splits open below and to the right of current pane
+set splitbelow
+set splitright
 
 " ---------------------------------------------
 "  NETRW CONFIG
@@ -122,13 +128,13 @@ au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
 " ---------------------------------------------
 
 " Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
 
 " Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
+nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 
 " Zoom the tmux runner pane
-map <Leader>vz :VimuxZoomRunner<CR>
+nnoremap <Leader>vz :VimuxZoomRunner<CR>
 
 " ---------------------------------------------
 " END VIMUX CONFIG

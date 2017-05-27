@@ -18,7 +18,7 @@ export PANEL_FIFO=/tmp/panel-fifo
 export PATH=$PATH:/
 export EDITOR="vim"
 export VISUAL="vim"
-export STEAM_RUNTIME=0
+export STEAM_RUNTIME=1
 
 # ----- SETTING UP VI MODE W/ VISUAL AIDS -----
 
@@ -81,11 +81,14 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 #-------------------
-# Personnal Aliases
+# Personal Aliases
 #-------------------
 
 # use vim for view mode
 alias view="vim -R"
+
+# shorter aiksaurus command
+alias aik="aiksaurus"
 
 alias firefox="GTK_THEME=Adwaita:dark firefox &"
 
@@ -193,3 +196,8 @@ function parse_current_dir {
 zstyle ':completion:*' menu select
 
 setopt completealiases
+
+# --- func to display markdown text in terminal with formattin removed
+md(){
+    pandoc -t plain "$1" | less;
+}

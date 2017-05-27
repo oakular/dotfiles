@@ -5,6 +5,10 @@ source ~/.mutt/personal
 # use student mail
 #source ~/.mutt/student
 
+# enable gpg
+source ~/.mutt/gpg.rc
+set crypt_use_gpgme=yes
+
 # cause automatic adding of new messages to inbox when idle
 set timeout=30
 

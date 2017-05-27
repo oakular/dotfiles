@@ -43,20 +43,20 @@
     history = mod4+grave
     context = ctrl+shift+period
 
-[urgency_low]
-    background = "#6092BE"
-    foreground = "#FFFFFF"
-    timeout = 10
+[base16_low]
+    msg_urgency = low
+    background = "#1f292e"
+    foreground = "#5a7b8c"
 
-[urgency_normal]
-    background = "#6092BE"
-    foreground = "#FFFFFF"
-    timeout = 20
+[base16_normal]
+    msg_urgency = normal
+    background = "#516d7b"
+    foreground = "#7ea2b4"
 
-[urgency_critical]
-    background = "#801515"
-    foreground = "#D46A6A"
-    timeout = 0
+[base16_critical]
+    msg_urgency = critical
+    background = "#d22d72"
+    foreground = "#c1e4f6"
 
 [irc]
     appname = "irssi"
