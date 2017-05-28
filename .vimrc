@@ -6,22 +6,6 @@
 set nocompatible
 
 " ---------------------------------------------------
-"  VIM plugins installed through AUR
-" ---------------------------------------------------
-    " airline
-    " vim-commentary
-    " vim-cpp-enhanced-highlight
-    " vim-fugitive
-    " vim-gitgutter
-    " vim-gundo
-    " vim-latexsuite
-    " vim-youcompleteme
-    " vim-nerdtree
-    " vim-auto-pairs
-    " vim-syntastic
-    " vim-surround
-
-" ---------------------------------------------------
 " Plug Config
 " ---------------------------------------------------
 
