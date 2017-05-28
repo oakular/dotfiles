@@ -22,29 +22,26 @@ set nocompatible
     " vim-surround
 
 " ---------------------------------------------------
-" Vundle Plugins (where there were no AUR packages)
+" Plug Config
 " ---------------------------------------------------
 
-" setting up Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugins')
 
-Plugin 'bcicen/vim-vice'
-Plugin 'chriskempson/base16-vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-"Plugin 'maralla/completor.vim' Not working atm
-Plugin 'benmills/vimux'
-Plugin 'majutsushi/tagbar'
+Plug 'bcicen/vim-vice'
+Plug 'chriskempson/base16-vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+"Plug 'maralla/completor.vim' Not working atm
+Plug 'benmills/vimux'
+Plug 'majutsushi/tagbar'
 
-call vundle#end()
+call plug#end()
 
 " ---------------------------------------------
-" END VUNDLE CONFIG
+" END PLUG CONFIG
 " ---------------------------------------------
 
 filetype plugin indent on              " load the plugins for specific file types
@@ -117,28 +114,8 @@ let g:netrw_liststyle=3
 
 "let g:completor_python_binary = '/usr/lib/python3.6/site-packages/jedi/'
 
-" Tagbar Toggle Key
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
-
 " mutt char width
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
-
-" ---------------------------------------------
-" VIMUX CONFIG
-" ---------------------------------------------
-
-" Prompt for a command to run
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
-
-" Run last command executed by VimuxRunCommand
-nnoremap <Leader>vl :VimuxRunLastCommand<CR>
-
-" Zoom the tmux runner pane
-nnoremap <Leader>vz :VimuxZoomRunner<CR>
-
-" ---------------------------------------------
-" END VIMUX CONFIG
-" ---------------------------------------------
 
 " syntax highlighting
 let base16colorspace=256        " access colors present in 256 colorspace
@@ -256,18 +233,22 @@ nnoremap <leader><space> :nohlsearch<CR>
 noremap <F12> :set list!<CR>
 inoremap <F12> <Esc>:set list!<CR>a
 
-" auto insert curly brackets
-" inoremap {      {}<Left>
-" inoremap {<CR>  {<CR>}<Esc>O
-" inoremap {{     {
-" inoremap {}     {}
+" Tagbar Toggle Key
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
-" auto insert quote marks (commented out as proved annoying)
-"inoremap "      ""<Left>
-"inoremap "<CR>  "<CR>"<Esc>O
-"inoremap ""     ""
+" ---------------------------------------------
+" VIMUX CONFIG
+" ---------------------------------------------
 
-" auto insert closing bracket
-" inoremap (      ()<Left>
-" inoremap (<CR>  (<CR>)<Esc>O
-" inoremap ()     ()
+" Prompt for a command to run
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
+
+" Run last command executed by VimuxRunCommand
+nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+
+" Zoom the tmux runner pane
+nnoremap <Leader>vz :VimuxZoomRunner<CR>
+
+" ---------------------------------------------
+" END VIMUX CONFIG
+" ---------------------------------------------
