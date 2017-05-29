@@ -15,7 +15,7 @@ BASE16_SHELL="/home/oakular/.config/base16-shell/scripts/base16-atelier-lakeside
 
 # exports
 export PANEL_FIFO=/tmp/panel-fifo
-export PATH=$PATH:/
+export PATH=$PATH:"$HOME/.local/bin/":/
 export EDITOR="vim"
 export VISUAL="vim"
 export STEAM_RUNTIME=1
