@@ -11,7 +11,7 @@ set nocompatible
 
 call plug#begin('~/.vim/plugins')
 
-Plug 'bcicen/vim-vice'
+Plug 'bcicen/vim-vice' " very bright vim colorscheme
 Plug 'chriskempson/base16-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
