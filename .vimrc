@@ -18,7 +18,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
-"Plug 'maralla/completor.vim' Not working atm
+Plug 'maralla/completor.vim' " auto complete
 Plug 'benmills/vimux' " run shell commands from vim for tmux panes
 Plug 'majutsushi/tagbar' " tagbar navigator
 Plug 'vim-syntastic/syntastic' " syntax checking
@@ -26,6 +26,7 @@ Plug 'tpope/vim-surround' " surround text with parens etc.
 Plug 'airblade/vim-gitgutter' " show edits to files in gutter
 Plug 'tpope/vim-fugitive' " vim git integration
 Plug 'tpope/vim-commentary' " easily comment and uncomment code
+Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seamlessly
 
 call plug#end()
 
