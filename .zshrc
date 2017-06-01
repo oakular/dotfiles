@@ -77,7 +77,7 @@ promptinit
 prompt pure
 
 # syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 #-------------------
@@ -147,7 +147,7 @@ alias gnome-sess-wayland='gnome-session --session gnome-wayland'
 # The 'ls' family (this assumes you use a recent GNU ls).
 #-------------------------------------------------------------
 
-alias ls='ls -oh --color --group-directories-first'
+alias ls='ls -Goh --group-directories-first'
 
 #-------------------------------------------------------------
 # dirs config
