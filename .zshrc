@@ -10,7 +10,7 @@ echo -e "\e]12;white\a"
 export TERM="xterm-256color"
 
 # Base16 Shell
-BASE16_SHELL="/home/oakular/.config/base16-shell/scripts/base16-atelier-lakeside.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-atelier-lakeside.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # exports
@@ -72,9 +72,13 @@ zstyle ':completion:*' menu select          # enables the command completion
 setopt completealiases                      # allows for completion of aliases
 
 # pure prompt config
+# autoload -Uz promptinit                     # enables prompt themes
+# promptinit
+# prompt pure
+
 autoload -Uz promptinit                     # enables prompt themes
 promptinit
-prompt pure
+prompt off
 
 # syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -143,11 +147,13 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 # start gnome with wayland
 alias gnome-sess-wayland='gnome-session --session gnome-wayland'
 
+alias ptime="date '+%X'"
+
 #-------------------------------------------------------------
 # The 'ls' family (this assumes you use a recent GNU ls).
 #-------------------------------------------------------------
 
-alias ls='ls -Goh --group-directories-first'
+alias ls='ls -Goh'
 
 #-------------------------------------------------------------
 # dirs config
