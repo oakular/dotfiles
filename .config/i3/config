@@ -15,7 +15,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Hack-Regular 12
+font xft:Hack-Regular 72
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -31,10 +31,6 @@ font xft:Hack-Regular 12
 # setting windows to be borderless
 new_window normal
 for_window [class="^.*"] border pixel 3
-
-# setting gaps betw windows
-gaps inner 7
-gaps outer 7
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

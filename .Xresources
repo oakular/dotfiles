@@ -31,6 +31,9 @@ URxvt.bell-command: notify-send "Terminal: Bell Sounded"
 ## cursor size
 Xcursor.size: 32
 
+## hidpi scaling
+Xft.dpi: 192
+
 ## ---------- COLOURS ---------- #
 #define base00 #161b1d
 #define base01 #1f292e
