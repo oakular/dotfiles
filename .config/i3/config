@@ -154,7 +154,7 @@ assign [class = "Vlc"] $workspace6
 assign [class= "Eclipse"] $workspace3
 assign [class= "VirtualBox"] $workspace5
 assign [class= "Spotify"] $workspace6
-assign [class= "GoldenCheetah"] $workspace6
+assign [class= "calibre"] $workspace4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
