@@ -14,11 +14,12 @@ call plug#begin('~/.vim/plugins')
 Plug 'bcicen/vim-vice' " very bright vim colorscheme
 Plug 'chriskempson/base16-vim'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', {'for' : 'markdown'}
+Plug 'reedes/vim-pencil', {'for' : ['markdown', 'text']}
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
-Plug 'maralla/completor.vim' " auto complete
+Plug 'davidhalter/jedi-vim' " auto complete
 Plug 'benmills/vimux' " run shell commands from vim for tmux panes
 Plug 'majutsushi/tagbar' " tagbar navigator
 Plug 'vim-syntastic/syntastic' " syntax checking
@@ -41,9 +42,11 @@ set encoding=utf-8              " encoding used for displaying file
 set ruler                       " show the cursor position all the time
 set showmatch                   " highlight matching braces
 set showmode                    " show insert/replace/visual mode
+set title
 
 " enable the mouse
 set mouse=a
+set guifont=Hack:h14
 
 set number                      " show line numbers
 set relativenumber              " combine line numbers with absolute numbers
@@ -98,11 +101,15 @@ let g:netrw_browse_split=4
 let g:netrw_altv=1
 let g:netrw_liststyle=3
 
-" ---------------------------------------------
-"  COMPLETOR CONFIG
-" ---------------------------------------------
+" SYNTASTIC CONFIG
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"let g:completor_python_binary = '/usr/lib/python3.6/site-packages/jedi/'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " mutt char width
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
@@ -110,14 +117,14 @@ au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
 " syntax highlighting
 let base16colorspace=256        " access colors present in 256 colorspace
 set t_Co=256
-colorscheme base16-atelier-lakeside
+colorscheme base16-solarized-dark
 set background=dark             " dark background for console
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 syntax enable                   " enable syntax highlighting
 
 " display settings
-set cindent                  " sets auto indenting
+set autoindent                  " sets auto indenting
 set showmatch                   " sets matching of certain chars {}()[] etc
 
 " java specific config
@@ -226,6 +233,9 @@ inoremap <F12> <Esc>:set list!<CR>a
 " Tagbar Toggle Key
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
+" run python script from vim
+nnoremap <silent> <F5> :!clear;python3 %<CR>
+
 " ---------------------------------------------
 " VIMUX CONFIG
 " ---------------------------------------------
@@ -242,3 +252,9 @@ nnoremap <Leader>vz :VimuxZoomRunner<CR>
 " ---------------------------------------------
 " END VIMUX CONFIG
 " ---------------------------------------------
+
+" ---------------------------------------------
+" WRITING SPECIFIC CONFIG
+" ---------------------------------------------
+
+setlocal spell spelllang=en_gb
