@@ -2,8 +2,7 @@
 " written with inspiration from Miko Bartnicki <mikobartnicki@gmail.com>
 " and this article: https://blog.bugsnag.com/tmux-and-vim/
 
-" use Vim mode instead of pure Vi, it must be the first instruction
-set nocompatible
+set nocompatible " use Vim mode instead of pure Vi
 
 " ---------------------------------------------------
 " Plug Config
@@ -27,6 +26,8 @@ Plug 'airblade/vim-gitgutter' " show edits to files in gutter
 Plug 'tpope/vim-fugitive' " vim git integration
 Plug 'tpope/vim-commentary' " easily comment and uncomment code
 Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seamlessly
+Plug 'lambdalisue/gina.vim' " git plugin
+Plug 'vim-latex/vim-latex'
 
 call plug#end()
 
@@ -44,6 +45,10 @@ set showmode                    " show insert/replace/visual mode
 
 " enable the mouse
 set mouse=a
+set guifont=Hack\ 12
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 
 set number                      " show line numbers
 set relativenumber              " combine line numbers with absolute numbers
@@ -108,17 +113,30 @@ let g:netrw_liststyle=3
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
 
 " syntax highlighting
-let base16colorspace=256        " access colors present in 256 colorspace
+let base16colorspace=256
 set t_Co=256
-colorscheme base16-atelier-lakeside
-set background=dark             " dark background for console
+colorscheme base16-solarized-dark
+set background=dark
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
-syntax enable                   " enable syntax highlighting
+syntax enable
 
 " display settings
-set cindent                  " sets auto indenting
-set showmatch                   " sets matching of certain chars {}()[] etc
+set autoindent
+set showmatch
+set matchtime=2
+
+set fillchars=stl:-,stlnc:-,vert:\|
+
+set laststatus=2
+hi statusline guibg=NONE
+hi statusline guifg=#fdf6e3
+
+hi vertsplit guibg=NONE
+hi vertsplit guifg=#fdf6e3
+
+hi wildmenu guibg=NONE
+hi wildmenu guifg=#d33682
 
 " java specific config
 let java_highlight_all=1
@@ -128,22 +146,14 @@ let java_allow_cpp_keywords=1
 " java compiler config
 " sets make to javac for java files
 autocmd Filetype java set makeprg=javac\ %
+
 " formats error messages to show in vim
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+
 " adds keys for cycling through errors
 map <F9> :make<Return>:copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
-
-"vim-airline config
-set laststatus=2                " increases the size of the command line
-set ttimeoutlen=10              " prevents lag at mode change with airline
-let g:airline_powerline_fonts=1 " allows airline to use powerline fonts
-let g:airline#extensions#tabline#enabled = 1        "enables airline for tabs
-" airline theme
-let g:airline_theme='base16_grayscale'
-
-" tmuxline config
 
 " characters for displaying non-printable characters
 set listchars=eol:$,tab:>-,trail:.,nbsp:_,extends:+,precedes:+
