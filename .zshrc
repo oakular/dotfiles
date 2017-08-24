@@ -10,8 +10,11 @@ echo -e "\e]12;white\a"
 export TERM="xterm-256color"
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-atelier-lakeside.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-atelier-cave.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# virtenv wrapper
+source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # exports
 export PANEL_FIFO=/tmp/panel-fifo
@@ -87,6 +90,10 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 #-------------------
 # Personal Aliases
 #-------------------
+
+# git aliases
+alias 'git status'="git status --short"
+alias 'git push'="git push --quiet"
 
 # use vim for view mode
 alias view="vim -R"

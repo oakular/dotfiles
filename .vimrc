@@ -19,7 +19,7 @@ Plug 'reedes/vim-pencil', {'for' : ['markdown', 'text']}
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
-Plug 'davidhalter/jedi-vim' " auto complete
+Plug 'davidhalter/jedi-vim', {'for' : 'python'} " auto complete
 Plug 'benmills/vimux' " run shell commands from vim for tmux panes
 Plug 'majutsushi/tagbar' " tagbar navigator
 Plug 'vim-syntastic/syntastic' " syntax checking
@@ -28,6 +28,7 @@ Plug 'airblade/vim-gitgutter' " show edits to files in gutter
 Plug 'tpope/vim-fugitive' " vim git integration
 Plug 'tpope/vim-commentary' " easily comment and uncomment code
 Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seamlessly
+Plug 'vim-latex/vim-latex'
 
 call plug#end()
 
@@ -44,9 +45,10 @@ set showmatch                   " highlight matching braces
 set showmode                    " show insert/replace/visual mode
 set title
 
-" enable the mouse
+" gui options
 set mouse=a
 set guifont=Hack:h14
+set guioptions-=r
 
 set number                      " show line numbers
 set relativenumber              " combine line numbers with absolute numbers
