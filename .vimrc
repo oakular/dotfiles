@@ -2,8 +2,7 @@
 " written with inspiration from Miko Bartnicki <mikobartnicki@gmail.com>
 " and this article: https://blog.bugsnag.com/tmux-and-vim/
 
-" use Vim mode instead of pure Vi, it must be the first instruction
-set nocompatible
+set nocompatible " use Vim mode instead of pure Vi
 
 " ---------------------------------------------------
 " Plug Config
@@ -11,15 +10,13 @@ set nocompatible
 
 call plug#begin('~/.vim/plugins')
 
-Plug 'bcicen/vim-vice' " very bright vim colorscheme
 Plug 'chriskempson/base16-vim'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown', {'for' : 'markdown'}
-Plug 'reedes/vim-pencil', {'for' : ['markdown', 'text']}
+Plug 'plasticboy/vim-markdown'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
-Plug 'davidhalter/jedi-vim', {'for' : 'python'} " auto complete
+Plug 'davidhalter/jedi-vim', {'for' : 'python'}
 Plug 'benmills/vimux' " run shell commands from vim for tmux panes
 Plug 'majutsushi/tagbar' " tagbar navigator
 Plug 'vim-syntastic/syntastic' " syntax checking
@@ -30,6 +27,8 @@ Plug 'tpope/vim-commentary' " easily comment and uncomment code
 Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seamlessly
 Plug 'vim-latex/vim-latex'
 
+"Plug 'lambdalisue/gina.vim' " git plugin
+" Plug 'maralla/completor.vim' " auto complete
 call plug#end()
 
 " ---------------------------------------------
@@ -38,17 +37,17 @@ call plug#end()
 
 filetype plugin indent on              " load the plugins for specific file types
 
-" display settings
 set encoding=utf-8              " encoding used for displaying file
 set ruler                       " show the cursor position all the time
 set showmatch                   " highlight matching braces
 set showmode                    " show insert/replace/visual mode
-set title
 
-" gui options
+" enable the mouse
 set mouse=a
-set guifont=Hack:h14
-set guioptions-=r
+set guifont=Hack\ 12
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 
 set number                      " show line numbers
 set relativenumber              " combine line numbers with absolute numbers
@@ -76,83 +75,80 @@ set hlsearch                    " highlight search results
 set ignorecase                  " search case insensitively
 set incsearch                   " sets vim to search as you type
 set smartcase                   " ...unless capital letters are used
+set autochdir                   " cd to current file dir
 
 " Use Tags
 command! MakeTags !ctags -R .
 
 " ---------------------------------------------
-"  SIMPLE SPLIT NAVIGATION
+"  NETRW CONFIG
 " ---------------------------------------------
 
-" navigating splits is now simple ctrl+j, ctrl+k
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+let g:netrw_winsize=20
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Vexplore | endif
+
+" mutt char width
+au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
+
+" ---------------------------------------------
+"  VIM-LATEX CONFIG
+" ---------------------------------------------
+
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_CompileRule_pdf='pdflatex -output-directory=output/ -interaction=nonstopmode $*'
+let g:Tex_GotoError=0
+
+" ---------------------------------------------
+" DISPLAY SETTINGS
+" ---------------------------------------------
+
+let base16colorspace=256
+set t_Co=256
+colorscheme base16-solarized-dark
+set background=dark
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
+syntax enable
+
+set fillchars=stl:-,stlnc:-,vert:\|
+
+set laststatus=2
+hi statusline guibg=NONE
+hi statusline guifg=#fdf6e3
+
+hi vertsplit guibg=NONE
+hi vertsplit guifg=#fdf6e3
+
+hi wildmenu guibg=NONE
+hi wildmenu guifg=#d33682
+
+if has("gui_running")
+    set lines=999
+    set columns=999
+endif
 
 " splits open below and to the right of current pane
 set splitbelow
 set splitright
 
-" ---------------------------------------------
-"  NETRW CONFIG
-" ---------------------------------------------
+set autoindent
+set showmatch
+set matchtime=2
 
-let g:netrw_banner=0
-let g:netrw_browse_split=4
-let g:netrw_altv=1
-let g:netrw_liststyle=3
-
-" SYNTASTIC CONFIG
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" mutt char width
-au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
-
-" syntax highlighting
-let base16colorspace=256        " access colors present in 256 colorspace
-set t_Co=256
-colorscheme base16-solarized-dark
-set background=dark             " dark background for console
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
-syntax enable                   " enable syntax highlighting
-
-" display settings
-set autoindent                  " sets auto indenting
-set showmatch                   " sets matching of certain chars {}()[] etc
-
-" java specific config
-let java_highlight_all=1
-let java_highlight_functions="style"
-let java_allow_cpp_keywords=1
-
-" java compiler config
-" sets make to javac for java files
-autocmd Filetype java set makeprg=javac\ %
 " formats error messages to show in vim
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+
 " adds keys for cycling through errors
 map <F9> :make<Return>:copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
-
-"vim-airline config
-set laststatus=2                " increases the size of the command line
-set ttimeoutlen=10              " prevents lag at mode change with airline
-let g:airline_powerline_fonts=1 " allows airline to use powerline fonts
-let g:airline#extensions#tabline#enabled = 1        "enables airline for tabs
-" airline theme
-let g:airline_theme='base16_grayscale'
-
-" tmuxline config
 
 " characters for displaying non-printable characters
 set listchars=eol:$,tab:>-,trail:.,nbsp:_,extends:+,precedes:+
@@ -205,6 +201,12 @@ vnoremap : ;
 " remapping leader to space
 let mapleader = "\<Space>"
 
+" navigating splits is now simple ctrl+j, ctrl+k
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " maps leader+w to save file
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
@@ -235,9 +237,6 @@ inoremap <F12> <Esc>:set list!<CR>a
 " Tagbar Toggle Key
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
-" run python script from vim
-nnoremap <silent> <F5> :!clear;python3 %<CR>
-
 " ---------------------------------------------
 " VIMUX CONFIG
 " ---------------------------------------------
@@ -250,13 +249,3 @@ nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 
 " Zoom the tmux runner pane
 nnoremap <Leader>vz :VimuxZoomRunner<CR>
-
-" ---------------------------------------------
-" END VIMUX CONFIG
-" ---------------------------------------------
-
-" ---------------------------------------------
-" WRITING SPECIFIC CONFIG
-" ---------------------------------------------
-
-setlocal spell spelllang=en_gb
