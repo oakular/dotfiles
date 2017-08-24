@@ -10,7 +10,7 @@ echo -e "\e]12;white\a"
 export TERM="xterm-256color"
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-atelier-cave.sh"
+BASE16_SHELL="/Users/callum/.config/base16-shell/scripts/base16-solarized-dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # virtenv wrapper

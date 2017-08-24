@@ -35,7 +35,7 @@ call plug#end()
 " END PLUG CONFIG
 " ---------------------------------------------
 
-filetype plugin indent on              " load the plugins for specific file types
+filetype plugin indent on       " load the plugins for specific file types
 
 set encoding=utf-8              " encoding used for displaying file
 set ruler                       " show the cursor position all the time
@@ -44,7 +44,7 @@ set showmode                    " show insert/replace/visual mode
 
 " enable the mouse
 set mouse=a
-set guifont=Hack\ 12
+set guifont=Hack:h13
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
@@ -121,17 +121,21 @@ set fillchars=stl:-,stlnc:-,vert:\|
 
 set laststatus=2
 hi statusline guibg=NONE
+hi statusline ctermbg=NONE
 hi statusline guifg=#fdf6e3
+hi statusline ctermfg=white
 
 hi vertsplit guibg=NONE
+hi vertsplit ctermbg=NONE
 hi vertsplit guifg=#fdf6e3
+hi vertsplit ctermfg=white
 
 hi wildmenu guibg=NONE
 hi wildmenu guifg=#d33682
 
 if has("gui_running")
     set lines=999
-    set columns=999
+    set columns=120
 endif
 
 " splits open below and to the right of current pane
@@ -153,6 +157,9 @@ map <F11> :cnext<Return>
 " characters for displaying non-printable characters
 set listchars=eol:$,tab:>-,trail:.,nbsp:_,extends:+,precedes:+
 
+set ttimeout
+set ttimeoutlen=100
+
 " automatic commands
 if has('autocmd')
         " file type specific automatic commands
@@ -165,9 +172,6 @@ if has('autocmd')
 
         " don't replace Tabs with spaces when editing makefiles
         autocmd Filetype makefile setlocal noexpandtab
-
-        " disable automatic code indentation when editing TeX and XML files
-        autocmd FileType tex,xml setlocal indentexpr=
 
         " clean-up commands that run automatically on write; use with caution
 
@@ -193,10 +197,10 @@ let g:gundo_preview_height = 25
 " ---------------------------------------------------
 
 " remap : to ; but keep : functionality
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap ; :
+" vnoremap : ;
 
 " remapping leader to space
 let mapleader = "\<Space>"
