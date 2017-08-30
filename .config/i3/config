@@ -218,5 +218,5 @@ exec feh --bg-scale ~/pics/material.png
 # exec_always yabar
 exec unclutter
 exec redshift -l geoclue2
-exec compton -bcf --backend glx  --vsync opengl-swc --mark-wmwin-focused
-exec dunst
+#exec compton -bcf --backend glx  --vsync opengl-swc --mark-wmwin-focused
+#exec dunst

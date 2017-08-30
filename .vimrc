@@ -26,6 +26,7 @@ Plug 'tpope/vim-fugitive' " vim git integration
 Plug 'tpope/vim-commentary' " easily comment and uncomment code
 Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seamlessly
 Plug 'vim-latex/vim-latex'
+Plug 'junegunn/goyo.vim'
 
 "Plug 'lambdalisue/gina.vim' " git plugin
 " Plug 'maralla/completor.vim' " auto complete
@@ -91,8 +92,8 @@ let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
 let g:netrw_altv=1
 let g:netrw_liststyle=3
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Vexplore | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Vexplore | endif
 
 " mutt char width
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
@@ -122,9 +123,13 @@ set fillchars=stl:-,stlnc:-,vert:\|
 set laststatus=2
 hi statusline guibg=NONE
 hi statusline guifg=#fdf6e3
+hi statusline ctermbg=NONE
+hi statusline ctermfg=white
 
 hi vertsplit guibg=NONE
 hi vertsplit guifg=#fdf6e3
+hi vertsplit ctermbg=NONE
+hi vertsplit ctermfg=white
 
 hi wildmenu guibg=NONE
 hi wildmenu guifg=#d33682
@@ -193,10 +198,10 @@ let g:gundo_preview_height = 25
 " ---------------------------------------------------
 
 " remap : to ; but keep : functionality
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap ; :
+" vnoremap : ;
 
 " remapping leader to space
 let mapleader = "\<Space>"
