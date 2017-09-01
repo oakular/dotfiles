@@ -114,12 +114,12 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 # create workspace names
-set $workspace1 ""
-set $workspace2 ""
-set $workspace3 "1"
-set $workspace4 "2"
-set $workspace6 ""
-set $workspace5 ""
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:1"
+set $workspace4 "4:2"
+set $workspace6 "5:"
+set $workspace5 "6:"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -211,12 +211,11 @@ bindsym $mod+r mode "resize"
 # border normal|pixel [20]
 
 # class                 border      backgr.   text        indicator   child_border
-client.focused          #C0C5CE     #d22d72   #e0e0e0     #ffd204     #d22d72
+client.focused          #C0C5CE     #d22d72   #e0e0e0     #2a9292     #d22d72
 client.unfocused        #BDC3C7     #7195a8   #2C3E50     #b16286     #7195a8
 
 # processes to start on login
-exec feh --bg-scale ~/pics/material.png
-# exec_always yabar
+exec feh --bg-scale ~/pics/wall.png
 exec unclutter
 exec redshift -l geoclue2
 exec_always compton -bcf --backend glx  --vsync opengl-swc --mark-wmwin-focused
