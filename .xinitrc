@@ -1,6 +1,6 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 setxkbmap gb
-setxkbmap -option caps:escape
+setxkbmap -option caps:ctrl_modifier
 
 /usr/bin/xinput set-button-map 1 9 3 4 5 6 7 8 9
 exec i3
