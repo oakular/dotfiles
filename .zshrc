@@ -90,7 +90,8 @@ alias view="vim -R"
 # shorter aiksaurus command
 alias aik="aiksaurus"
 
-alias firefox="GTK_THEME=Adwaita:dark firefox &"
+# shorten clear command; useful for when using tmux with Ctrl+L mapped
+alias cl="clear"
 
 # launch gdb in quiet mode
 alias gdb="gdb -q"
@@ -114,24 +115,17 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 
 # aliases to  make use of pacman less verbose
-alias pac='sudo pacmatic -S'
-alias pacsy='sudo pacmatic -Syy && echo "\n----- PACKAGES TO UPDATE -----" && pacmatic -Qu && echo "\n----- AUR PACKAGES -----" && cower -u'
-alias pacu='sudo pacmatic -Syu'
-alias pacr='sudo pacmatic -Rns'
-alias pacss='pacmatic -Ss'
+alias pac='sudo pacman -S'
+alias pacsy='sudo pacman -Syy && echo "\n----- PACKAGES TO UPDATE -----" && pacman -Qu && echo "\n----- AUR PACKAGES -----" && cower -u'
+alias pacu='sudo pacman -Syu'
+alias pacr='sudo pacman -Rns'
+alias pacss='pacman -Ss'
 
 # alias for pass so that all passwords are automatically copied to the clipboard
 alias passcp='pass show -c'
 
-# aliases for VPN connection
-alias vpn-con="nmcli con up id"
-alias vpn-dcon="nmcli con down id"
-
 # fixing gpmdp so that is loads past login
 alias gpmdp="gpmdp --disable-gpu"
-
-# steam runtime fix
-# alias steam="STEAM_RUNTIME=1 steam"
 
 # prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
@@ -139,9 +133,6 @@ alias mkdir='mkdir -p'
 # pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-
-# start gnome with wayland
-alias gnome-sess-wayland='gnome-session --session gnome-wayland'
 
 #-------------------------------------------------------------
 # The 'ls' family (this assumes you use a recent GNU ls).
