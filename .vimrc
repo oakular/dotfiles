@@ -25,7 +25,10 @@ Plug 'airblade/vim-gitgutter' " show edits to files in gutter
 Plug 'tpope/vim-fugitive' " vim git integration
 Plug 'tpope/vim-commentary' " easily comment and uncomment code
 Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seamlessly
+Plug 'junegunn/goyo.vim'
 Plug 'vim-latex/vim-latex'
+Plug 'xuhdev/vim-latex-live-preview'
+Plug 'terryma/vim-smooth-scroll'
 
 "Plug 'lambdalisue/gina.vim' " git plugin
 " Plug 'maralla/completor.vim' " auto complete
@@ -253,3 +256,8 @@ nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 
 " Zoom the tmux runner pane
 nnoremap <Leader>vz :VimuxZoomRunner<CR>
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
