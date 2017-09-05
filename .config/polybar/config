@@ -91,7 +91,7 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home
+; mount-1 = /home
 
 label-mounted = %mountpoint%%{F-}: %{F#955ae7}%free%
 label-unmounted = %mountpoint% not mounted
