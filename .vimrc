@@ -15,7 +15,6 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
 Plug 'davidhalter/jedi-vim', {'for' : 'python'}
 Plug 'benmills/vimux' " run shell commands from vim for tmux panes
 Plug 'majutsushi/tagbar' " tagbar navigator
@@ -24,7 +23,7 @@ Plug 'tpope/vim-surround' " surround text with parens etc.
 Plug 'airblade/vim-gitgutter' " show edits to files in gutter
 Plug 'tpope/vim-fugitive' " vim git integration
 Plug 'tpope/vim-commentary' " easily comment and uncomment code
-Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seamlessly
+Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits
 Plug 'vim-latex/vim-latex'
 Plug 'junegunn/goyo.vim'
 
@@ -42,9 +41,8 @@ set encoding=utf-8              " encoding used for displaying file
 set ruler                       " show the cursor position all the time
 set showmatch                   " highlight matching braces
 set showmode                    " show insert/replace/visual mode
+set title
 
-" enable the mouse
-set mouse=a
 set guifont=Hack\ 12
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -211,6 +209,12 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" disable arrow keys
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
 
 " maps leader+w to save file
 nnoremap <Leader>w :w<CR>
