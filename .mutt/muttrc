@@ -12,11 +12,11 @@ set crypt_use_gpgme=yes
 # cause automatic adding of new messages to inbox when idle
 set timeout=30
 
-# order mail in descending order
+# order mail in ascending order
 # show most recent mail in a thread on top
 set sort=threads
-set sort_browser=reverse-date
-set sort_aux=reverse-last-date-received
+set sort_browser=date
+set sort_aux=last-date-received
 
 # use own temp folder
 set tmpdir="~/.tmp"
@@ -29,8 +29,11 @@ bind editor        <Tab> complete-query
 # alert on new mail
 set beep_new
 
-# show sidebar on startup
-set sidebar_visible = yes
+# strip html content via elinks
+set mailcap_path = ~/.mutt/mailcap
+
+# # show sidebar on startup
+# set sidebar_visible = yes
 # toggle sidebar visibility
 bind index,pager B sidebar-toggle-visible
 
