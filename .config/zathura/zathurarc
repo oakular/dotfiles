@@ -1,8 +1,15 @@
-set recolor true
 set recolor-darkcolor "#ebf8ff"
 set recolor-lightcolor "#161b1d"
 
+set default-bg "#1f292e"
+
 set window-title-basename "true"
 set selection-clipboard "clipboard"
+set statusbar-home-tilde "true"
+set statusbar-basename "true"
 
 set font "Hack Regular 11"
+
+set incremental-search "true"
+
+map <C-[> abort
