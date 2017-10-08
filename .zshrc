@@ -90,6 +90,8 @@ alias view="vim -R"
 # shorter aiksaurus command
 alias aik="aiksaurus"
 
+alias tlmgr="tllocalmgr"
+
 # shorten clear command; useful for when using tmux with Ctrl+L mapped
 alias cl="clear"
 
