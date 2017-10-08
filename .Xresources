@@ -1,6 +1,5 @@
 ## ---------- FONT SETUP ---------- #
 URxvt.font: 				xft:Hack-Regular:regular:pixelsize=14:antialias=true:hinting=true,\
-                            xft:NotoSans\Regular:pixelsize=14:antialias=true:hinting=true,\
 URxvt.boldFont:            	xft:Hack-Regular:regular:pixelsize=14:bold:antialias=true:hinting=true,\
 URxvt.italicFont:          	xft:Hack-Regular:regular:pixelsize=14:italic:antialias=true:hinting=true,\
 URxvt.boldItalicFont:      	xft:Hack-Regular:regular:pixelsize=14:bold:italic:antialias=true:hinting=true
