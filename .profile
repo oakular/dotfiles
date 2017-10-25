@@ -9,28 +9,7 @@ fi
 # exports
 export TERM='xterm-256color'
 export EDITOR="vim"
-export VISUAL="vim"
 
-# history
-HISTIGNORE="&:ls:pwd:exit:clear:history"
-HISTCONTROL="ignoredups"
-HISTSIZE=20
-HISTFILESIZE=999
-HISTTIMEFORMAT="%R%t"
+date
 
-# Base16 Shell
-BASE16_SHELL="/Users/callum/.config/base16-shell/scripts/base16-solarized-dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
-
-# personal aliases
-alias view="vim -R"
-alias gdb="gdb -q"
-alias dirs="dirs -v"
-alias ls="ls -F"
-
-# bash functions
-md(){
-    pandoc -t plain "$1" | less;
-} # display markdown text in terminal with formatting removed
-
+source "$HOME/.bashrc"
