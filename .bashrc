@@ -18,11 +18,10 @@ FIGNORE=".o:.sw[op]:~"
 alias view="vim -R"
 alias gdb="gdb -q"
 alias dirs="dirs -v"
-alias ls="ls -GF"
-alias lr="ls -lagGFqt \!* | head" # not working
+alias ls="ls --color -F"
+alias lr="ls --color -lagFqt \!* | head" # not working
 
 # bash functions
 md(){
     pandoc -t plain "$1" | less;
 } # display markdown text in terminal with formatting removed
-
