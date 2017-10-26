@@ -134,10 +134,6 @@ alias pacss='pacmatic -Ss'
 # alias for pass so that all passwords are automatically copied to the clipboard
 alias passcp='pass show -c'
 
-# aliases for VPN connection
-alias vpn-con="nmcli con up id"
-alias vpn-dcon="nmcli con down id"
-
 # fixing gpmdp so that is loads past login
 alias gpmdp="gpmdp --disable-gpu"
 
