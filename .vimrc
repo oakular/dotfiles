@@ -28,7 +28,6 @@ Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seaml
 Plug 'junegunn/goyo.vim'
 Plug 'vim-latex/vim-latex'
 Plug 'xuhdev/vim-latex-live-preview'
-Plug 'terryma/vim-smooth-scroll'
 
 "Plug 'lambdalisue/gina.vim' " git plugin
 " Plug 'maralla/completor.vim' " auto complete
@@ -46,11 +45,10 @@ set showmatch                   " highlight matching braces
 set showmode                    " show insert/replace/visual mode
 
 " enable the mouse
-set mouse=a
-set guifont=Hack:h13
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
+set guifont=Hack:h12
+set guioptions-=T               "remove toolbar
+set guioptions-=r               "remove right-hand scroll bar
+set guioptions-=L               "remove left-hand scroll bar
 
 set number                      " show line numbers
 set relativenumber              " combine line numbers with absolute numbers
@@ -78,7 +76,7 @@ set hlsearch                    " highlight search results
 set ignorecase                  " search case insensitively
 set incsearch                   " sets vim to search as you type
 set smartcase                   " ...unless capital letters are used
-set autochdir                   " cd to current file dir
+" set autochdir                   " cd to current file dir
 
 " Use Tags
 command! MakeTags !ctags -R .
@@ -94,8 +92,8 @@ let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
 let g:netrw_altv=1
 let g:netrw_liststyle=3
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Vexplore | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Vexplore | endif
 
 " mutt char width
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
@@ -122,7 +120,7 @@ syntax enable
 
 set fillchars=stl:-,stlnc:-,vert:\|
 
-set laststatus=2
+set laststatus=1
 hi statusline guibg=NONE
 hi statusline ctermbg=NONE
 hi statusline guifg=#fdf6e3
@@ -179,10 +177,10 @@ if has('autocmd')
         " clean-up commands that run automatically on write; use with caution
 
         " delete empty or whitespaces-only lines at the end of file
-        autocmd BufWritePre * :%s/\(\s*\n\)\+\%$//ge
+        " autocmd BufWritePre * :%s/\(\s*\n\)\+\%$//ge
 
         " replace groups of empty or whitespaces-only lines with one empty line
-        autocmd BufWritePre * :%s/\(\s*\n\)\{3,}/\r\r/ge
+        " autocmd BufWritePre * :%s/\(\s*\n\)\{3,}/\r\r/ge
 
         " delete any trailing whitespaces
         autocmd BufWritePre * :%s/\s\+$//ge
@@ -256,8 +254,3 @@ nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 
 " Zoom the tmux runner pane
 nnoremap <Leader>vz :VimuxZoomRunner<CR>
-
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
