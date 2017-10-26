@@ -14,12 +14,16 @@ HISTTIMEFORMAT="%R%t"
 # ignore filetypes in tab completion
 FIGNORE=".o:.sw[op]:~"
 
+# LSCOLORS config
+eval `dircolors $HOME/.dircolorsrc`
+
 # personal aliases
 alias view="vim -R"
 alias gdb="gdb -q"
 alias dirs="dirs -v"
 alias ls="ls --color -F"
 alias lr="ls --color -lagFqt \!* | head" # not working
+alias batst="grep POWER_SUPPLY_CAPACITY /sys/class/power_supply/BAT0/uevent"
 
 # bash functions
 md(){
