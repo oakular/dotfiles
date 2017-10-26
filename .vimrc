@@ -65,6 +65,10 @@ set shiftwidth=4                " set indentation depth to 4 columns
 set tabstop=4                   " set tabulator length to 4 columns
 set textwidth=80                " wrap lines automatically at 80th column:set
 
+" set temp files dir
+set swapfile
+set dir=~/.vimswap
+
 "Search settings
 " Fuzzy Search
 set path+=**
@@ -103,7 +107,7 @@ au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf='pdflatex -output-directory=output/ -interaction=nonstopmode $*'
 let g:Tex_GotoError=0
-
+let g:Imap_UsePlaceHolders = 0
 " ---------------------------------------------
 " DISPLAY SETTINGS
 " ---------------------------------------------
