@@ -4,7 +4,7 @@
 
 exec_always ~/.per-workspace-layout.pl
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -16,6 +16,7 @@ for_window [class="^.*"] border pixel 3
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+focus_follows_mouse no
 
 # rotate screen
 bindsym $mod+Shift+< exec xrandr -o left
@@ -196,6 +197,6 @@ client.unfocused        #BDC3C7     #7195a8   #2C3E50     #b16286     #7195a8
 # processes to start on login
 exec feh --bg-scale ~/pics/wall.png
 exec unclutter
-exec redshift -l geoclue2
+exec redshift -l 53.4105800:-2.9779400
 exec_always compton -bcf --backend glx  --vsync opengl-swc --mark-wmwin-focused
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
