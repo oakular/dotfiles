@@ -10,6 +10,7 @@ set nocompatible " use Vim mode instead of pure Vi
 
 call plug#begin('~/.vim/plugins')
 
+Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -19,7 +20,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'davidhalter/jedi-vim', {'for' : 'python'}
 Plug 'benmills/vimux' " run shell commands from vim for tmux panes
 Plug 'majutsushi/tagbar' " tagbar navigator
-Plug 'vim-syntastic/syntastic' " syntax checking
+" Plug 'vim-syntastic/syntastic' " syntax checking
 Plug 'tpope/vim-surround' " surround text with parens etc.
 Plug 'airblade/vim-gitgutter' " show edits to files in gutter
 Plug 'tpope/vim-fugitive' " vim git integration
@@ -81,16 +82,19 @@ set smartcase                   " ...unless capital letters are used
 " Use Tags
 command! MakeTags !ctags -R .
 
+" enable omnifunc syntax completion
+set omnifunc=syntaxcomplete#Complete
+
 " ---------------------------------------------
 "  NETRW CONFIG
 " ---------------------------------------------
 
-let g:netrw_winsize=20
 let g:netrw_banner=0
-let g:netrw_browse_split=4
-let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
+let g:netrw_browse_split=0
+let g:netrw_hide=1
+let g:netrw_list_hide='^\..*'
 let g:netrw_altv=1
-let g:netrw_liststyle=3
+let g:netrw_liststyle=2
 
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Vexplore | endif
@@ -120,7 +124,7 @@ syntax enable
 
 set fillchars=stl:-,stlnc:-,vert:\|
 
-set laststatus=1
+set laststatus=2
 hi statusline guibg=NONE
 hi statusline ctermbg=NONE
 hi statusline guifg=#fdf6e3
@@ -142,6 +146,7 @@ endif
 " splits open below and to the right of current pane
 set splitbelow
 set splitright
+set equalalways " resize splits when closing/splitting
 
 set autoindent
 set showmatch
@@ -254,3 +259,9 @@ nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 
 " Zoom the tmux runner pane
 nnoremap <Leader>vz :VimuxZoomRunner<CR>
+
+" git-gutter config
+let g:gitgutter_sign_added = '.'
+let g:gitgutter_sign_modified = '.'
+let g:gitgutter_sign_removed = '.'
+let g:gitgutter_sign_modified_removed = '.'
