@@ -1,6 +1,4 @@
 " vimrc file for my vim config
-" written with inspiration from Miko Bartnicki <mikobartnicki@gmail.com>
-" and this article: https://blog.bugsnag.com/tmux-and-vim/
 
 set nocompatible " use Vim mode instead of pure Vi
 
@@ -10,8 +8,6 @@ set nocompatible " use Vim mode instead of pure Vi
 
 call plug#begin('~/.vim/plugins')
 
-Plug 'w0rp/ale'
-Plug 'chriskempson/base16-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -20,18 +16,32 @@ Plug 'garbas/vim-snipmate'
 Plug 'davidhalter/jedi-vim', {'for' : 'python'}
 Plug 'benmills/vimux' " run shell commands from vim for tmux panes
 Plug 'majutsushi/tagbar' " tagbar navigator
-" Plug 'vim-syntastic/syntastic' " syntax checking
-Plug 'tpope/vim-surround' " surround text with parens etc.
-Plug 'airblade/vim-gitgutter' " show edits to files in gutter
-Plug 'tpope/vim-fugitive' " vim git integration
-Plug 'tpope/vim-commentary' " easily comment and uncomment code
-Plug 'christoomey/vim-tmux-navigator' " switch between vim and tmux splits seamlessly
 Plug 'junegunn/goyo.vim'
+
+" extending vim features
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+" Plug 'houtsnip/vim-emacscommandline'
+
+" colorschemes
+Plug 'ajmwagar/vim-deus'
+Plug 'chriskempson/base16-vim'
+
+" source code linting
+Plug 'w0rp/ale'
+" Plug 'vim-syntastic/syntastic'
+
+" version control
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+" Plug 'lambdalisue/gina.vim'
+
+" LaTeX
 Plug 'vim-latex/vim-latex'
 Plug 'xuhdev/vim-latex-live-preview'
 
-"Plug 'lambdalisue/gina.vim' " git plugin
-" Plug 'maralla/completor.vim' " auto complete
 call plug#end()
 
 " ---------------------------------------------
@@ -72,12 +82,11 @@ set textwidth=80                " wrap lines automatically at 80th column:set
 " Fuzzy Search
 set path+=**
 set wildmenu
-
 set hlsearch                    " highlight search results
-set ignorecase                  " search case insensitively
+set infercase                   " search case insensitively
 set incsearch                   " sets vim to search as you type
 set smartcase                   " ...unless capital letters are used
-" set autochdir                   " cd to current file dir
+" set autochdir
 
 " Use Tags
 command! MakeTags !ctags -R .
@@ -103,20 +112,16 @@ let g:netrw_liststyle=2
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
 
 " ---------------------------------------------
-"  VIM-LATEX CONFIG
-" ---------------------------------------------
-
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_CompileRule_pdf='pdflatex -output-directory=output/ -interaction=nonstopmode $*'
-let g:Tex_GotoError=0
-
-" ---------------------------------------------
 " DISPLAY SETTINGS
 " ---------------------------------------------
 
 let base16colorspace=256
 set t_Co=256
-colorscheme base16-solarized-dark
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " fixing term vim deus colors
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " fixing term vim deus colors
+colorscheme deus
+let g:deus_termcolors=256
 set background=dark
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
@@ -152,13 +157,11 @@ set autoindent
 set showmatch
 set matchtime=2
 
+" always have 1 line above or below cursor
+set scrolloff=1
+
 " formats error messages to show in vim
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-
-" adds keys for cycling through errors
-map <F9> :make<Return>:copen<Return>
-map <F10> :cprevious<Return>
-map <F11> :cnext<Return>
 
 " characters for displaying non-printable characters
 set listchars=eol:$,tab:>-,trail:.,nbsp:_,extends:+,precedes:+
@@ -192,34 +195,35 @@ if has('autocmd')
 endif
 
 " ---------------------------------------------------
-" VIM GUNDO CONFIG
-" ---------------------------------------------------
-
-let g:gundo_width = 40
-let g:gundo_preview_height = 25
-
-" ---------------------------------------------------
 " Key Remappings
 " ---------------------------------------------------
 
-" remap : to ; but keep : functionality
-" nnoremap ; :
-" nnoremap : ;
-" vnoremap ; :
-" vnoremap : ;
+" remap colon to open command window and start in insert mode
+nnoremap : :<C-F>i
 
 " remapping leader to space
 let mapleader = "\<Space>"
 
 " navigating splits is now simple ctrl+j, ctrl+k
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 " maps leader+w to save file
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+
+" quick access to buffer list
+nnoremap <Leader>b :ls<CR>
+
+" access netrw quickly
+nnoremap <Leader>e :Explore<CR>
+
+" adds keys for cycling through errors
+map <Leader>m :make<Return>:copen<Return>
+map <Leader>- :cprevious<Return>
+map <Leader>= :cnext<Return>
 
 " maps j and k to move onto soft-wrapped lines automatically
 nnoremap j gj
@@ -229,39 +233,32 @@ nnoremap k gk
 noremap n nzz
 noremap N Nzz
 
-" press F4 to fix indentation in whole file; overwrites marker 'q' position
-noremap <F4> mqggVG=`qzz
-inoremap <F4> <Esc>mqggVG=`qzza
-
-" toggle Gundo undo tree viewer w/ F5
-nnoremap <F5> :GundoToggle<CR>
-
 " hit space to turn the search results highlight off
-nnoremap <leader><space> :nohlsearch<CR>
-"inoremap <F8> <Esc>:nohl<CR>a
-
-" press F12 to toggle showing the non-printable charactes
-noremap <F12> :set list!<CR>
-inoremap <F12> <Esc>:set list!<CR>a
+nnoremap <Leader><space> :nohlsearch<CR>
 
 " Tagbar Toggle Key
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " ---------------------------------------------
-" VIMUX CONFIG
+" GIT-GUTTER CONFIG
+" ---------------------------------------------
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_modified_removed = '•'
+
+" ---------------------------------------------
+"  VIM-LATEX CONFIG
 " ---------------------------------------------
 
-" Prompt for a command to run
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_CompileRule_pdf='pdflatex -output-directory=output/ -interaction=nonstopmode $*'
+let g:Tex_GotoError=0
 
-" Run last command executed by VimuxRunCommand
-nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+" ---------------------------------------------------
+" VIM GUNDO CONFIG
+" ---------------------------------------------------
 
-" Zoom the tmux runner pane
-nnoremap <Leader>vz :VimuxZoomRunner<CR>
-
-" git-gutter config
-let g:gitgutter_sign_added = '.'
-let g:gitgutter_sign_modified = '.'
-let g:gitgutter_sign_removed = '.'
-let g:gitgutter_sign_modified_removed = '.'
+nnoremap <Leader>g :GundoToggle<CR>
+let g:gundo_width = 40
+let g:gundo_preview_height = 25
