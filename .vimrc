@@ -13,13 +13,11 @@ Plug 'plasticboy/vim-markdown'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
-Plug 'davidhalter/jedi-vim', {'for' : 'python'}
-Plug 'benmills/vimux' " run shell commands from vim for tmux panes
-Plug 'majutsushi/tagbar' " tagbar navigator
-Plug 'junegunn/goyo.vim'
+" Plug 'davidhalter/jedi-vim', {'for' : 'python'}
 
-" extending vim features
+" extending vim methodology
 Plug 'sjl/gundo.vim'
+Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -42,6 +40,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-latex/vim-latex'
 Plug 'xuhdev/vim-latex-live-preview'
 
+" writing prose
+Plug 'junegunn/goyo.vim'
+
 call plug#end()
 
 " ---------------------------------------------
@@ -56,13 +57,13 @@ set showmatch                   " highlight matching braces
 set showmode                    " show insert/replace/visual mode
 
 " enable the mouse
-set guifont=Hack:h12
+set guifont=Hack:h10
 set guioptions-=T               "remove toolbar
 set guioptions-=r               "remove right-hand scroll bar
 set guioptions-=L               "remove left-hand scroll bar
 
 set number                      " show line numbers
-set relativenumber              " combine line numbers with absolute numbers
+" set relativenumber              " combine line numbers with absolute numbers
 
 " write settings
 set confirm                     " confirm :q in for unsaved changes
@@ -75,6 +76,7 @@ set backspace=indent,eol,start  " backspacing over everything in insert mode
 set expandtab                   " makes tabs spaces to keep consistency across devices
 set nojoinspaces                " no extra space after '.' when joining lines
 set shiftwidth=4                " set indentation depth to 4 columns
+set softtabstop=4               " backspace over spaces as tabs
 set tabstop=4                   " set tabulator length to 4 columns
 set textwidth=80                " wrap lines automatically at 80th column:set
 
@@ -148,6 +150,16 @@ if has("gui_running")
     set columns=120
 endif
 
+set statusline=
+set statusline +=%1*\ b%n\ %*            "buffer number
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%F%*            "full path
+set statusline +=%2*%m%*                "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4p\ %*             "virtual column number
+set statusline +=%1*%4v\ %*             "virtual column number
+
 " splits open below and to the right of current pane
 set splitbelow
 set splitright
@@ -191,7 +203,7 @@ if has('autocmd')
         " autocmd BufWritePre * :%s/\(\s*\n\)\{3,}/\r\r/ge
 
         " delete any trailing whitespaces
-        autocmd BufWritePre * :%s/\s\+$//ge
+        " autocmd BufWritePre * :%s/\s\+$//ge
 endif
 
 " ---------------------------------------------------
@@ -200,6 +212,7 @@ endif
 
 " remap colon to open command window and start in insert mode
 nnoremap : :<C-F>i
+nnoremap q: :
 
 " remapping leader to space
 let mapleader = "\<Space>"
@@ -215,10 +228,12 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
 " quick access to buffer list
-nnoremap <Leader>b :ls<CR>
+nnoremap <Leader>ls :ls<CR>
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bp :bp<CR>
 
 " access netrw quickly
-nnoremap <Leader>e :Explore<CR>
+nnoremap <Leader>E :Explore<CR>
 
 " adds keys for cycling through errors
 map <Leader>m :make<Return>:copen<Return>
@@ -233,11 +248,17 @@ nnoremap k gk
 noremap n nzz
 noremap N Nzz
 
+" center view when moving to top/bottom of file
+nnoremap G Gzz
+
 " hit space to turn the search results highlight off
 nnoremap <Leader><space> :nohlsearch<CR>
 
 " Tagbar Toggle Key
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
+
+command Bdp bd | bp
+command Bdn bd | bn
 
 " ---------------------------------------------
 " GIT-GUTTER CONFIG
@@ -250,7 +271,6 @@ let g:gitgutter_sign_modified_removed = '•'
 " ---------------------------------------------
 "  VIM-LATEX CONFIG
 " ---------------------------------------------
-
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf='pdflatex -output-directory=output/ -interaction=nonstopmode $*'
 let g:Tex_GotoError=0
@@ -258,7 +278,26 @@ let g:Tex_GotoError=0
 " ---------------------------------------------------
 " VIM GUNDO CONFIG
 " ---------------------------------------------------
-
 nnoremap <Leader>g :GundoToggle<CR>
 let g:gundo_width = 40
 let g:gundo_preview_height = 25
+
+" ---------------------------------------------------
+" ALE CONFIG
+" ---------------------------------------------------
+let g:ale_lint_on_text_changed = 'normal'
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline+=%{LinterStatus()}
