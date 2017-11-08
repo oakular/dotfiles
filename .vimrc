@@ -4,13 +4,15 @@
 
 set nocompatible " use Vim mode instead of pure Vi
 
+set exrc
+set secure
+
 " ---------------------------------------------------
 " Plug Config
 " ---------------------------------------------------
 
 call plug#begin('~/.vim/plugins')
 
-Plug 'chriskempson/base16-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -74,14 +76,18 @@ set dir=~/.vimswap
 set path+=**
 set wildmenu
 
+" search settings
 set hlsearch                    " highlight search results
 set ignorecase                  " search case insensitively
 set incsearch                   " sets vim to search as you type
 set smartcase                   " ...unless capital letters are used
-set autochdir                   " cd to current file dir
+" set autochdir                   " cd to current file dir
 
 " Use Tags
 command! MakeTags !ctags -R .
+
+" completion options
+set completeopt="menu,preview,noinsert"
 
 " ---------------------------------------------
 "  NETRW CONFIG
@@ -114,7 +120,7 @@ let g:Imap_UsePlaceHolders = 0
 
 let base16colorspace=256
 set t_Co=256
-colorscheme base16-solarized-dark
+colorscheme slate
 set background=dark
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
