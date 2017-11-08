@@ -80,6 +80,10 @@ set softtabstop=4               " backspace over spaces as tabs
 set tabstop=4                   " set tabulator length to 4 columns
 set textwidth=80                " wrap lines automatically at 80th column:set
 
+" set temp files dir
+set swapfile
+set dir=~/.vimswap
+
 "Search settings
 " Fuzzy Search
 set path+=**
@@ -114,9 +118,17 @@ let g:netrw_liststyle=2
 au BufRead ~/.tmp/mutt-* set wrap linebreak nolist
 
 " ---------------------------------------------
-" DISPLAY SETTINGS
+"  VIM-LATEX CONFIG
 " ---------------------------------------------
 
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_CompileRule_pdf='pdflatex -output-directory=output/ -interaction=nonstopmode $*'
+let g:Tex_GotoError=0
+let g:Imap_UsePlaceHolders = 0
+
+" ---------------------------------------------
+" DISPLAY SETTINGS
+" ---------------------------------------------
 let base16colorspace=256
 set t_Co=256
 set termguicolors

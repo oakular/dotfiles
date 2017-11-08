@@ -46,9 +46,9 @@ font-0 = fixed:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=11;1
 
-modules-left = i3 xwindow
+modules-left = i3
 modules-center = date
-modules-right = filesystem xbacklight memory vpncheck battery temperature
+modules-right = vpncheck battery
 
 tray-position = right
 tray-padding = 2
@@ -260,11 +260,11 @@ format-prefix-foreground = #5b
 type = internal/date
 interval = 5
 
-date = "%d-%m-%Y"
-date-alt = " %Y-%m-%d"
+date = "%d%m"
+; date-alt = " %Y-%m-%d"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %H%M
+; time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
