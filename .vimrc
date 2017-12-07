@@ -25,7 +25,6 @@ Plug 'tpope/vim-repeat'
 
 " colorschemes
 Plug 'ajmwagar/vim-deus'
-Plug 'chriskempson/base16-vim'
 
 " source code linting
 Plug 'w0rp/ale'
@@ -37,11 +36,11 @@ Plug 'tpope/vim-fugitive'
 " Plug 'lambdalisue/gina.vim'
 
 " LaTeX
-Plug 'vim-latex/vim-latex'
-Plug 'xuhdev/vim-latex-live-preview'
+Plug 'vim-latex/vim-latex', {'for' : 'tex'}
+Plug 'xuhdev/vim-latex-live-preview', {'for' : 'tex'}
 
 " writing prose
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', {'for' : 'markdown'}
 
 call plug#end()
 
