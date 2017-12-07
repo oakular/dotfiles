@@ -2,6 +2,9 @@
 
 set nocompatible " use Vim mode instead of pure Vi
 
+set exrc
+set secure
+
 " ---------------------------------------------------
 " Plug Config
 " ---------------------------------------------------
@@ -88,15 +91,19 @@ set dir=~/.vimswap
 " Fuzzy Search
 set path+=**
 set wildmenu
+
+" search settings
 set hlsearch                    " highlight search results
 set infercase                   " search case insensitively
 set incsearch                   " sets vim to search as you type
 set smartcase                   " ...unless capital letters are used
-" set autochdir
+" set autochdir                   " cd to current file dir
 
 " Use Tags
 command! MakeTags !ctags -R .
 
+" completion options
+set completeopt="menu,preview,noinsert"
 " enable omnifunc syntax completion
 set omnifunc=syntaxcomplete#Complete
 
@@ -219,7 +226,7 @@ if has('autocmd')
 endif
 
 " ---------------------------------------------------
-" Key Remappings
+" KEY REMAPPINGS
 " ---------------------------------------------------
 
 " remap colon to open command window and start in insert mode
@@ -266,7 +273,6 @@ nnoremap G Gzz
 " hit space to turn the search results highlight off
 nnoremap <Leader><space> :nohlsearch<CR>
 
-" Tagbar Toggle Key
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 command Bdp bd | bp
