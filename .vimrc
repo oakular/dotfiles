@@ -12,7 +12,7 @@ set secure
 call plug#begin('~/.vim/plugins')
 
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', {'for' : 'markdown'}
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
@@ -34,17 +34,20 @@ Plug 'chriskempson/base16-vim'
 Plug 'w0rp/ale'
 " Plug 'vim-syntastic/syntastic'
 
+" filetype extensions
+Plug 'blueyed/smarty.vim', {'for' : 'smarty' }
+
 " version control
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 " Plug 'lambdalisue/gina.vim'
 
 " LaTeX
-Plug 'vim-latex/vim-latex'
-Plug 'xuhdev/vim-latex-live-preview'
+Plug 'vim-latex/vim-latex', {'for' : 'tex'}
+Plug 'xuhdev/vim-latex-live-preview', {'for' : 'tex'}
 
 " writing prose
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', {'for' : 'markdown'}
 
 call plug#end()
 
@@ -292,6 +295,11 @@ let g:gitgutter_sign_modified_removed = '•'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf='pdflatex -output-directory=output/ -interaction=nonstopmode $*'
 let g:Tex_GotoError=0
+
+" ---------------------------------------------
+" VIM LATEX LIVE PREVIEW CONFIG
+" ---------------------------------------------
+let g:livepreview_previewer = 'zathura'
 
 " ---------------------------------------------------
 " VIM GUNDO CONFIG
