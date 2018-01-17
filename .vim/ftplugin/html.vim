@@ -9,6 +9,12 @@ inoremap ;ol <ol><Enter></ol><Esc>F<O
 inoremap ;ul <ul><Enter></ul><Esc>F<O
 inoremap ;li <li></li><Esc>F<i
 
+" Tables
+inoremap ;tab <table><Enter></table><Esc>F<O
+inoremap ;tr <tr><Enter></tr><Esc>F<O
+inoremap ;th <th><Enter></th><Esc>F<O
+inoremap ;td <td></td><Esc>F<i
+
 " Links
 inoremap ;a <a href=""></a><Esc>F"i
 inoremap ;at <a href=""></a><Esc>F<i
