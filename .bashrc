@@ -1,8 +1,10 @@
 # Base16 Shell
-BASE16_SHELL="/Users/callum/.config/base16-shell/scripts/base16-solarized-dark.sh"
+# BASE16_SHELL="/Users/callum/.config/base16-shell/scripts/base16-solarized-light.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 shopt -s extglob
+
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin
 
 # history
 HISTIGNORE="&:ls:pwd:[fb]g:exit:clear:history"
