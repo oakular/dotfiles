@@ -67,19 +67,27 @@
 (require 'org-capture)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cc" 'org-capture)
 (setq org-directory "~/Documents/org")
 (setq org-agenda-files '("~/Documents/org/plan/"))
 (setq org-agenda-nday 7)
 (setq org-agenda-show-all-dates t)
 (setq org-reverse-note-order t)
+(setq org-enforce-todo-dependencies t)
+;; --- org auditing options
 (setq org-log-done t)
+(setq org-log-done (quote time))
+(setq org-log-redeadline (quote time))
+(setq org-log-reschedule (quote time))
 
-(define-key global-map "\C-cc" 'org-capture)
-;; (setq org-capture-templates
-;;  '(("t" "Todo" entry (file+headline "~/Documents/org/plan.org" "Tasks")
-;;         "* TODO %?\n  %i\n  %a")
-;;    ("j" "Journal" entry (file+olp+datetree "~/Documents/org/journal.org")
-;;         "* %?\nEntered on %U\n  %i\n  %a")))
+;; --- change priorities to quadrant numbers
+(setq org-highest-priority 49)
+(setq org-lowest-priority 52)
+(setq org-default-priority 50)
+
+(setq org-todo-keywords
+      '((sequence "TODO" "DOING" "HOLD" "|" "DONE" "CANCELED")))
+
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/Documents/org/refile.org")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
