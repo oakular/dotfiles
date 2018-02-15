@@ -12,7 +12,7 @@
 
 ;; ----- STARTUP -----
 (setq default-directory "~/Documents/")
-(setq initial-buffer-choice "~/Documents/personal/mantra.md")
+(setq initial-buffer-choice "~/Documents/personal/mantra.org")
 
 ;; ----- EDITING -----
 (setq-default major-mode 'text-mode)
@@ -31,7 +31,7 @@
   ;; Hint: Customize `ns-use-native-fullscreen'
 (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
 (setq initial-frame-alist '((top . 0) (left . 0) (width . 120) (height . 80)    ))
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 (set-face-attribute 'default t :font "Hack" )
 
 (load-theme 'solarized-light t)
@@ -68,8 +68,9 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cc" 'org-capture)
-(setq org-directory "~/Documents/org")
-(setq org-agenda-files '("~/Documents/org/plan/"))
+(setq org-directory "~/Documents/org/")
+(setq org-agenda-files '("~/Documents/org/plan/"
+                         "~/Documents/org/refile.org"))
 (setq org-agenda-nday 7)
 (setq org-agenda-show-all-dates t)
 (setq org-reverse-note-order t)
@@ -96,7 +97,7 @@
               ("n" "note" entry (file "~/Documents/org/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
               ("j" "Journal" entry (file+datetree "~/Documents/org/daily-review.org")
-               "* %?\n%U\n" :clock-in t :clock-resume t)
+               "* Actions I am proud of:\n** ?\nActions I am not proud of:\n**\nHow to make tomorrow meaningful:\n**%U\n" :clock-in t :clock-resume t)
               ("w" "org-protocol" entry (file "~/Documents/org/refile.org")
                "* TODO Review %c\n%U\n" :immediate-finish t)
               ("m" "Meeting" entry (file "~/Documents/org/refile.org")
