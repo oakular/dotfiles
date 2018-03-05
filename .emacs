@@ -38,8 +38,8 @@
   ;; Command-Option-f to toggle fullscreen mode
   ;; Hint: Customize `ns-use-native-fullscreen'
 (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 160) (height . 80)    ))
-(set-face-attribute 'default nil :height 110)
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 160) (height . 50)    ))
+(set-face-attribute 'default nil :height 80)
 (set-face-attribute 'default t :font "Hack" )
 
 (setq solarized-high-contrast-mode-line t)
@@ -66,6 +66,7 @@
 ;;(setq haskell-process-type 'ghci)
 
 ;; ----- ELIXIR CONFIG -----
+(require 'elixir-mode)
 (add-to-list 'elixir-mode-hook
              (defun auto-activate-ruby-end-mode-for-elixir-mode ()
                (set (make-variable-buffer-local 'ruby-end-expand-keywords-before-re)
@@ -109,10 +110,15 @@ It continues checking for javascript errors if there are no more PHP errors."
      (add-to-list 'flycheck-checkers 'web-mode-php)
      ))
 
+;; ----- SQL CONFIG -----
+(require 'sqlup-mode)
+(add-hook 'sql-interactive-mode-hook 'sqlup-mode)
+
 (provide 'flycheck-web-mode-php)
 
 ;; ----- MARKDOWN CONFIG -----
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
+;;(setq 'markdown-pre-face "Georgia")
 
 ;; ----- BLOGGING -----
 (setq easy-jekyll-basedir "~/Documents/projects/writing/blog/")
@@ -207,6 +213,15 @@ It continues checking for javascript errors if there are no more PHP errors."
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(magit-log-arguments (quote ("--graph" "--decorate" "--stat" "-n256")))
  '(package-selected-packages
    (quote
-    (ruby-end alchemist elixir-mode elixir-yasnippets nov easy-jekyll org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
+    (sqlup-mode ac-html ac-php ruby-end alchemist elixir-mode elixir-yasnippets nov easy-jekyll org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna)))
+ '(sql-connection-alist
+   (quote
+    (("officeplan"
+      (sql-product
+       (quote mysql))
+      (sql-user "officeplan")
+      (sql-database "officeplan")
+      (sql-server "mysql.csc.liv.ac.uk"))))))
