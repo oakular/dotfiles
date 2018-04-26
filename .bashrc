@@ -4,7 +4,7 @@
 
 shopt -s extglob
 
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:~/.composer/vendor/bin/
 
 # history
 HISTIGNORE="&:ls:pwd:[fb]g:exit:clear:history"

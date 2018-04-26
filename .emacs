@@ -38,10 +38,12 @@
   ;; Command-Option-f to toggle fullscreen mode
   ;; Hint: Customize `ns-use-native-fullscreen'
 (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 160) (height . 50)    ))
-(set-face-attribute 'default nil :height 80)
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 160) (height . 70)    ))
+(set-face-attribute 'default nil :height 110)
 (set-face-attribute 'default t :font "Hack" )
 
+(setq solarized-use-variable-pitch nil
+      solarized-scale-org-headlines nil)
 (setq solarized-high-contrast-mode-line t)
 (setq solarized-distinct-fringe-background t)
 (load-theme 'solarized-light t)
@@ -142,24 +144,33 @@ It continues checking for javascript errors if there are no more PHP errors."
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 (setq global-magit-file-mode t)
 
-;; ----- JDEE CONFIG -----
-(setq jdee-server-dir "~/.jdee-jar/")
-
 ;; ----- ORG MODE -----
 ;; (setcar (nthcdr 4 org-emphasis-regexp-components) 4)
 
 (require 'org)
 (require 'org-capture)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(setq org-startup-indented t)
+;; (setq org-odd-levels-only t)
+(setq org-hide-emphasis-markers t)
+
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cc" 'org-capture)
+
 (setq org-directory "~/Documents/org/")
+(setq org-mobile-directory "~/Documents/Dropbox/Apps/MobileOrg")
+(setq org-mobile-inbox-for-pull "~/Documents/org/refile.org")
 (setq org-agenda-files '("~/Documents/org/plan/"
                          "~/Documents/org/refile.org"))
 (setq org-agenda-nday 7)
+(setq org-agenda-window-setup 'only-window)
 (setq org-agenda-show-all-dates t)
 (setq org-reverse-note-order t)
 (setq org-enforce-todo-dependencies t)
+
 ;; --- org auditing options
 (setq org-log-done t)
 (setq org-log-done (quote time))
@@ -172,23 +183,44 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-default-priority 50)
 
 (setq org-todo-keywords
-      '((sequence "TODO" "DOING" "HOLD" "|" "DONE" "CANCELLED")))
+      '((sequence "TODO(t)" "DOING(o)" "HOLD(h)" "|" "DONE(d)" "CANCELLED(c)")))
+
+(setq org-default-notes-file "~/Documents/org/refile.org")
 
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/Documents/org/refile.org")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("r" "respond" entry (file "~/Documents/org/refile.org")
-               "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
-              ("n" "note" entry (file "~/Documents/org/refile.org")
-               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("j" "Journal" entry (file+datetree "~/Documents/org/daily-review.org")
-               "* Actions I am proud of:\n** ?\nActions I am not proud of:\n**\nHow to make tomorrow meaningful:\n**%U\n" :clock-in t :clock-resume t)
-              ("w" "org-protocol" entry (file "~/Documents/org/refile.org")
+      (quote (
+              ("t" "TODO Item"
+               entry (file+headline org-default-notes-file "Tasks")
+               "* TODO %?\n %i\n %a")
+
+              ("r" "respond"
+               entry (file org-default-notes-file)
+               "* Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n")
+
+              ("s" "web search"
+               entry (file "~/Documents/org/web-searches.org")
+               "* Search for %?\n%a")
+              
+              ("n" "note"
+               entry (file+headline org-default-notes-file "Notes")
+               "* NOTE: %?\n%U\n%a\n")
+
+              ("j" "Journal"
+               entry (file+datetree "~/Documents/org/daily-review.org")
+               (file "~/.emacs.d/org-templates/journal.orgtmpl"))
+
+              ("w" "org-protocol"
+               entry (file "~/Documents/org/refile.org")
                "* TODO Review %c\n%U\n" :immediate-finish t)
-              ("m" "Meeting" entry (file "~/Documents/org/refile.org")
-               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
-              ("p" "Phone call" entry (file "~/Documents/org/refile.org")
-               "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
+
+              ("m" "Meeting"
+               entry (file+headline org-default-notes-file "Meetings")
+               "* MEETING with %? r.e \n%U")
+
+              ("p" "Contact"
+               entry (file+headline org-default-notes-file "Contact")
+               "* Message/Phone %? \n%U")
+
               ("h" "Habit" entry (file "~/Documents/org/refile.org")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
@@ -200,7 +232,7 @@ It continues checking for javascript errors if there are no more PHP errors."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-hide ((t (:foreground "#fdf6e3")))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -209,19 +241,11 @@ It continues checking for javascript errors if there are no more PHP errors."
  '(LaTeX-command-style
    (quote
     (("" "%(PDF)%(latex) --output-directoyr=output/ %(file-line-error) %(extraopts) %S%(PDFout)"))))
+ '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
- '(magit-log-arguments (quote ("--graph" "--decorate" "--stat" "-n256")))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(package-selected-packages
    (quote
-    (sqlup-mode ac-html ac-php ruby-end alchemist elixir-mode elixir-yasnippets nov easy-jekyll org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna)))
- '(sql-connection-alist
-   (quote
-    (("officeplan"
-      (sql-product
-       (quote mysql))
-      (sql-user "officeplan")
-      (sql-database "officeplan")
-      (sql-server "mysql.csc.liv.ac.uk"))))))
+    (org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
