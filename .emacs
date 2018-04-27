@@ -1,7 +1,14 @@
 ;; ----- PACKAGES -----
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
 (setq user-full-name "Callum Warrilow"
@@ -25,9 +32,18 @@
 ;; ----- EDITING -----
 (setq-default major-mode 'text-mode)
 (setq-default indent-tabs-mode nil)
+(setq-default auto-fill-mode t)
+(add-hook 'text-mode-hook #'abbrev-mode)
 (setq visible-bell t)
 (setq-default fill-column 80)
 (show-paren-mode 1)
+
+;; ----- ESHELL -----
+(require 'em-tramp)
+(setq eshell-prefer-lisp-functions t)
+(setq eshell-prefer-lisp-variables t)
+(setq password-cache t)
+(setq password-cache-expiry 3600)
 
 ;; ----- FRAME APPEARANCE -----
 (tool-bar-mode -1)
@@ -38,7 +54,7 @@
   ;; Command-Option-f to toggle fullscreen mode
   ;; Hint: Customize `ns-use-native-fullscreen'
 (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 160) (height . 50)    ))
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 200) (height . 70)    ))
 (set-face-attribute 'default nil :height 80)
 (set-face-attribute 'default t :font "Hack" )
 
@@ -76,7 +92,9 @@
 
 ;; ----- PHP CONFIG -----
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.blade\\.'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+
 (setq-default indent-tabs-mode nil)
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
@@ -84,7 +102,8 @@
     (setq web-mode-css-indent-offset 4)
     (setq web-mode-code-indent-offset 4)
     (setq web-mode-indent-style 4)
-)
+    )
+
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 (add-hook 'web-mode-hook
           '(lambda ()
@@ -150,12 +169,16 @@ It continues checking for javascript errors if there are no more PHP errors."
 
 (require 'org)
 (require 'org-capture)
+
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cc" 'org-capture)
+
 (setq org-directory "~/Documents/org/")
 (setq org-agenda-files '("~/Documents/org/plan/"
                          "~/Documents/org/refile.org"))
+
+(setq org-agenda-window-setup "only-window")
 (setq org-agenda-nday 7)
 (setq org-agenda-show-all-dates t)
 (setq org-reverse-note-order t)
@@ -172,14 +195,25 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-default-priority 50)
 
 (setq org-todo-keywords
-      '((sequence "TODO" "DOING" "HOLD" "|" "DONE" "CANCELLED")))
+      ;; '((sequence "TODO" "DOING" "HOLD" "|" "DONE" "CANCELLED")))
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "DOING(o)" "HOLD(h)" "|")
+        ;; (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "|" "CANCELED(c)")))
+
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("DOING" . (:foreground "orange"))
+        ("DONE" . (:foreground "light-green"))
+        ("CANCELED" . (:foreground "blue" :weight bold))))
+
 
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/Documents/org/refile.org")
+      (quote (("t" "todo" entry (file+headline "~/Documents/org/refile.org" "Todo Entries")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
               ("r" "respond" entry (file "~/Documents/org/refile.org")
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
-              ("n" "note" entry (file "~/Documents/org/refile.org")
+              ("n" "note" entry (file+headline "~/Documents/org/refile.org" "Notes")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
               ("j" "Journal" entry (file+datetree "~/Documents/org/daily-review.org")
                "* Actions I am proud of:\n** ?\nActions I am not proud of:\n**\nHow to make tomorrow meaningful:\n**%U\n" :clock-in t :clock-resume t)
@@ -187,10 +221,12 @@ It continues checking for javascript errors if there are no more PHP errors."
                "* TODO Review %c\n%U\n" :immediate-finish t)
               ("m" "Meeting" entry (file "~/Documents/org/refile.org")
                "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
-              ("p" "Phone call" entry (file "~/Documents/org/refile.org")
-               "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
+              ("p" "Contact" entry (file "~/Documents/org/refile.org")
+               "* Contact %? r.e :CONTACT:\n%U" :clock-in t :clock-resume t)
               ("h" "Habit" entry (file "~/Documents/org/refile.org")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
+
+(setq org-tag-alist '(("COMPLETE" . ?C) ("FIRST_DRAFT" . ?f) ("PROOF_READ" . ?p) ("TODO" . ?t) ("STARTED" . ?s)))
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
@@ -216,7 +252,7 @@ It continues checking for javascript errors if there are no more PHP errors."
  '(magit-log-arguments (quote ("--graph" "--decorate" "--stat" "-n256")))
  '(package-selected-packages
    (quote
-    (sqlup-mode ac-html ac-php ruby-end alchemist elixir-mode elixir-yasnippets nov easy-jekyll org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna)))
+    (org-sticky-header browse-kill-ring web-mode json-navigator json-mode ledger-mode org-kanban pomidor docker-compose-mode sqlup-mode ac-html ac-php ruby-end alchemist elixir-mode elixir-yasnippets nov easy-jekyll org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna)))
  '(sql-connection-alist
    (quote
     (("officeplan"
