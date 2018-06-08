@@ -1,7 +1,14 @@
 ;; ----- PACKAGES -----
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
 (setq user-full-name "Callum Warrilow"
@@ -228,7 +235,7 @@ It continues checking for javascript errors if there are no more PHP errors."
                entry (file+headline org-default-notes-file "Contact")
                "* Message/Phone %? \n%U")
 
-              ("h" "Habit" entry (file "~/Documents/org/refile.org")
+              ("h" "Habit" entry (file "~/Documents/org/plan/habits.org")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
