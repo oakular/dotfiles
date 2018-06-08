@@ -28,6 +28,7 @@
 (setq visible-bell t)
 (setq-default fill-column 80)
 (show-paren-mode 1)
+(setenv "DICTIONARY" "en_GB")
 
 ;; ----- FRAME APPEARANCE -----
 (tool-bar-mode -1)
@@ -41,6 +42,8 @@
 (setq initial-frame-alist '((top . 0) (left . 0) (width . 160) (height . 70)    ))
 (set-face-attribute 'default nil :height 110)
 (set-face-attribute 'default t :font "Hack" )
+
+(setq markdown-header-face "Georgia")
 
 (setq solarized-use-variable-pitch nil
       solarized-scale-org-headlines nil)
@@ -58,6 +61,7 @@
 
 ;; ----- DIRED CONFIG -----
 (setq dired-listing-switches "-lur")
+(setq dired-async-mode t)
 
 ;; ----- HASKELL CONFIG -----
 ;;(setenv "PATH" "/usr/local/bin:/usr/bin:/bin:/usr/local/bin:/usr/local/bin/cabal")
@@ -120,6 +124,7 @@ It continues checking for javascript errors if there are no more PHP errors."
 
 ;; ----- MARKDOWN CONFIG -----
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
+(setq markdown-hide-markup 1)
 ;;(setq 'markdown-pre-face "Georgia")
 
 ;; ----- BLOGGING -----
@@ -151,6 +156,8 @@ It continues checking for javascript errors if there are no more PHP errors."
 (require 'org-capture)
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(add-to-list 'org-modules 'org-habit t)
 
 (setq org-startup-indented t)
 ;; (setq org-odd-levels-only t)
