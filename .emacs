@@ -29,6 +29,12 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
+;; ----- ESHELL -----
+(setq eshell-buffer-name "eshell")
+(setq eshell-modify-global-environment t)
+(setq eshell-prefer-lisp-functions t)
+(setq Man-notify-method 'bully)
+
 ;; ----- EDITING -----
 (setq-default major-mode 'text-mode)
 (setq-default indent-tabs-mode nil)
@@ -36,6 +42,7 @@
 (setq-default fill-column 80)
 (show-paren-mode 1)
 (setenv "DICTIONARY" "en_GB")
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; ----- FRAME APPEARANCE -----
 (tool-bar-mode -1)
@@ -260,6 +267,13 @@ It continues checking for javascript errors if there are no more PHP errors."
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(ledger-reports
+   (quote
+    (("report" "ledger ")
+     ("bal" "%(binary) -f %(ledger-file) bal")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
  '(package-selected-packages
    (quote
-    (org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
+    (rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
