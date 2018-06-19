@@ -47,6 +47,7 @@
 ;; ----- FRAME APPEARANCE -----
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(setq display-time-mode t)
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
 (fboundp 'toggle-frame-fullscreen)
@@ -247,6 +248,12 @@ It continues checking for javascript errors if there are no more PHP errors."
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
+;; (org-babel-do-load-languages
+;;       'org-babel-load-languages
+;;       '((sh . t)))
+(require 'ob-ledger)
+(require 'ob-latex)
+(require 'ob-shell)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -266,7 +273,7 @@ It continues checking for javascript errors if there are no more PHP errors."
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "e3e7e5003380eba6a2a6c54fd57b43ce001affc7b0b4658424143b28b1889d6f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(ledger-reports
    (quote
     (("report" "ledger ")
@@ -276,4 +283,4 @@ It continues checking for javascript errors if there are no more PHP errors."
      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
  '(package-selected-packages
    (quote
-    (rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
+    (nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
