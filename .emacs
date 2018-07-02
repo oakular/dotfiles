@@ -188,6 +188,10 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-mobile-inbox-for-pull "~/Documents/org/refile.org")
 (setq org-agenda-files '("~/Documents/org/plan/"
                          "~/Documents/org/refile.org"))
+(setq org-agenda-diary-file (concat org-directory "daily-review.org"))
+
+(setq org-archive-location (concat org-directory "archive/%s_archive::"))
+
 (setq org-agenda-nday 7)
 (setq org-agenda-window-setup 'only-window)
 (setq org-agenda-show-all-dates t)
@@ -206,9 +210,9 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-default-priority 50)
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "DOING(o)" "HOLD(h)" "|" "DONE(d)" "CANCELLED(c)")))
+      '((sequence "TODO(t)" "DOING(o)" "HOLD(h)" "|" "DONE(d!)" "CANCELLED(c)")))
 
-(setq org-default-notes-file "~/Documents/org/refile.org")
+(setq org-default-notes-file (concat org-directory "refile.org"))
 
 (setq org-capture-templates
       (quote (
@@ -277,11 +281,15 @@ It continues checking for javascript errors if there are no more PHP errors."
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "e3e7e5003380eba6a2a6c54fd57b43ce001affc7b0b4658424143b28b1889d6f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(ledger-reports
    (quote
-    (("report" "ledger ")
+    (("BAL" "ledger ")
+     ("report" "ledger ")
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
+ '(org-agenda-files
+   (quote
+    ("~/Documents/org/investments.org" "/Users/callum/Documents/org/plan/habits.org" "/Users/callum/Documents/org/plan/plan.org" "~/Documents/org/refile.org")))
  '(package-selected-packages
    (quote
-    (nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
+    (android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
