@@ -4,6 +4,8 @@ BASE16_SHELL="/Users/callum/.config/base16-shell/scripts/base16-solarized-dark.s
 
 shopt -s extglob
 
+PATH="/usr/sbin:/sbin:/bin:/usr/bin:/usr/local/bin:$HOME/.config/composer/vendor/bin"
+
 CDPATH="~:~/documents:~/downloads/aurSnaps/:~/documents/sdev"
 
 # history

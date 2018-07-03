@@ -36,9 +36,17 @@
 (setq eshell-rc-script "~/.eshell/profile")
 (setq Man-notify-method 'bully)
 
+(require 'em-tramp)
+(setq eshell-prefer-lisp-functions t)
+(setq eshell-prefer-lisp-variables t)
+(setq password-cache t)
+(setq password-cache-expiry 3600)
+
 ;; ----- EDITING -----
 (setq-default major-mode 'text-mode)
 (setq-default indent-tabs-mode nil)
+(setq-default auto-fill-mode t)
+(add-hook 'text-mode-hook #'abbrev-mode)
 (setq visible-bell t)
 (setq-default fill-column 80)
 (show-paren-mode 1)
@@ -63,6 +71,7 @@
 
 (setq solarized-use-variable-pitch nil
       solarized-scale-org-headlines nil)
+
 (setq solarized-high-contrast-mode-line t)
 (setq solarized-distinct-fringe-background t)
 (load-theme 'solarized-light t)
@@ -101,6 +110,8 @@
 ;; ----- PHP CONFIG -----
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.blade\\.'" . web-mode))
+
 (setq-default indent-tabs-mode nil)
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
@@ -200,6 +211,15 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-reverse-note-order t)
 (setq org-enforce-todo-dependencies t)
 
+(setq org-agenda-files '("~/Documents/org/plan/"
+                         "~/Documents/org/refile.org"))
+
+(setq org-agenda-window-setup "only-window")
+(setq org-agenda-nday 7)
+(setq org-agenda-show-all-dates t)
+(setq org-reverse-note-order t)
+(setq org-enforce-todo-dependencies t)
+
 ;; --- org auditing options
 (setq org-log-done t)
 (setq org-log-done (quote time))
@@ -261,6 +281,41 @@ It continues checking for javascript errors if there are no more PHP errors."
 (require 'ob-ledger)
 (require 'ob-latex)
 (require 'ob-shell)
+      ;; '((sequence "TODO" "DOING" "HOLD" "|" "DONE" "CANCELLED")))
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "DOING(o)" "HOLD(h)" "|")
+        ;; (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "|" "CANCELED(c)"))
+
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("DOING" . (:foreground "orange"))
+        ("DONE" . (:foreground "light-green"))
+        ("CANCELED" . (:foreground "blue" :weight bold))))
+
+
+(setq org-capture-templates
+      (quote (("t" "todo" entry (file+headline "~/Documents/org/refile.org" "Todo Entries")
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("r" "respond" entry (file "~/Documents/org/refile.org")
+               "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
+              ("n" "note" entry (file+headline "~/Documents/org/refile.org" "Notes")
+               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("j" "Journal" entry (file+datetree "~/Documents/org/daily-review.org")
+               "* Actions I am proud of:\n** ?\nActions I am not proud of:\n**\nHow to make tomorrow meaningful:\n**%U\n" :clock-in t :clock-resume t)
+              ("w" "org-protocol" entry (file "~/Documents/org/refile.org")
+               "* TODO Review %c\n%U\n" :immediate-finish t)
+              ("m" "Meeting" entry (file "~/Documents/org/refile.org")
+               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
+              ("p" "Contact" entry (file "~/Documents/org/refile.org")
+               "* Contact %? r.e :CONTACT:\n%U" :clock-in t :clock-resume t)
+              ("h" "Habit" entry (file "~/Documents/org/refile.org")
+               "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
+
+(setq org-tag-alist '(("COMPLETE" . ?C) ("FIRST_DRAFT" . ?f) ("PROOF_READ" . ?p) ("TODO" . ?t) ("STARTED" . ?s)))
+
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -268,6 +323,7 @@ It continues checking for javascript errors if there are no more PHP errors."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-hide ((t (:foreground "#fdf6e3")))))
+ 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -295,3 +351,19 @@ It continues checking for javascript errors if there are no more PHP errors."
  '(package-selected-packages
    (quote
     (android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
+ '(column-number-mode t)
+ '(custom-safe-themes
+   (quote
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(magit-log-arguments (quote ("--graph" "--decorate" "--stat" "-n256")))
+ '(package-selected-packages
+   (quote
+    (org-sticky-header browse-kill-ring web-mode json-navigator json-mode ledger-mode org-kanban pomidor docker-compose-mode sqlup-mode ac-html ac-php ruby-end alchemist elixir-mode elixir-yasnippets nov easy-jekyll org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna)))
+ '(sql-connection-alist
+   (quote
+    (("officeplan"
+      (sql-product
+       (quote mysql))
+      (sql-user "officeplan")
+      (sql-database "officeplan")
+      (sql-server "mysql.csc.liv.ac.uk")))))
