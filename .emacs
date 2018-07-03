@@ -181,6 +181,7 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-startup-indented t)
 ;; (setq org-odd-levels-only t)
 (setq org-hide-emphasis-markers t)
+(setq org-footnotes-auto-adjust t)
 
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
