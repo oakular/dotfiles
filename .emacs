@@ -57,6 +57,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (setq display-time-mode t)
+(setq display-time-24hr-format t)
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
 (fboundp 'toggle-frame-fullscreen)
@@ -64,7 +65,7 @@
   ;; Hint: Customize `ns-use-native-fullscreen'
 (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
 (setq initial-frame-alist '((top . 0) (left . 0) (width . 160) (height . 70)    ))
-(set-face-attribute 'default nil :height 110)
+(set-face-attribute 'default nil :height 80)
 (set-face-attribute 'default t :font "Hack" )
 
 (setq markdown-header-face "Georgia")
@@ -347,7 +348,7 @@ It continues checking for javascript errors if there are no more PHP errors."
      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
  '(org-agenda-files
    (quote
-    ("~/Documents/org/investments.org" "/Users/callum/Documents/org/plan/habits.org" "/Users/callum/Documents/org/plan/plan.org" "~/Documents/org/refile.org")))
+    ("~/Documents/org/investments.org" "~/Documents/org/plan/habits.org" "~/Documents/org/plan/plan.org" "~/Documents/org/refile.org")))
  '(package-selected-packages
    (quote
     (android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
