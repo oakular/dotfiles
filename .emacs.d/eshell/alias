@@ -1,0 +1,4 @@
+alias sudo eshell/sudo
+alias d dired $*
+alias ff find-file $1
+alias arty php artisan $*
