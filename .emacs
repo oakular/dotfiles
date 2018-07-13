@@ -145,6 +145,7 @@ It continues checking for javascript errors if there are no more PHP errors."
 ;; ----- MARKDOWN CONFIG -----
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
 (setq markdown-hide-markup 1)
+(setq markdown-header-face "Georgia")
 ;;(setq 'markdown-pre-face "Georgia")
 
 ;; ----- BLOGGING -----
