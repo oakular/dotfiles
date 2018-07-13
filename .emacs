@@ -182,9 +182,10 @@ It continues checking for javascript errors if there are no more PHP errors."
 (add-to-list 'org-modules 'org-habit t)
 
 (setq org-startup-indented t)
-;; (setq org-odd-levels-only t)
 (setq org-hide-emphasis-markers t)
 (setq org-footnotes-auto-adjust t)
+
+(setq org-attach-method "ln")
 
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -296,7 +297,7 @@ It continues checking for javascript errors if there are no more PHP errors."
      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
  '(org-agenda-files
    (quote
-    ("~/Documents/org/investments.org" "/Users/callum/Documents/org/plan/habits.org" "/Users/callum/Documents/org/plan/plan.org" "~/Documents/org/refile.org")))
+    ("~/Documents/org/plan/work.org" "~/Documents/org/investments.org" "/Users/callum/Documents/org/plan/habits.org" "/Users/callum/Documents/org/plan/plan.org" "~/Documents/org/refile.org")))
  '(package-selected-packages
    (quote
-    (android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
+    (dired-subtree android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
