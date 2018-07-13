@@ -56,11 +56,9 @@
   ;; Command-Option-f to toggle fullscreen mode
   ;; Hint: Customize `ns-use-native-fullscreen'
 (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 160) (height . 70)    ))
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 200) (height . 70)    ))
 (set-face-attribute 'default nil :height 110)
 (set-face-attribute 'default t :font "Hack" )
-
-(setq markdown-header-face "Georgia")
 
 (setq solarized-use-variable-pitch nil
       solarized-scale-org-headlines nil)
