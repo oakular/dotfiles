@@ -48,8 +48,8 @@
 ;; ----- FRAME APPEARANCE -----
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(setq display-time-mode t)
-(setq display-time-24hr-format t)
+(setq display-time-format "[CL: %H:%M]")
+(display-time-mode t)
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
 (fboundp 'toggle-frame-fullscreen)
