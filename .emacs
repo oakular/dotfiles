@@ -179,6 +179,7 @@ It continues checking for javascript errors if there are no more PHP errors."
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (add-to-list 'org-modules 'org-habit t)
+(setq org-habit-show-habits-only-for-today nil)
 
 (setq org-startup-indented t)
 (setq org-hide-emphasis-markers t)
