@@ -204,6 +204,8 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-agenda-show-all-dates t)
 (setq org-reverse-note-order t)
 (setq org-enforce-todo-dependencies t)
+(setq org-agenda-show-future-repeats "next")
+(setq org-agenda-use-time-grid nil)
 
 ;; --- org auditing options
 (setq org-log-done t)
