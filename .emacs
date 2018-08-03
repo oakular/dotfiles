@@ -44,7 +44,7 @@
 (show-paren-mode 1)
 (setenv "DICTIONARY" "en_GB")
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(auto-revert-mode t)
+(global-auto-revert-mode t)
 
 ;; ----- FRAME APPEARANCE -----
 (tool-bar-mode -1)
@@ -65,7 +65,9 @@
       solarized-scale-org-headlines nil)
 (setq solarized-high-contrast-mode-line t)
 (setq solarized-distinct-fringe-background t)
-(load-theme 'solarized-light t)
+;; (load-theme 'solarized-light t)         
+
+(load-theme 'gruvbox-light-medium t)
 
 ;; ----- KEYBOARD & MOUSE CONFIG -----
 (setq mac-command-modifier 'meta)
@@ -176,6 +178,13 @@ It continues checking for javascript errors if there are no more PHP errors."
 
 (require 'org)
 (require 'org-capture)
+(require 'org-bibtex)
+
+(setq org-latex-pdf-process
+      '("pdflatex -interaction nonstopmode -output-directory %o %f"
+        "bibtex %b"
+        "pdflatex -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -interaction nonstopmode -output-directory %o %f"))
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
@@ -222,6 +231,12 @@ It continues checking for javascript errors if there are no more PHP errors."
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "DOING(o)" "HOLD(h)" "|" "DONE(d!)" "CANCELLED(c)")))
+
+;; (setq org-todo-keyword-faces
+;;       '(("TODO" . org-warning)
+;;         ("DOING" . (:foreground "orange"))
+;;         ("DONE" . (:foreground "light-green"))
+;;         ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (setq org-default-notes-file (concat org-directory "refile.org"))
 
@@ -289,7 +304,7 @@ It continues checking for javascript errors if there are no more PHP errors."
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "e3e7e5003380eba6a2a6c54fd57b43ce001affc7b0b4658424143b28b1889d6f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+    ("c856158cc996d52e2f48190b02f6b6f26b7a9abd5fea0c6ffca6740a1003b333" "7d2e7a9a7944fbde74be3e133fc607f59fdbbab798d13bd7a05e38d35ce0db8d" "ef98b560dcbd6af86fbe7fd15d56454f3e6046a3a0abd25314cfaaefd3744a9e" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "e3e7e5003380eba6a2a6c54fd57b43ce001affc7b0b4658424143b28b1889d6f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(ledger-reports
    (quote
     (("BAL" "ledger ")
@@ -303,4 +318,4 @@ It continues checking for javascript errors if there are no more PHP errors."
     ("~/Documents/org/plan/work.org" "~/Documents/org/investments.org" "/Users/callum/Documents/org/plan/habits.org" "/Users/callum/Documents/org/plan/plan.org" "~/Documents/org/refile.org")))
  '(package-selected-packages
    (quote
-    (dired-subtree android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
+    (gruvbox-theme engine-mode dired-subtree android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
