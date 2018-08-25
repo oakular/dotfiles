@@ -322,7 +322,10 @@ It continues checking for javascript errors if there are no more PHP errors."
     ("c856158cc996d52e2f48190b02f6b6f26b7a9abd5fea0c6ffca6740a1003b333" "7d2e7a9a7944fbde74be3e133fc607f59fdbbab798d13bd7a05e38d35ce0db8d" "ef98b560dcbd6af86fbe7fd15d56454f3e6046a3a0abd25314cfaaefd3744a9e" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "e3e7e5003380eba6a2a6c54fd57b43ce001affc7b0b4658424143b28b1889d6f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(ledger-reports
    (quote
-    (("BAL" "ledger ")
+    (("income" "ledger [[ledger-mode-flags]] -f /Users/callum/Documents/personal/finance/ledger/journal.ledger bal income and not parents:rent -b 2018/07/29 --invert")
+     ("assets" "ledger [[ledger-mode-flags]] -f /Users/callum/Documents/personal/finance/ledger/journal.ledger bal assets")
+     ("expenses" "ledger [[ledger-mode-flags]] -f /Users/callum/Documents/personal/finance/ledger/journal.ledger bal expenses -b 2018/07/29")
+     ("BAL" "ledger ")
      ("report" "ledger ")
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("reg" "%(binary) -f %(ledger-file) reg")
