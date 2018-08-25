@@ -61,13 +61,13 @@
 (set-face-attribute 'default nil :height 110)
 (set-face-attribute 'default t :font "Hack" )
 
-(setq solarized-use-variable-pitch nil
-      solarized-scale-org-headlines nil)
-(setq solarized-high-contrast-mode-line t)
-(setq solarized-distinct-fringe-background t)
+;; (setq solarized-use-variable-pitch nil
+;;       solarized-scale-org-headlines nil)
+;; (setq solarized-high-contrast-mode-line t)
+;; (setq solarized-distinct-fringe-background t)
 ;; (load-theme 'solarized-light t)         
 
-(load-theme 'gruvbox-light-medium t)
+(load-theme 'gruvbox-dark-soft t)
 
 ;; ----- KEYBOARD & MOUSE CONFIG -----
 (setq mac-command-modifier 'meta)
