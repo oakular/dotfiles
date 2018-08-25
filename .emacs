@@ -283,11 +283,10 @@ It continues checking for javascript errors if there are no more PHP errors."
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
-;; (org-babel-do-load-languages
-;;       'org-babel-load-languages
-;;       '((sh . t)))
 (require 'ob-ledger)
 (require 'ob-latex)
+(setq org-startup-with-latex-preview t)
+
 (require 'ob-shell)
 
 ;; ----- LEDGER MODE CONFIG -----
