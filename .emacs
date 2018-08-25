@@ -291,6 +291,16 @@ It continues checking for javascript errors if there are no more PHP errors."
 (require 'ob-latex)
 (require 'ob-shell)
 
+;; ----- LEDGER MODE CONFIG -----
+(require 'ledger-mode)
+(setq ledger-post-amount-alignment-column 60)
+(setq ledger-highlight-xact-under-point nil)
+(setq ledger-report-use-header-line 1)
+(setq ledger-report-use-native-highlighting nil)
+(setq ledger-accounts-file "~/Documents/personal/finance/ledger/accounts.ledger")
+(setq ledger-master-file "~/Documents/personal/finance/ledger/journal.ledger")
+(define-key ledger-mode-map  (kbd "C-c C-b") 'ledger-mode-clean-buffer)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
