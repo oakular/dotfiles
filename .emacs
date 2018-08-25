@@ -282,6 +282,8 @@ It continues checking for javascript errors if there are no more PHP errors."
               ("h" "Habit" entry (file "~/Documents/org/plan/habits.org")
                "* TODO %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:END:\n"))))
 
+(setq org-clock-mode-line-total 'today)
+
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
 ;; (org-babel-do-load-languages
