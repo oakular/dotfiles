@@ -102,7 +102,9 @@
                (set (make-variable-buffer-local 'ruby-end-check-statement-modifiers) nil)
                (ruby-end-mode +1)))
 
+;; ----- WEB DEV CONFIG -----
 ;; ----- PHP CONFIG -----
+(setq web-mode-enable-current-element-highlight t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (setq-default indent-tabs-mode nil)
