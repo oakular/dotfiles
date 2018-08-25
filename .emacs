@@ -43,7 +43,6 @@
 (setq-default fill-column 80)
 (show-paren-mode 1)
 (setenv "DICTIONARY" "en_GB")
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (global-auto-revert-mode t)
 
 ;; ----- FRAME APPEARANCE -----
