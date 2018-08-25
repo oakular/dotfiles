@@ -201,6 +201,7 @@ It continues checking for javascript errors if there are no more PHP errors."
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cc" 'org-capture)
+(setq org-special-ctrl-a t)
 
 (setq org-directory "~/Documents/org/")
 (setq org-mobile-directory "~/Documents/Dropbox/Apps/MobileOrg")
