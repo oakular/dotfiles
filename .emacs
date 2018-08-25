@@ -257,6 +257,10 @@ It continues checking for javascript errors if there are no more PHP errors."
                entry (file+headline org-default-notes-file "Notes")
                "* NOTE: %?\n%U\n%a\n")
 
+              ("i" "Thought"
+               entry (file+datetree org-default-notes-file "Thoughts")
+               "* %? \n%U")
+
               ("j" "Journal"
                entry (file+datetree "~/Documents/org/daily-review.org")
                (file "~/.emacs.d/org-templates/journal.orgtmpl"))
