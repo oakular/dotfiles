@@ -236,12 +236,6 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-todo-keywords
       '((sequence "TODO(t)" "DOING(o)" "HOLD(h)" "|" "DONE(d!)" "CANCELLED(c)")))
 
-;; (setq org-todo-keyword-faces
-;;       '(("TODO" . org-warning)
-;;         ("DOING" . (:foreground "orange"))
-;;         ("DONE" . (:foreground "light-green"))
-;;         ("CANCELED" . (:foreground "blue" :weight bold))))
-
 (setq org-default-notes-file (concat org-directory "refile.org"))
 
 (setq org-capture-templates
