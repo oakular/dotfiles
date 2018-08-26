@@ -217,6 +217,7 @@ It continues checking for javascript errors if there are no more PHP errors."
 (setq org-agenda-nday 7)
 (setq org-agenda-window-setup 'only-window)
 (setq org-agenda-show-all-dates t)
+(setq org-agenda-skip-scheduled-if-done t)
 (setq org-reverse-note-order t)
 (setq org-enforce-todo-dependencies t)
 (setq org-agenda-show-future-repeats "next")
