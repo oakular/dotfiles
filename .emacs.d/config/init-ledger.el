@@ -4,8 +4,10 @@
 (setq ledger-highlight-xact-under-point nil)
 (setq ledger-report-use-header-line 1)
 (setq ledger-report-use-native-highlighting nil)
+
 (setq ledger-accounts-file "~/Documents/personal/finance/ledger/accounts.ledger")
 (setq ledger-master-file "~/Documents/personal/finance/ledger/journal.ledger")
+
 (define-key ledger-mode-map  (kbd "C-c C-b") 'ledger-mode-clean-buffer)
 
 (setq ledger-reports

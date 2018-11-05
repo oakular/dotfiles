@@ -7,7 +7,10 @@
         "bibtex %b"
         "pdflatex -interaction nonstopmode -output-directory %o %f"
         "pdflatex -interaction nonstopmode -output-directory %o %f"))
+
 (require 'org-bullets)
+(setq org-tags-column -80)
+
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
@@ -39,10 +42,12 @@
 (setq org-agenda-window-setup 'only-window)
 (setq org-agenda-show-all-dates t)
 (setq org-agenda-skip-scheduled-if-done t)
+(setq org-deadline-warning-days 3)
 (setq org-reverse-note-order t)
 (setq org-enforce-todo-dependencies t)
 (setq org-agenda-show-future-repeats "next")
 (setq org-agenda-use-time-grid nil)
+(setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4))
 
 ;; --- org auditing options
 (setq org-log-done t)
@@ -69,26 +74,14 @@
               ("r" "respond"
                entry (file org-default-notes-file)
                "* Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n")
-
-              ("s" "web search"
-               entry (file "~/Documents/org/web-searches.org")
-               "* Search for %?\n%a")
               
               ("n" "note"
                entry (file+headline org-default-notes-file "Notes")
                "* NOTE: %?\n%U\n%a\n")
 
-              ("i" "Thought"
-               entry (file+datetree org-default-notes-file "Thoughts")
-               "* %? \n%U")
-
               ("j" "Journal"
                entry (file+datetree "~/Documents/org/daily-review.org")
                (file "~/.emacs.d/org-templates/journal.orgtmpl"))
-
-              ("w" "org-protocol"
-               entry (file "~/Documents/org/refile.org")
-               "* TODO Review %c\n%U\n" :immediate-finish t)
 
               ("m" "Meeting"
                entry (file+headline org-default-notes-file "Meetings")
@@ -96,10 +89,7 @@
 
               ("p" "Contact"
                entry (file+headline org-default-notes-file "Contact")
-               "* Message/Phone %? \n%U")
-
-              ("h" "Habit" entry (file "~/Documents/org/plan/habits.org")
-               "* TODO %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:END:\n"))))
+               "* Message/Phone %? \n%U"))))
 
 (setq org-clock-mode-line-total 'today)
 
@@ -108,7 +98,8 @@
 (require 'ob-ledger)
 (require 'ob-latex)
 (setq org-startup-with-latex-preview t)
-
 (require 'ob-shell)
+(require 'ob-swift)
+(require 'ob-python)
 
 (provide 'init-org)
