@@ -4,7 +4,7 @@
 
 shopt -s extglob
 
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:$HOME/.composer/vendor/bin/:$HOME/.bin/:/Applications/Xcode.app/Contents/Developer/usr/bin/
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:$HOME/.composer/vendor/bin/:$HOME/.bin/:/Applications/Xcode.app/Contents/Developer/usr/bin/:/usr/local/Caskroom/
 
 # history
 HISTIGNORE="&:ls:pwd:[fb]g:exit:clear:history"
