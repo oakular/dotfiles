@@ -1,6 +1,13 @@
 (require 'org)
 (require 'org-capture)
 (require 'org-bibtex)
+(require 'org-bullets)
+(require 'ob-ledger)
+(require 'ob-latex)
+(require 'ob-shell)
+(require 'ob-swift)
+(require 'ob-python)
+(require 'olivetti)
 
 (setq org-latex-pdf-process
       '("pdflatex -interaction nonstopmode -output-directory %o %f"
@@ -8,12 +15,14 @@
         "pdflatex -interaction nonstopmode -output-directory %o %f"
         "pdflatex -interaction nonstopmode -output-directory %o %f"))
 
-(require 'org-bullets)
 (setq org-tags-column -80)
 
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook 'org-bullets-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
+
+(setq olivetti-body-width 0.75)
+(add-hook 'org-mode-hook 'olivetti-mode)
 
 (add-to-list 'org-modules 'org-habit t)
 (setq org-habit-show-habits-only-for-today t)
@@ -95,11 +104,7 @@
 
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
-(require 'ob-ledger)
-(require 'ob-latex)
+
 (setq org-startup-with-latex-preview t)
-(require 'ob-shell)
-(require 'ob-swift)
-(require 'ob-python)
 
 (provide 'init-org)
