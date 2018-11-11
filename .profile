@@ -10,6 +10,8 @@ fi
 export TERM='xterm-256color'
 export EDITOR="vim"
 export HOMEBREW_GITHUB_API_TOKEN="465878db9a3ce7ef75a20f63ffb9c8752d16ffc1"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 date
 
