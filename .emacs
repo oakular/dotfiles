@@ -33,6 +33,7 @@
 (require 'init-engine)
 (require 'init-pdf)
 (require 'init-swift)
+(require 'init-projectile)
 (require 'init-sql)
 (require 'init-web-dev)
 (require 'init-web)
