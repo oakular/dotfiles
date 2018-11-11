@@ -31,6 +31,7 @@
 (require 'init-esh)
 (require 'init-elfeed)
 (require 'init-engine)
+(require 'init-epub)
 (require 'init-pdf)
 (require 'init-projectile)
 (require 'init-sdev)
@@ -73,23 +74,20 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'my/ansi-colorize-buffer)
 
-;; ----- EPUB READING -----
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-(defun my-nov-font-setup ()
-  (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
-                                           :height 1.2))
-(add-hook 'nov-mode-hook 'my-nov-font-setup)
-(setq nov-text-width 80)
-
 ;; ----- LaTeX CONFIG -----
 (setq bibtex-dialect 'biblatex)
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-hide ((t :foreground "#3C4C55"))))
+ '(ledger-font-payee-uncleared-face ((t (:foreground "#dc322f" :height 1.2))))
+ '(ledger-font-posting-date-face ((t (:inherit font-lock-keyword-face :height 1.2))))
+ '(org-hide ((t :foreground "#3C4C55")))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :height 1.3))))
+ '(variable-pitch ((t (:family "Helvetica")))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -126,7 +124,7 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\["))))
  '(package-selected-packages
    (quote
-    (golden-ratio projectile flycheck-xcode ns-auto-titlebar company-sourcekit pdf-tools org-kanban plantuml-mode stock-ticker yasnippet-snippets flycheck-swift ob-swift elfeed-org elfeed browse-kill-ring mellow-theme ample-theme gruvbox-theme engine-mode dired-subtree android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna)))
+    (olivetti golden-ratio projectile flycheck-xcode ns-auto-titlebar company-sourcekit pdf-tools org-kanban plantuml-mode stock-ticker yasnippet-snippets flycheck-swift ob-swift elfeed-org elfeed browse-kill-ring mellow-theme ample-theme gruvbox-theme engine-mode dired-subtree android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna)))
  '(safe-local-variable-values
    (quote
     ((projectile-project-test-cmd . "fastlane tests")
