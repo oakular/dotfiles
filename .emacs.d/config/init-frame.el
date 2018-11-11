@@ -15,4 +15,7 @@
 (ns-auto-titlebar-mode t)
 (load-theme 'solarized-dark t)
 
+(require 'golden-ratio)
+(golden-ratio-mode t)
+
 (provide 'init-frame)
