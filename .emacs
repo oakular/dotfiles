@@ -32,9 +32,10 @@
 (require 'init-elfeed)
 (require 'init-engine)
 (require 'init-pdf)
-(require 'init-swift)
 (require 'init-projectile)
+(require 'init-sdev)
 (require 'init-sql)
+(require 'init-swift)
 (require 'init-web-dev)
 (require 'init-web)
 
@@ -64,6 +65,13 @@
 (yas-global-mode 1)
 (require 'company)
 (setq company-idle-delay 0.01)
+
+;; colourise compilation buffers
+(require 'ansi-color)
+(defun my/ansi-colorize-buffer ()
+  (let ((buffer-read-only nil))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(add-hook 'compilation-filter-hook 'my/ansi-colorize-buffer)
 
 ;; ----- EPUB READING -----
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
@@ -118,5 +126,10 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\["))))
  '(package-selected-packages
    (quote
-    (projectile flycheck-xcode ns-auto-titlebar company-sourcekit pdf-tools org-kanban plantuml-mode stock-ticker yasnippet-snippets flycheck-swift ob-swift elfeed-org elfeed browse-kill-ring mellow-theme ample-theme gruvbox-theme engine-mode dired-subtree android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna))))
+    (golden-ratio projectile flycheck-xcode ns-auto-titlebar company-sourcekit pdf-tools org-kanban plantuml-mode stock-ticker yasnippet-snippets flycheck-swift ob-swift elfeed-org elfeed browse-kill-ring mellow-theme ample-theme gruvbox-theme engine-mode dired-subtree android-mode kotlin-mode nova-theme rainbow-delimiters ledger-mode org2jekyll sqlup-mode easy-jekyll yaml-mode wc-mode ruby-end alchemist elixir-mode elixir-yasnippets nov org-bullets toc-org org-protocol-jekyll exec-path-from-shell docker phpunit scala-mode auctex-latexmk dockerfile-mode flycheck writeroom-mode auctex smooth-scroll web-mode php-mode markdown-mode swift-mode solarized-theme magit haskell-mode org-edna)))
+ '(safe-local-variable-values
+   (quote
+    ((projectile-project-test-cmd . "fastlane tests")
+     (projectile-project-name . "comp39x-code")
+     (projectile-project-compilation-cmd . "fastlane build")))))
 (put 'erase-buffer 'disabled nil)
