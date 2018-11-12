@@ -47,6 +47,13 @@
 
 (setq org-archive-location (concat org-directory "archive/%s_archive::"))
 
+(defun org-agenda-face-attr ()
+  (interactive)
+  (setq buffer-face-mode-face '(:family "Hack" :height 180))
+  (buffer-face-mode))
+
+(add-hook 'org-agenda-mode-hook 'org-agenda-face-attr)
+
 (setq org-agenda-nday 7)
 (setq org-agenda-window-setup 'only-window)
 (setq org-agenda-show-all-dates t)
