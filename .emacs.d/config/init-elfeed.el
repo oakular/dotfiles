@@ -1,14 +1,20 @@
 (require 'elfeed)
 (require 'elfeed-org)
+(require 'olivetti)
 
 (setq elfeed-sort-order 'ascending)
 
+(setq elfeed-enclosure-default-dir "~/Podcasts/")
+
 (defun elfeed-face-attr ()
   (interactive)
-  (setq buffer-face-mode-face '(:family "Literata" :height 130))
+  (setq buffer-face-mode-face '(:family "Literata" :height 140))
   (buffer-face-mode))
 
+(setq olivetti-body-width 0.75)
+
 (add-hook 'elfeed-show-mode-hook 'elfeed-face-attr)
+(add-hook 'elfeed-show-mode-hook 'olivetti-mode)
 
 (add-hook 'elfeed-new-entry-hook
           (elfeed-make-tagger :before "2 weeks ago"
