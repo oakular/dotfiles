@@ -13,6 +13,8 @@
 (set-face-attribute 'default t :font "Hack" )
 (require 'ns-auto-titlebar)
 (ns-auto-titlebar-mode t)
+
+(setq solarized-scale-org-headlines nil)
 (load-theme 'solarized-dark t)
 
 (require 'golden-ratio)
