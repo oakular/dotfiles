@@ -11,7 +11,7 @@
 
 (setq org-latex-pdf-process
       '("pdflatex -interaction nonstopmode -output-directory %o %f"
-        "bibtex %b"
+        "biber %b"
         "pdflatex -interaction nonstopmode -output-directory %o %f"
         "pdflatex -interaction nonstopmode -output-directory %o %f"))
 (setq org-export-async-init-file "~/.emacs.d/org-async-export-init.el")
@@ -96,6 +96,14 @@
               ("n" "note"
                entry (file+headline org-default-notes-file "Notes")
                "* NOTE: %?\n%U\n%a\n")
+
+              ("l" "Log"
+               entry (file+datetree "~/Documents/projects/uni/yr4/comp39x/log.org")
+               (file "~/.emacs.d/org-templates/log.orgtmpl"))
+
+              ("w" "Writing"
+               entry (file+datetree "~/Documents/projects/writing/rough/rough.org")
+               (file "~/.emacs.d/org-templates/log.orgtmpl"))
 
               ("j" "Journal"
                entry (file+datetree "~/Documents/org/daily-review.org")
