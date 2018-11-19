@@ -10,10 +10,10 @@
 (require 'olivetti)
 
 (setq org-latex-pdf-process
-      '("pdflatex -interaction nonstopmode -output-directory %o %f"
-        "biber %b"
-        "pdflatex -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -interaction nonstopmode -output-directory %o %f"))
+      '("xelatex -interaction nonstopmode -output-directory %o %f"
+        "biber %b -output-directory %o"
+        "xelatex -interaction nonstopmode -output-directory %o %f"
+        "xelatex -interaction nonstopmode -output-directory %o %f"))
 (setq org-export-async-init-file "~/.emacs.d/org-async-export-init.el")
 (setq org-export-in-background t)
 
