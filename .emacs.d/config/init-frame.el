@@ -10,12 +10,14 @@
 (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
 (setq initial-frame-alist '((top . 0) (left . 0) (width . 140) (height . 70)))
 (set-face-attribute 'default nil :height 110)
-(set-face-attribute 'default t :font "Hack" )
+(set-face-attribute 'default t :font "Overpass Mono" )
 (require 'ns-auto-titlebar)
 (ns-auto-titlebar-mode t)
 
 (setq solarized-scale-org-headlines nil)
-(load-theme 'solarized-dark t)
+(setq solarized-high-contrast-mode-line t)
+(setq solarized-use-variable-pitch t)
+;(load-theme 'solarized-light t)
 
 (require 'golden-ratio)
 (golden-ratio-mode t)
@@ -48,5 +50,12 @@
 	  (if this-win-2nd (other-window 1))))))
 
 (global-set-key (kbd "C-x |") 'toggle-window-split)
+
+(setq calendar-location-name "Liverpool, UK") 
+(setq calendar-latitude 53.36)
+(setq calendar-longitude -2.91)
+
+(require 'theme-changer)
+(change-theme 'solarized-light 'solarized-dark)
 
 (provide 'init-frame)

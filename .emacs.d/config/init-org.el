@@ -1,7 +1,3 @@
-(require 'org)
-(require 'org-capture)
-(require 'org-bibtex)
-(require 'org-bullets)
 (require 'ob-ledger)
 (require 'ob-latex)
 (require 'ob-shell)
@@ -16,6 +12,7 @@
         "xelatex -interaction nonstopmode -output-directory %o %f"))
 (setq org-export-async-init-file "~/.emacs.d/org-async-export-init.el")
 (setq org-export-in-background t)
+(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl")))
 
 (setq org-tags-column -80)
 

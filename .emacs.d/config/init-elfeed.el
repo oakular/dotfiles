@@ -8,7 +8,7 @@
 
 (defun elfeed-face-attr ()
   (interactive)
-  (setq buffer-face-mode-face '(:family "Literata" :height 140))
+  (setq buffer-face-mode-face '(:family "Libre Caslon Text" :height 140))
   (buffer-face-mode))
 
 (setq olivetti-body-width 0.75)
