@@ -20,8 +20,8 @@
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
-(setq olivetti-body-width 0.75)
 (add-hook 'org-mode-hook 'olivetti-mode)
+(setq olivetti-minimum-body-width 100)
 
 (add-to-list 'org-modules 'org-habit t)
 (setq org-habit-show-habits-only-for-today t)
