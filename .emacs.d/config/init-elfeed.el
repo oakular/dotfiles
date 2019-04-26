@@ -39,10 +39,10 @@
 (define-key elfeed-search-mode-map "m" 'elfeed-money)
 (define-key elfeed-search-mode-map "P" 'elfeed-pcast)
 
-(define-key global-map "\C-ce" 'elfeed)
+(define-key global-map "\C-ce" 'elfeed-today)
 
 (elfeed-org)
-(setq shr-current-font "Hack")
+(setq shr-current-font "Monaco")
 (setq shr-width 100)
 
 (provide 'init-elfeed)
