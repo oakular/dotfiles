@@ -13,6 +13,8 @@
 (set-face-attribute 'default t :font "Overpass Mono" )
 (require 'ns-auto-titlebar)
 (ns-auto-titlebar-mode t)
+(global-set-key (kbd "M-h") 'ns-do-hide-emacs)
+(global-set-key (kbd "M-˙") 'ns-do-hide-others)
 
 (setq solarized-scale-org-headlines nil)
 (setq solarized-high-contrast-mode-line t)
