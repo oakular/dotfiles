@@ -43,6 +43,8 @@ It continues checking for javascript errors if there are no more PHP errors."
           )
 
 (add-hook 'php-mode-hook 'company-mode)
+(add-hook 'php-mode-hook 'display-line-numbers-mode)
+
 
 (provide 'flycheck-web-mode-php)
 
