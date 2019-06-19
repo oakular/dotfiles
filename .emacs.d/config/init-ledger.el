@@ -7,6 +7,9 @@
 
 (setq ledger-accounts-file "~/Documents/personal/finance/ledger/accounts.ledger")
 (setq ledger-master-file "~/Documents/personal/finance/ledger/journal.ledger")
+(setq ledger-schedule-file "~/Documents/personal/finance/ledger/scheduled.ledger")
+
+(setq ledger-schedule-look-forward 30)
 
 (define-key ledger-mode-map  (kbd "C-c C-b") 'ledger-mode-clean-buffer)
 

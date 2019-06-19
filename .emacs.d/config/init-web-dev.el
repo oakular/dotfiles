@@ -1,5 +1,5 @@
 (setq web-mode-enable-current-element-highlight t)
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.blade.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (setq-default indent-tabs-mode nil)
 (defun my-web-mode-hook ()
@@ -33,6 +33,16 @@ It continues checking for javascript errors if there are no more PHP errors."
 
      (add-to-list 'flycheck-checkers 'web-mode-php)
      ))
+
+(electric-pair-mode 1)
+
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'company-backends)
+                  '((company-ac-php-backend company-dabbrev) company-capf company-files)))
+          )
+
+(add-hook 'php-mode-hook 'company-mode)
 
 (provide 'flycheck-web-mode-php)
 

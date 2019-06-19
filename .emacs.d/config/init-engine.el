@@ -16,5 +16,8 @@
 (defengine osm
   "https://www.openstreetmap.org/search?query=%s"
   :keybinding "m")
+(defengine def
+  "www.oed.com/search?searchType=dictionary&q=%s"
+  :keybinding "oed")
 
 (provide 'init-engine)

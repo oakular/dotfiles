@@ -1,6 +1,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(setq display-time-format "[CL: %H:%M]")
+(display-line-numbers-mode 1)
+(setq display-time-format "[%H:%M]")
 (display-time-mode t)
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
@@ -8,21 +9,22 @@
 ;; Command-Option-f to toggle fullscreen mode
 ;; Hint: Customize `ns-use-native-fullscreen'
 (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 140) (height . 70)))
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 180) (height . 70)))
 (set-face-attribute 'default nil :height 110)
-(set-face-attribute 'default t :font "Overpass Mono" )
-(require 'ns-auto-titlebar)
-(ns-auto-titlebar-mode t)
+(set-face-attribute 'default nil :family "Monaco")
+
 (global-set-key (kbd "M-h") 'ns-do-hide-emacs)
 (global-set-key (kbd "M-˙") 'ns-do-hide-others)
 
 (setq solarized-scale-org-headlines nil)
 (setq solarized-high-contrast-mode-line t)
 (setq solarized-use-variable-pitch t)
-;(load-theme 'solarized-light t)
+(load-theme 'darktooth t)
 
-(require 'golden-ratio)
-(golden-ratio-mode t)
+(global-set-key (kbd "C-x w l") 'window-jump-right)
+(global-set-key (kbd "C-x w h") 'window-jump-left)
+(global-set-key (kbd "C-x w j") 'window-jump-down)
+(global-set-key (kbd "C-x w k") 'window-jump-up)
 
 ;; function to allow for alternating between horizontal and vertical splits
 ;; Source: https://www.emacswiki.org/emacs/ToggleWindowSplit
@@ -57,7 +59,7 @@
 (setq calendar-latitude 53.36)
 (setq calendar-longitude -2.91)
 
-(require 'theme-changer)
-(change-theme 'solarized-light 'solarized-dark)
+;; (require 'theme-changer)
+;; (change-theme 'solarized-light 'solarized-dark)
 
 (provide 'init-frame)

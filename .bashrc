@@ -28,3 +28,4 @@ md(){
     pandoc -t plain "$1" | less;
 } # display markdown text in terminal with formatting removed
 
+export HOMEBREW_NO_ENV_FILTERING=1

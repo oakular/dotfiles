@@ -3,7 +3,6 @@
 (require 'ob-shell)
 (require 'ob-swift)
 (require 'ob-python)
-(require 'olivetti)
 
 (setq org-latex-pdf-process
       '("xelatex -interaction nonstopmode -output-directory %o %f"
@@ -19,9 +18,6 @@
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
-
-(add-hook 'org-mode-hook 'olivetti-mode)
-(setq olivetti-minimum-body-width 100)
 
 (add-to-list 'org-modules 'org-habit t)
 (setq org-habit-show-habits-only-for-today t)
@@ -48,7 +44,7 @@
 
 (defun org-agenda-face-attr ()
   (interactive)
-  (setq buffer-face-mode-face '(:family "Hack" :height 180))
+  (setq buffer-face-mode-face '(:family "Monaco" :height 180))
   (buffer-face-mode))
 
 (add-hook 'org-agenda-mode-hook 'org-agenda-face-attr)
