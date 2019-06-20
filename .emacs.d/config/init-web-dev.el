@@ -44,7 +44,14 @@ It continues checking for javascript errors if there are no more PHP errors."
 
 (add-hook 'php-mode-hook 'company-mode)
 (add-hook 'php-mode-hook 'display-line-numbers-mode)
+(add-hook 'php-mode-hook 'flycheck-mode)
 
+(require 'dumb-jump)
+(define-key php-mode-map (kbd "M-g o") 'dumb-jump-go-other-window)
+(define-key php-mode-map (kbd "M-g j") 'dumb-jump-go)
+(define-key php-mode-map (kbd "M-g x") 'dumb-jump-go-prompt)
+(define-key php-mode-map (kbd "M-g z") 'dumb-jump-go-prefer-external-other-window)
+(setq dumb-jump-selector 'ivy)
 
 (provide 'flycheck-web-mode-php)
 

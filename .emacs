@@ -41,7 +41,6 @@
 (require 'init-web-dev)
 (require 'init-web)
 
-
 ;; ----- STARTUP -----
 (setq default-directory "~/Documents/")
 (setq initial-buffer-choice (lambda () (get-buffer-create "**")))
