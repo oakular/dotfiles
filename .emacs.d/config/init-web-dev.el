@@ -34,8 +34,6 @@ It continues checking for javascript errors if there are no more PHP errors."
      (add-to-list 'flycheck-checkers 'web-mode-php)
      ))
 
-(electric-pair-mode 1)
-
 (add-hook 'php-mode-hook
           '(lambda ()
              (set (make-local-variable 'company-backends)

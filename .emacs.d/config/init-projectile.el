@@ -30,5 +30,7 @@
 (setq projectile-completion-system 'ivy)
 (counsel-projectile-mode 1)
 
+(define-key projectile-mode-map (kbd "C-c i") 'ivy-imenu-anywhere)
+
 (projectile-mode +1)
 (provide 'init-projectile)
